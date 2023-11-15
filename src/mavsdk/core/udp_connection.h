@@ -17,7 +17,8 @@ public:
         Connection::ReceiverCallback receiver_callback,
         std::string local_ip,
         int local_port,
-        ForwardingOption forwarding_option = ForwardingOption::ForwardingOff);
+        ForwardingOption forwarding_option = ForwardingOption::ForwardingOff,
+        bool is_ipv6 = false);
     ~UdpConnection() override;
     ConnectionResult start() override;
     ConnectionResult stop() override;
@@ -32,6 +33,7 @@ public:
 
 private:
     ConnectionResult setup_port();
+    ConnectionResult setup_port6();
     void start_recv_thread();
 
     void receive();
@@ -57,6 +59,7 @@ private:
     int _socket_fd{-1};
     std::unique_ptr<std::thread> _recv_thread{};
     std::atomic_bool _should_exit{false};
+    bool _is_ipv6{false};
 };
 
 } // namespace mavsdk

@@ -58,7 +58,10 @@ public:
     std::pair<ConnectionResult, Mavsdk::ConnectionHandle>
     add_any_connection(const std::string& connection_url, ForwardingOption forwarding_option);
     std::pair<ConnectionResult, Mavsdk::ConnectionHandle> add_udp_connection(
-        const std::string& local_ip, int local_port_number, ForwardingOption forwarding_option);
+        const std::string& local_ip,
+        int local_port_number,
+        ForwardingOption forwarding_option,
+        bool is_ipv6 = false);
     std::pair<ConnectionResult, Mavsdk::ConnectionHandle> add_tcp_connection(
         const std::string& remote_ip, int remote_port, ForwardingOption forwarding_option);
     std::pair<ConnectionResult, Mavsdk::ConnectionHandle> add_serial_connection(

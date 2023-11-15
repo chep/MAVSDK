@@ -122,7 +122,8 @@ public:
      */
     ConnectionResult add_udp_connection(
         int local_port = DEFAULT_UDP_PORT,
-        ForwardingOption forwarding_option = ForwardingOption::ForwardingOff);
+        ForwardingOption forwarding_option = ForwardingOption::ForwardingOff,
+        bool is_ipv6 = false);
 
     /**
      * @brief Adds a UDP connection to the specified port number and local interface.
@@ -138,7 +139,8 @@ public:
     ConnectionResult add_udp_connection(
         const std::string& local_ip,
         int local_port = DEFAULT_UDP_PORT,
-        ForwardingOption forwarding_option = ForwardingOption::ForwardingOff);
+        ForwardingOption forwarding_option = ForwardingOption::ForwardingOff,
+        bool is_ipv6 = false);
 
     /**
      * @brief Sets up instance to send heartbeats to the specified remote interface and port number.

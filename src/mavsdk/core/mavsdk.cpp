@@ -28,15 +28,20 @@ std::pair<ConnectionResult, Mavsdk::ConnectionHandle> Mavsdk::add_any_connection
     return _impl->add_any_connection(connection_url, forwarding_option);
 }
 
-ConnectionResult Mavsdk::add_udp_connection(int local_port, ForwardingOption forwarding_option)
+ConnectionResult
+Mavsdk::add_udp_connection(int local_port, ForwardingOption forwarding_option, bool is_ipv6)
 {
-    return _impl->add_udp_connection(DEFAULT_UDP_BIND_IP, local_port, forwarding_option).first;
+    return _impl->add_udp_connection(DEFAULT_UDP_BIND_IP, local_port, forwarding_option, is_ipv6)
+        .first;
 }
 
 ConnectionResult Mavsdk::add_udp_connection(
-    const std::string& local_bind_ip, const int local_port, ForwardingOption forwarding_option)
+    const std::string& local_bind_ip,
+    const int local_port,
+    ForwardingOption forwarding_option,
+    bool is_ipv6)
 {
-    return _impl->add_udp_connection(local_bind_ip, local_port, forwarding_option).first;
+    return _impl->add_udp_connection(local_bind_ip, local_port, forwarding_option, is_ipv6).first;
 }
 
 ConnectionResult Mavsdk::setup_udp_remote(

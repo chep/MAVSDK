@@ -521,7 +521,10 @@ std::pair<ConnectionResult, Mavsdk::ConnectionHandle> MavsdkImpl::add_any_connec
 }
 
 std::pair<ConnectionResult, Mavsdk::ConnectionHandle> MavsdkImpl::add_udp_connection(
-    const std::string& local_ip, const int local_port, ForwardingOption forwarding_option)
+    const std::string& local_ip,
+    const int local_port,
+    ForwardingOption forwarding_option,
+    bool is_ipv6)
 {
     auto new_conn = std::make_shared<UdpConnection>(
         [this](mavlink_message_t& message, Connection* connection) {
@@ -529,7 +532,8 @@ std::pair<ConnectionResult, Mavsdk::ConnectionHandle> MavsdkImpl::add_udp_connec
         },
         local_ip,
         local_port,
-        forwarding_option);
+        forwarding_option,
+        is_ipv6);
     if (!new_conn) {
         return {ConnectionResult::ConnectionError, Mavsdk::ConnectionHandle{}};
     }

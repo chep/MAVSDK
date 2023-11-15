@@ -31,10 +31,12 @@ UdpConnection::UdpConnection(
     Connection::ReceiverCallback receiver_callback,
     std::string local_ip,
     int local_port_number,
-    ForwardingOption forwarding_option) :
+    ForwardingOption forwarding_option,
+    bool is_ipv6) :
     Connection(std::move(receiver_callback), forwarding_option),
     _local_ip(std::move(local_ip)),
-    _local_port_number(local_port_number)
+    _local_port_number(local_port_number),
+    _is_ipv6(is_ipv6)
 {}
 
 UdpConnection::~UdpConnection()
@@ -49,7 +51,7 @@ ConnectionResult UdpConnection::start()
         return ConnectionResult::ConnectionsExhausted;
     }
 
-    ConnectionResult ret = setup_port();
+    ConnectionResult ret = _is_ipv6 ? setup_port6() : setup_port();
     if (ret != ConnectionResult::Success) {
         return ret;
     }
@@ -80,6 +82,36 @@ ConnectionResult UdpConnection::setup_port()
     addr.sin_family = AF_INET;
     inet_pton(AF_INET, _local_ip.c_str(), &(addr.sin_addr));
     addr.sin_port = htons(_local_port_number);
+
+    if (bind(_socket_fd, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) != 0) {
+        LogErr() << "bind error: " << GET_ERROR(errno);
+        return ConnectionResult::BindError;
+    }
+
+    return ConnectionResult::Success;
+}
+
+ConnectionResult UdpConnection::setup_port6()
+{
+#ifdef WINDOWS
+    WSADATA wsa;
+    if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0) {
+        LogErr() << "Error: Winsock failed, error: %d", WSAGetLastError();
+        return ConnectionResult::SocketError;
+    }
+#endif
+
+    _socket_fd = socket(AF_INET6, SOCK_DGRAM, 0);
+
+    if (_socket_fd < 0) {
+        LogErr() << "socket error" << GET_ERROR(errno);
+        return ConnectionResult::SocketError;
+    }
+
+    struct sockaddr_in6 addr {};
+    addr.sin6_family = AF_INET6;
+    inet_pton(AF_INET6, _local_ip.c_str(), &(addr.sin6_addr));
+    addr.sin6_port = htons(_local_port_number);
 
     if (bind(_socket_fd, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) != 0) {
         LogErr() << "bind error: " << GET_ERROR(errno);
@@ -147,14 +179,22 @@ bool UdpConnection::send_message(const mavlink_message_t& message)
     // then expected to ignore messages that are not directed to them.
     bool send_successful = true;
     for (auto& remote : _remotes) {
-        struct sockaddr_in dest_addr {};
-        dest_addr.sin_family = AF_INET;
-
-        inet_pton(AF_INET, remote.ip.c_str(), &dest_addr.sin_addr.s_addr);
-        dest_addr.sin_port = htons(remote.port_number);
-
+        sockaddr_storage dest_addr{};
+        size_t dest_size;
         uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
         uint16_t buffer_len = mavlink_msg_to_send_buffer(buffer, &message);
+
+        if (_is_ipv6) {
+            sockaddr_in6* addr = reinterpret_cast<sockaddr_in6*>(&dest_addr);
+            addr->sin6_family = AF_INET6;
+            inet_pton(AF_INET6, remote.ip.c_str(), &addr->sin6_addr);
+            addr->sin6_port = htons(remote.port_number);
+        } else {
+            sockaddr_in* addr = reinterpret_cast<sockaddr_in*>(&dest_addr);
+            addr->sin_family = AF_INET;
+            inet_pton(AF_INET, remote.ip.c_str(), &addr->sin_addr.s_addr);
+            addr->sin_port = htons(remote.port_number);
+        }
 
         const auto send_len = sendto(
             _socket_fd,
@@ -209,7 +249,7 @@ void UdpConnection::receive()
     char buffer[2048];
 
     while (!_should_exit) {
-        struct sockaddr_in src_addr = {};
+        struct sockaddr_storage src_addr = {};
         socklen_t src_addr_len = sizeof(src_addr);
         const auto recv_len = recvfrom(
             _socket_fd,
@@ -239,8 +279,18 @@ void UdpConnection::receive()
             const uint8_t sysid = _mavlink_receiver->get_last_message().sysid;
 
             if (sysid != 0) {
-                add_remote_with_remote_sysid(
-                    inet_ntoa(src_addr.sin_addr), ntohs(src_addr.sin_port), sysid);
+                if (_is_ipv6) {
+                    struct sockaddr_in6* addr = reinterpret_cast<struct sockaddr_in6*>(&src_addr);
+                    char addr_str[INET6_ADDRSTRLEN + 1] = {0};
+                    add_remote_with_remote_sysid(
+                        inet_ntop(AF_INET6, &addr->sin6_addr, addr_str, INET6_ADDRSTRLEN),
+                        ntohs(addr->sin6_port),
+                        sysid);
+                } else {
+                    struct sockaddr_in* addr = reinterpret_cast<struct sockaddr_in*>(&src_addr);
+                    add_remote_with_remote_sysid(
+                        inet_ntoa(addr->sin_addr), ntohs(addr->sin_port), sysid);
+                }
             }
 
             receive_message(_mavlink_receiver->get_last_message(), this);

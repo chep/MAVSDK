@@ -86,6 +86,10 @@ int GrpcServer::run()
     builder.RegisterService(&_log_files_service);
 #endif
 
+#ifdef LUMOS_SERVER_ENABLED
+    builder.RegisterService(&_lumos_server_service);
+#endif
+
 #ifdef MANUAL_CONTROL_ENABLED
     builder.RegisterService(&_manual_control_service);
 #endif
@@ -247,6 +251,10 @@ void GrpcServer::stop()
 
 #ifdef LOG_FILES_ENABLED
         _log_files_service.stop();
+#endif
+
+#ifdef LUMOS_SERVER_ENABLED
+        _lumos_server_service.stop();
 #endif
 
 #ifdef MANUAL_CONTROL_ENABLED

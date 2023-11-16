@@ -94,6 +94,11 @@
 #include "log_files/log_files_service_impl.h"
 #endif
 
+#ifdef LUMOS_SERVER_ENABLED
+#include "plugins/lumos_server/lumos_server.h"
+#include "lumos_server/lumos_server_service_impl.h"
+#endif
+
 #ifdef MANUAL_CONTROL_ENABLED
 #include "plugins/manual_control/manual_control.h"
 #include "manual_control/manual_control_service_impl.h"
@@ -265,6 +270,11 @@ public:
 #ifdef LOG_FILES_ENABLED
         _log_files_lazy_plugin(mavsdk),
         _log_files_service(_log_files_lazy_plugin),
+#endif
+
+#ifdef LUMOS_SERVER_ENABLED
+        _lumos_server_lazy_plugin(mavsdk),
+        _lumos_server_service(_lumos_server_lazy_plugin),
 #endif
 
 #ifdef MANUAL_CONTROL_ENABLED
@@ -474,6 +484,13 @@ private:
     LazyPlugin<LogFiles> _log_files_lazy_plugin;
 
     LogFilesServiceImpl<> _log_files_service;
+#endif
+
+#ifdef LUMOS_SERVER_ENABLED
+
+    LazyServerPlugin<LumosServer> _lumos_server_lazy_plugin;
+
+    LumosServerServiceImpl<> _lumos_server_service;
 #endif
 
 #ifdef MANUAL_CONTROL_ENABLED

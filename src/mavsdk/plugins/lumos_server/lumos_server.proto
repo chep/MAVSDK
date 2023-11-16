@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package mavsdk.rpc.lumos_server;
+
+import "mavsdk_options.proto";
+
+service LumosServerService {
+    rpc SetDroneStatus(SetDroneStatusRequest) returns(SetDroneStatusResponse) {option (mavsdk.options.async_type) = SYNC;}
+}
+
+message SetDroneStatusRequest {
+    DroneStatus drone_status = 1;
+}
+
+message SetDroneStatusResponse {
+}
+
+
+message LumosResult {
+    // Possible results returned for commands
+    enum Result {
+        RESULT_SUCCESS = 0;
+        RESULT_ERROR = 1;
+    }
+    Result result = 1; // Result enum value
+    string result_str = 2; // Human-readable English string describing the result
+}
+
+message DroneStatus {
+    float battery_status = 1; /* battery charge (0.0 to 1.0)*/
+    int32 lat = 2; /*<  [degE7] Latitude (WGS84, EGM96 ellipsoid)*/
+    int32 lon = 3; /*<  [degE7] Longitude (WGS84, EGM96 ellipsoid)*/
+	int32 alt = 4; /*<  [mm] Altitude (AGL)*/
+	float mag_norm = 5; /*<  Magnetometer norm*/
+	uint32 hdg = 6; /*<  [cdeg] Vehicle heading (yaw angle), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX*/
+	string uuid = 7; /*<  uuid*/
+	uint32 fw_major = 8; /*<  Firmware version major (first byte)*/
+	uint32 fw_minor = 9; /*<  Firmware version minor (second byte)*/
+	uint32 fw_patch = 10; /*<  Firmware version patch (third byte)*/
+	uint32 dance_status = 11; /*<  Dance status*/
+	uint32 rssi_wifi = 12; /*<  Rssi wifi*/
+	uint32 rssi_xbee = 13; /*<  Rssi XBee*/
+	uint32 satellites_used = 14; /*<  Number of satellites used*/
+	uint32 fix_type = 15; /*<  GPS fix type*/
+	uint32 alt_ref = 16; /*<  Alt reference status, boolean*/
+}

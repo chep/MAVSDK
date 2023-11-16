@@ -572,10 +572,12 @@ void SystemImpl::set_connected()
                 _mavsdk_impl.notify_on_discover();
             }
 
-            // We call this later to avoid deadlocks on creating the server components.
+            // We call this later to avoid deadlocks on creating the server
+            // components.
             _mavsdk_impl.call_user_callback([this]() {
                 // Send a heartbeat back immediately.
-                _mavsdk_impl.start_sending_heartbeats();
+                if (_mavsdk_impl.get_configuration().get_always_send_heartbeats())
+                    _mavsdk_impl.start_sending_heartbeats();
             });
 
             register_timeout_handler(

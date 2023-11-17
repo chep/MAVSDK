@@ -37,41 +37,61 @@ class LumosServerService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status SetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>> AsyncSetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>>(AsyncSetDroneStatusRaw(context, request, cq));
+    virtual ::grpc::Status SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>> AsyncSetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>>(AsyncSetDroneInfoRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>> PrepareAsyncSetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>>(PrepareAsyncSetDroneStatusRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>> PrepareAsyncSetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>>(PrepareAsyncSetDroneInfoRaw(context, request, cq));
+    }
+    virtual ::grpc::Status SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>> AsyncSetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>>(AsyncSetCompanionStatusRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>> PrepareAsyncSetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>>(PrepareAsyncSetCompanionStatusRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void SetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void SetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>* AsyncSetDroneStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>* PrepareAsyncSetDroneStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>* AsyncSetDroneInfoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>* PrepareAsyncSetDroneInfoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>* AsyncSetCompanionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>* PrepareAsyncSetCompanionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status SetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>> AsyncSetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>>(AsyncSetDroneStatusRaw(context, request, cq));
+    ::grpc::Status SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>> AsyncSetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>>(AsyncSetDroneInfoRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>> PrepareAsyncSetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>>(PrepareAsyncSetDroneStatusRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>> PrepareAsyncSetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>>(PrepareAsyncSetDroneInfoRaw(context, request, cq));
+    }
+    ::grpc::Status SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>> AsyncSetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>>(AsyncSetCompanionStatusRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>> PrepareAsyncSetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>>(PrepareAsyncSetCompanionStatusRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void SetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response, std::function<void(::grpc::Status)>) override;
-      void SetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -83,9 +103,12 @@ class LumosServerService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>* AsyncSetDroneStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>* PrepareAsyncSetDroneStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_SetDroneStatus_;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>* AsyncSetDroneInfoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>* PrepareAsyncSetDroneInfoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>* AsyncSetCompanionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>* PrepareAsyncSetCompanionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_SetDroneInfo_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetCompanionStatus_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -93,147 +116,281 @@ class LumosServerService final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status SetDroneStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response);
+    virtual ::grpc::Status SetDroneInfo(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response);
+    virtual ::grpc::Status SetCompanionStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response);
   };
   template <class BaseClass>
-  class WithAsyncMethod_SetDroneStatus : public BaseClass {
+  class WithAsyncMethod_SetDroneInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_SetDroneStatus() {
+    WithAsyncMethod_SetDroneInfo() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_SetDroneStatus() override {
+    ~WithAsyncMethod_SetDroneInfo() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetDroneStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* /*response*/) override {
+    ::grpc::Status SetDroneInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSetDroneStatus(::grpc::ServerContext* context, ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSetDroneInfo(::grpc::ServerContext* context, ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SetDroneStatus<Service > AsyncService;
   template <class BaseClass>
-  class WithCallbackMethod_SetDroneStatus : public BaseClass {
+  class WithAsyncMethod_SetCompanionStatus : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_SetDroneStatus() {
+    WithAsyncMethod_SetCompanionStatus() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_SetCompanionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetCompanionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetCompanionStatus(::grpc::ServerContext* context, ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SetDroneInfo<WithAsyncMethod_SetCompanionStatus<Service > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_SetDroneInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetDroneInfo() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::lumos_server::SetDroneStatusRequest, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::lumos_server::SetDroneInfoRequest, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response) { return this->SetDroneStatus(context, request, response); }));}
-    void SetMessageAllocatorFor_SetDroneStatus(
-        ::grpc::MessageAllocator< ::mavsdk::rpc::lumos_server::SetDroneStatusRequest, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response) { return this->SetDroneInfo(context, request, response); }));}
+    void SetMessageAllocatorFor_SetDroneInfo(
+        ::grpc::MessageAllocator< ::mavsdk::rpc::lumos_server::SetDroneInfoRequest, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::lumos_server::SetDroneStatusRequest, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::lumos_server::SetDroneInfoRequest, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_SetDroneStatus() override {
+    ~WithCallbackMethod_SetDroneInfo() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetDroneStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* /*response*/) override {
+    ::grpc::Status SetDroneInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* SetDroneStatus(
-      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* SetDroneInfo(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SetDroneStatus<Service > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SetCompanionStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetCompanionStatus() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response) { return this->SetCompanionStatus(context, request, response); }));}
+    void SetMessageAllocatorFor_SetCompanionStatus(
+        ::grpc::MessageAllocator< ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SetCompanionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetCompanionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetCompanionStatus(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_SetDroneInfo<WithCallbackMethod_SetCompanionStatus<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_SetDroneStatus : public BaseClass {
+  class WithGenericMethod_SetDroneInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_SetDroneStatus() {
+    WithGenericMethod_SetDroneInfo() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_SetDroneStatus() override {
+    ~WithGenericMethod_SetDroneInfo() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetDroneStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* /*response*/) override {
+    ::grpc::Status SetDroneInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithRawMethod_SetDroneStatus : public BaseClass {
+  class WithGenericMethod_SetCompanionStatus : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_SetDroneStatus() {
-      ::grpc::Service::MarkMethodRaw(0);
+    WithGenericMethod_SetCompanionStatus() {
+      ::grpc::Service::MarkMethodGeneric(1);
     }
-    ~WithRawMethod_SetDroneStatus() override {
+    ~WithGenericMethod_SetCompanionStatus() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetDroneStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* /*response*/) override {
+    ::grpc::Status SetCompanionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSetDroneStatus(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+  };
+  template <class BaseClass>
+  class WithRawMethod_SetDroneInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetDroneInfo() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_SetDroneInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetDroneInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetDroneInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_SetDroneStatus : public BaseClass {
+  class WithRawMethod_SetCompanionStatus : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_SetDroneStatus() {
+    WithRawMethod_SetCompanionStatus() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_SetCompanionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetCompanionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetCompanionStatus(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SetDroneInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SetDroneInfo() {
       ::grpc::Service::MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetDroneStatus(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetDroneInfo(context, request, response); }));
     }
-    ~WithRawCallbackMethod_SetDroneStatus() override {
+    ~WithRawCallbackMethod_SetDroneInfo() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetDroneStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* /*response*/) override {
+    ::grpc::Status SetDroneInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* SetDroneStatus(
+    virtual ::grpc::ServerUnaryReactor* SetDroneInfo(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_SetDroneStatus : public BaseClass {
+  class WithRawCallbackMethod_SetCompanionStatus : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_SetDroneStatus() {
+    WithRawCallbackMethod_SetCompanionStatus() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetCompanionStatus(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SetCompanionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetCompanionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetCompanionStatus(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SetDroneInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetDroneInfo() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::mavsdk::rpc::lumos_server::SetDroneStatusRequest, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>(
+          ::mavsdk::rpc::lumos_server::SetDroneInfoRequest, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::mavsdk::rpc::lumos_server::SetDroneStatusRequest, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>* streamer) {
-                       return this->StreamedSetDroneStatus(context,
+                     ::mavsdk::rpc::lumos_server::SetDroneInfoRequest, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>* streamer) {
+                       return this->StreamedSetDroneInfo(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_SetDroneStatus() override {
+    ~WithStreamedUnaryMethod_SetDroneInfo() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status SetDroneStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* /*response*/) override {
+    ::grpc::Status SetDroneInfo(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSetDroneStatus(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::lumos_server::SetDroneStatusRequest,::mavsdk::rpc::lumos_server::SetDroneStatusResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedSetDroneInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::lumos_server::SetDroneInfoRequest,::mavsdk::rpc::lumos_server::SetDroneInfoResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SetDroneStatus<Service > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SetCompanionStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetCompanionStatus() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>* streamer) {
+                       return this->StreamedSetCompanionStatus(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SetCompanionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetCompanionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* /*request*/, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetCompanionStatus(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest,::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_SetDroneInfo<WithStreamedUnaryMethod_SetCompanionStatus<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SetDroneStatus<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_SetDroneInfo<WithStreamedUnaryMethod_SetCompanionStatus<Service > > StreamedService;
 };
 
 }  // namespace lumos_server

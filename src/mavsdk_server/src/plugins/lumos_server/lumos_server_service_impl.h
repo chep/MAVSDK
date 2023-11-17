@@ -21,15 +21,13 @@
 namespace mavsdk {
 namespace mavsdk_server {
 
-
-template<typename LumosServer = LumosServer, typename LazyServerPlugin = LazyServerPlugin<LumosServer>>
+template<
+    typename LumosServer = LumosServer,
+    typename LazyServerPlugin = LazyServerPlugin<LumosServer>>
 
 class LumosServerServiceImpl final : public rpc::lumos_server::LumosServerService::Service {
 public:
-
     LumosServerServiceImpl(LazyServerPlugin& lazy_plugin) : _lazy_plugin(lazy_plugin) {}
-
-
 
     template<typename ResponseType>
     void fillResponseWithResult(ResponseType* response, mavsdk::LumosServer::Result& result) const
@@ -45,9 +43,8 @@ public:
         response->set_allocated_lumos_server_result(rpc_lumos_server_result);
     }
 
-
-
-    static rpc::lumos_server::LumosResult::Result translateToRpcResult(const mavsdk::LumosServer::Result& result)
+    static rpc::lumos_server::LumosResult::Result
+    translateToRpcResult(const mavsdk::LumosServer::Result& result)
     {
         switch (result) {
             default:
@@ -60,7 +57,8 @@ public:
         }
     }
 
-    static mavsdk::LumosServer::Result translateFromRpcResult(const rpc::lumos_server::LumosResult::Result result)
+    static mavsdk::LumosServer::Result
+    translateFromRpcResult(const rpc::lumos_server::LumosResult::Result result)
     {
         switch (result) {
             default:
@@ -73,184 +71,108 @@ public:
         }
     }
 
-
-
-
-
-
-    static std::unique_ptr<rpc::lumos_server::DroneStatus> translateToRpcDroneStatus(const mavsdk::LumosServer::DroneStatus &drone_status)
+    static std::unique_ptr<rpc::lumos_server::DroneInfo>
+    translateToRpcDroneInfo(const mavsdk::LumosServer::DroneInfo& drone_info)
     {
-        auto rpc_obj = std::make_unique<rpc::lumos_server::DroneStatus>();
+        auto rpc_obj = std::make_unique<rpc::lumos_server::DroneInfo>();
 
+        rpc_obj->set_uuid(drone_info.uuid);
 
-            
-        rpc_obj->set_battery_status(drone_status.battery_status);
-            
-        
-            
-        rpc_obj->set_lat(drone_status.lat);
-            
-        
-            
-        rpc_obj->set_lon(drone_status.lon);
-            
-        
-            
-        rpc_obj->set_alt(drone_status.alt);
-            
-        
-            
-        rpc_obj->set_mag_norm(drone_status.mag_norm);
-            
-        
-            
-        rpc_obj->set_hdg(drone_status.hdg);
-            
-        
-            
-        rpc_obj->set_uuid(drone_status.uuid);
-            
-        
-            
-        rpc_obj->set_fw_major(drone_status.fw_major);
-            
-        
-            
-        rpc_obj->set_fw_minor(drone_status.fw_minor);
-            
-        
-            
-        rpc_obj->set_fw_patch(drone_status.fw_patch);
-            
-        
-            
-        rpc_obj->set_dance_status(drone_status.dance_status);
-            
-        
-            
-        rpc_obj->set_rssi_wifi(drone_status.rssi_wifi);
-            
-        
-            
-        rpc_obj->set_rssi_xbee(drone_status.rssi_xbee);
-            
-        
-            
-        rpc_obj->set_satellites_used(drone_status.satellites_used);
-            
-        
-            
-        rpc_obj->set_fix_type(drone_status.fix_type);
-            
-        
-            
-        rpc_obj->set_alt_ref(drone_status.alt_ref);
-            
-        
+        rpc_obj->set_fw_major(drone_info.fw_major);
+
+        rpc_obj->set_fw_minor(drone_info.fw_minor);
+
+        rpc_obj->set_fw_patch(drone_info.fw_patch);
 
         return rpc_obj;
     }
 
-    static mavsdk::LumosServer::DroneStatus translateFromRpcDroneStatus(const rpc::lumos_server::DroneStatus& drone_status)
+    static mavsdk::LumosServer::DroneInfo
+    translateFromRpcDroneInfo(const rpc::lumos_server::DroneInfo& drone_info)
     {
-        mavsdk::LumosServer::DroneStatus obj;
+        mavsdk::LumosServer::DroneInfo obj;
 
+        obj.uuid = drone_info.uuid();
 
-            
-        obj.battery_status = drone_status.battery_status();
-            
-        
-            
-        obj.lat = drone_status.lat();
-            
-        
-            
-        obj.lon = drone_status.lon();
-            
-        
-            
-        obj.alt = drone_status.alt();
-            
-        
-            
-        obj.mag_norm = drone_status.mag_norm();
-            
-        
-            
-        obj.hdg = drone_status.hdg();
-            
-        
-            
-        obj.uuid = drone_status.uuid();
-            
-        
-            
-        obj.fw_major = drone_status.fw_major();
-            
-        
-            
-        obj.fw_minor = drone_status.fw_minor();
-            
-        
-            
-        obj.fw_patch = drone_status.fw_patch();
-            
-        
-            
-        obj.dance_status = drone_status.dance_status();
-            
-        
-            
-        obj.rssi_wifi = drone_status.rssi_wifi();
-            
-        
-            
-        obj.rssi_xbee = drone_status.rssi_xbee();
-            
-        
-            
-        obj.satellites_used = drone_status.satellites_used();
-            
-        
-            
-        obj.fix_type = drone_status.fix_type();
-            
-        
-            
-        obj.alt_ref = drone_status.alt_ref();
-            
-        
+        obj.fw_major = drone_info.fw_major();
+
+        obj.fw_minor = drone_info.fw_minor();
+
+        obj.fw_patch = drone_info.fw_patch();
+
         return obj;
     }
 
+    static std::unique_ptr<rpc::lumos_server::CompanionStatus>
+    translateToRpcCompanionStatus(const mavsdk::LumosServer::CompanionStatus& companion_status)
+    {
+        auto rpc_obj = std::make_unique<rpc::lumos_server::CompanionStatus>();
 
+        rpc_obj->set_dance_status(companion_status.dance_status);
 
-    grpc::Status SetDroneStatus(
+        rpc_obj->set_rssi_wifi(companion_status.rssi_wifi);
+
+        rpc_obj->set_rssi_xbee(companion_status.rssi_xbee);
+
+        return rpc_obj;
+    }
+
+    static mavsdk::LumosServer::CompanionStatus
+    translateFromRpcCompanionStatus(const rpc::lumos_server::CompanionStatus& companion_status)
+    {
+        mavsdk::LumosServer::CompanionStatus obj;
+
+        obj.dance_status = companion_status.dance_status();
+
+        obj.rssi_wifi = companion_status.rssi_wifi();
+
+        obj.rssi_xbee = companion_status.rssi_xbee();
+
+        return obj;
+    }
+
+    grpc::Status SetDroneInfo(
         grpc::ServerContext* /* context */,
-        const rpc::lumos_server::SetDroneStatusRequest* request,
-        rpc::lumos_server::SetDroneStatusResponse* /* response */) override
+        const rpc::lumos_server::SetDroneInfoRequest* request,
+        rpc::lumos_server::SetDroneInfoResponse* /* response */) override
     {
         if (_lazy_plugin.maybe_plugin() == nullptr) {
-            
             return grpc::Status::OK;
         }
 
         if (request == nullptr) {
-            LogWarn() << "SetDroneStatus sent with a null request! Ignoring...";
+            LogWarn() << "SetDroneInfo sent with a null request! Ignoring...";
             return grpc::Status::OK;
         }
-            
-        
-        _lazy_plugin.maybe_plugin()->set_drone_status(translateFromRpcDroneStatus(request->drone_status()));
-        
 
-        
+        _lazy_plugin.maybe_plugin()->set_drone_info(
+            translateFromRpcDroneInfo(request->drone_info()));
 
         return grpc::Status::OK;
     }
 
+    grpc::Status SetCompanionStatus(
+        grpc::ServerContext* /* context */,
+        const rpc::lumos_server::SetCompanionStatusRequest* request,
+        rpc::lumos_server::SetCompanionStatusResponse* /* response */) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
 
-    void stop() {
+        if (request == nullptr) {
+            LogWarn() << "SetCompanionStatus sent with a null request! Ignoring...";
+            return grpc::Status::OK;
+        }
+
+        _lazy_plugin.maybe_plugin()->set_companion_status(
+            translateFromRpcCompanionStatus(request->drone_info()));
+
+        return grpc::Status::OK;
+    }
+
+    void stop()
+    {
         _stopped.store(true);
         for (auto& prom : _stream_stop_promises) {
             if (auto handle = prom.lock()) {
@@ -260,7 +182,8 @@ public:
     }
 
 private:
-    void register_stream_stop_promise(std::weak_ptr<std::promise<void>> prom) {
+    void register_stream_stop_promise(std::weak_ptr<std::promise<void>> prom)
+    {
         // If we have already stopped, set promise immediately and don't add it to list.
         if (_stopped.load()) {
             if (auto handle = prom.lock()) {
@@ -271,8 +194,10 @@ private:
         }
     }
 
-    void unregister_stream_stop_promise(std::shared_ptr<std::promise<void>> prom) {
-        for (auto it = _stream_stop_promises.begin(); it != _stream_stop_promises.end(); /* ++it */) {
+    void unregister_stream_stop_promise(std::shared_ptr<std::promise<void>> prom)
+    {
+        for (auto it = _stream_stop_promises.begin(); it != _stream_stop_promises.end();
+             /* ++it */) {
             if (it->lock() == prom) {
                 it = _stream_stop_promises.erase(it);
             } else {
@@ -281,11 +206,10 @@ private:
         }
     }
 
-
     LazyServerPlugin& _lazy_plugin;
 
     std::atomic<bool> _stopped{false};
-    std::vector<std::weak_ptr<std::promise<void>>> _stream_stop_promises {};
+    std::vector<std::weak_ptr<std::promise<void>>> _stream_stop_promises{};
 };
 
 } // namespace mavsdk_server

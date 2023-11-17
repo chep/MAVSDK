@@ -24,17 +24,29 @@ namespace mavsdk {
 namespace rpc {
 namespace lumos_server {
       template <typename>
-PROTOBUF_CONSTEXPR SetDroneStatusResponse::SetDroneStatusResponse(::_pbi::ConstantInitialized) {}
-struct SetDroneStatusResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SetDroneStatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SetDroneStatusResponseDefaultTypeInternal() {}
+PROTOBUF_CONSTEXPR SetDroneInfoResponse::SetDroneInfoResponse(::_pbi::ConstantInitialized) {}
+struct SetDroneInfoResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetDroneInfoResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetDroneInfoResponseDefaultTypeInternal() {}
   union {
-    SetDroneStatusResponse _instance;
+    SetDroneInfoResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetDroneStatusResponseDefaultTypeInternal _SetDroneStatusResponse_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetDroneInfoResponseDefaultTypeInternal _SetDroneInfoResponse_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR SetCompanionStatusResponse::SetCompanionStatusResponse(::_pbi::ConstantInitialized) {}
+struct SetCompanionStatusResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetCompanionStatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetCompanionStatusResponseDefaultTypeInternal() {}
+  union {
+    SetCompanionStatusResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetCompanionStatusResponseDefaultTypeInternal _SetCompanionStatusResponse_default_instance_;
 
 inline constexpr LumosResult::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -58,81 +70,127 @@ struct LumosResultDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LumosResultDefaultTypeInternal _LumosResult_default_instance_;
 
-inline constexpr DroneStatus::Impl_::Impl_(
+inline constexpr DroneInfo::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : uuid_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        battery_status_{0},
-        lat_{0},
-        lon_{0},
-        alt_{0},
-        mag_norm_{0},
-        hdg_{0u},
         fw_major_{0u},
         fw_minor_{0u},
         fw_patch_{0u},
-        dance_status_{0u},
-        rssi_wifi_{0u},
-        rssi_xbee_{0u},
-        satellites_used_{0u},
-        fix_type_{0u},
-        alt_ref_{0u},
         _cached_size_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR DroneStatus::DroneStatus(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR DroneInfo::DroneInfo(::_pbi::ConstantInitialized)
     : _impl_(::_pbi::ConstantInitialized()) {}
-struct DroneStatusDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DroneStatusDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DroneStatusDefaultTypeInternal() {}
+struct DroneInfoDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DroneInfoDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DroneInfoDefaultTypeInternal() {}
   union {
-    DroneStatus _instance;
+    DroneInfo _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DroneStatusDefaultTypeInternal _DroneStatus_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DroneInfoDefaultTypeInternal _DroneInfo_default_instance_;
 
-inline constexpr SetDroneStatusRequest::Impl_::Impl_(
+inline constexpr CompanionStatus::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        drone_status_{nullptr} {}
+      : dance_status_{0u},
+        rssi_wifi_{0u},
+        rssi_xbee_{0u},
+        _cached_size_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR SetDroneStatusRequest::SetDroneStatusRequest(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR CompanionStatus::CompanionStatus(::_pbi::ConstantInitialized)
     : _impl_(::_pbi::ConstantInitialized()) {}
-struct SetDroneStatusRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SetDroneStatusRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SetDroneStatusRequestDefaultTypeInternal() {}
+struct CompanionStatusDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CompanionStatusDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CompanionStatusDefaultTypeInternal() {}
   union {
-    SetDroneStatusRequest _instance;
+    CompanionStatus _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetDroneStatusRequestDefaultTypeInternal _SetDroneStatusRequest_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CompanionStatusDefaultTypeInternal _CompanionStatus_default_instance_;
+
+inline constexpr SetDroneInfoRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        drone_info_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetDroneInfoRequest::SetDroneInfoRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SetDroneInfoRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetDroneInfoRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetDroneInfoRequestDefaultTypeInternal() {}
+  union {
+    SetDroneInfoRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetDroneInfoRequestDefaultTypeInternal _SetDroneInfoRequest_default_instance_;
+
+inline constexpr SetCompanionStatusRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        drone_info_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetCompanionStatusRequest::SetCompanionStatusRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SetCompanionStatusRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetCompanionStatusRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetCompanionStatusRequestDefaultTypeInternal() {}
+  union {
+    SetCompanionStatusRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetCompanionStatusRequestDefaultTypeInternal _SetCompanionStatusRequest_default_instance_;
 }  // namespace lumos_server
 }  // namespace rpc
 }  // namespace mavsdk
-static ::_pb::Metadata file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[4];
+static ::_pb::Metadata file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[7];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_lumos_5fserver_2flumos_5fserver_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_lumos_5fserver_2flumos_5fserver_2eproto = nullptr;
 const ::uint32_t TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     protodesc_cold) = {
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetDroneStatusRequest, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetDroneStatusRequest, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetDroneInfoRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetDroneInfoRequest, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetDroneStatusRequest, _impl_.drone_status_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetDroneInfoRequest, _impl_.drone_info_),
     0,
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetDroneStatusResponse, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetDroneInfoResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, _impl_.drone_info_),
+    0,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SetCompanionStatusResponse, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
@@ -150,66 +208,74 @@ const ::uint32_t TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets[] 
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LumosResult, _impl_.result_),
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LumosResult, _impl_.result_str_),
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneInfo, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.battery_status_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.lat_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.lon_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.alt_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.mag_norm_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.hdg_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.uuid_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.fw_major_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.fw_minor_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.fw_patch_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.dance_status_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.rssi_wifi_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.rssi_xbee_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.satellites_used_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.fix_type_),
-    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneStatus, _impl_.alt_ref_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneInfo, _impl_.uuid_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneInfo, _impl_.fw_major_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneInfo, _impl_.fw_minor_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::DroneInfo, _impl_.fw_patch_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _impl_.dance_status_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _impl_.rssi_wifi_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _impl_.rssi_xbee_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 9, -1, sizeof(::mavsdk::rpc::lumos_server::SetDroneStatusRequest)},
-        {10, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SetDroneStatusResponse)},
-        {18, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LumosResult)},
-        {28, -1, -1, sizeof(::mavsdk::rpc::lumos_server::DroneStatus)},
+        {0, 9, -1, sizeof(::mavsdk::rpc::lumos_server::SetDroneInfoRequest)},
+        {10, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SetDroneInfoResponse)},
+        {18, 27, -1, sizeof(::mavsdk::rpc::lumos_server::SetCompanionStatusRequest)},
+        {28, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SetCompanionStatusResponse)},
+        {36, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LumosResult)},
+        {46, -1, -1, sizeof(::mavsdk::rpc::lumos_server::DroneInfo)},
+        {58, -1, -1, sizeof(::mavsdk::rpc::lumos_server::CompanionStatus)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-    &::mavsdk::rpc::lumos_server::_SetDroneStatusRequest_default_instance_._instance,
-    &::mavsdk::rpc::lumos_server::_SetDroneStatusResponse_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_SetDroneInfoRequest_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_SetDroneInfoResponse_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_SetCompanionStatusRequest_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_SetCompanionStatusResponse_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_LumosResult_default_instance_._instance,
-    &::mavsdk::rpc::lumos_server::_DroneStatus_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_DroneInfo_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_CompanionStatus_default_instance_._instance,
 };
 const char descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\037lumos_server/lumos_server.proto\022\027mavsd"
     "k.rpc.lumos_server\032\024mavsdk_options.proto"
-    "\"S\n\025SetDroneStatusRequest\022:\n\014drone_statu"
-    "s\030\001 \001(\0132$.mavsdk.rpc.lumos_server.DroneS"
-    "tatus\"\030\n\026SetDroneStatusResponse\"\216\001\n\013Lumo"
-    "sResult\022;\n\006result\030\001 \001(\0162+.mavsdk.rpc.lum"
-    "os_server.LumosResult.Result\022\022\n\nresult_s"
-    "tr\030\002 \001(\t\".\n\006Result\022\022\n\016RESULT_SUCCESS\020\000\022\020"
-    "\n\014RESULT_ERROR\020\001\"\247\002\n\013DroneStatus\022\026\n\016batt"
-    "ery_status\030\001 \001(\002\022\013\n\003lat\030\002 \001(\005\022\013\n\003lon\030\003 \001"
-    "(\005\022\013\n\003alt\030\004 \001(\005\022\020\n\010mag_norm\030\005 \001(\002\022\013\n\003hdg"
-    "\030\006 \001(\r\022\014\n\004uuid\030\007 \001(\t\022\020\n\010fw_major\030\010 \001(\r\022\020"
-    "\n\010fw_minor\030\t \001(\r\022\020\n\010fw_patch\030\n \001(\r\022\024\n\014da"
-    "nce_status\030\013 \001(\r\022\021\n\trssi_wifi\030\014 \001(\r\022\021\n\tr"
-    "ssi_xbee\030\r \001(\r\022\027\n\017satellites_used\030\016 \001(\r\022"
-    "\020\n\010fix_type\030\017 \001(\r\022\017\n\007alt_ref\030\020 \001(\r2\215\001\n\022L"
-    "umosServerService\022w\n\016SetDroneStatus\022..ma"
-    "vsdk.rpc.lumos_server.SetDroneStatusRequ"
-    "est\032/.mavsdk.rpc.lumos_server.SetDroneSt"
-    "atusResponse\"\004\200\265\030\001b\006proto3"
+    "\"M\n\023SetDroneInfoRequest\0226\n\ndrone_info\030\001 "
+    "\001(\0132\".mavsdk.rpc.lumos_server.DroneInfo\""
+    "\026\n\024SetDroneInfoResponse\"Y\n\031SetCompanionS"
+    "tatusRequest\022<\n\ndrone_info\030\001 \001(\0132(.mavsd"
+    "k.rpc.lumos_server.CompanionStatus\"\034\n\032Se"
+    "tCompanionStatusResponse\"\216\001\n\013LumosResult"
+    "\022;\n\006result\030\001 \001(\0162+.mavsdk.rpc.lumos_serv"
+    "er.LumosResult.Result\022\022\n\nresult_str\030\002 \001("
+    "\t\".\n\006Result\022\022\n\016RESULT_SUCCESS\020\000\022\020\n\014RESUL"
+    "T_ERROR\020\001\"O\n\tDroneInfo\022\014\n\004uuid\030\007 \001(\t\022\020\n\010"
+    "fw_major\030\010 \001(\r\022\020\n\010fw_minor\030\t \001(\r\022\020\n\010fw_p"
+    "atch\030\n \001(\r\"M\n\017CompanionStatus\022\024\n\014dance_s"
+    "tatus\030\001 \001(\r\022\021\n\trssi_wifi\030\002 \001(\r\022\021\n\trssi_x"
+    "bee\030\003 \001(\r2\215\002\n\022LumosServerService\022q\n\014SetD"
+    "roneInfo\022,.mavsdk.rpc.lumos_server.SetDr"
+    "oneInfoRequest\032-.mavsdk.rpc.lumos_server"
+    ".SetDroneInfoResponse\"\004\200\265\030\001\022\203\001\n\022SetCompa"
+    "nionStatus\0222.mavsdk.rpc.lumos_server.Set"
+    "CompanionStatusRequest\0323.mavsdk.rpc.lumo"
+    "s_server.SetCompanionStatusResponse\"\004\200\265\030"
+    "\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps[1] =
     {
@@ -219,13 +285,13 @@ static ::absl::once_flag descriptor_table_lumos_5fserver_2flumos_5fserver_2eprot
 const ::_pbi::DescriptorTable descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto = {
     false,
     false,
-    786,
+    889,
     descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto,
     "lumos_server/lumos_server.proto",
     &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
     descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps,
     1,
-    4,
+    7,
     schemas,
     file_default_instances,
     TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets,
@@ -276,69 +342,69 @@ constexpr int LumosResult::Result_ARRAYSIZE;
         // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 // ===================================================================
 
-class SetDroneStatusRequest::_Internal {
+class SetDroneInfoRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<SetDroneStatusRequest>()._impl_._has_bits_);
+  using HasBits = decltype(std::declval<SetDroneInfoRequest>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(SetDroneStatusRequest, _impl_._has_bits_);
-  static const ::mavsdk::rpc::lumos_server::DroneStatus& drone_status(const SetDroneStatusRequest* msg);
-  static void set_has_drone_status(HasBits* has_bits) {
+    8 * PROTOBUF_FIELD_OFFSET(SetDroneInfoRequest, _impl_._has_bits_);
+  static const ::mavsdk::rpc::lumos_server::DroneInfo& drone_info(const SetDroneInfoRequest* msg);
+  static void set_has_drone_info(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
 
-const ::mavsdk::rpc::lumos_server::DroneStatus& SetDroneStatusRequest::_Internal::drone_status(const SetDroneStatusRequest* msg) {
-  return *msg->_impl_.drone_status_;
+const ::mavsdk::rpc::lumos_server::DroneInfo& SetDroneInfoRequest::_Internal::drone_info(const SetDroneInfoRequest* msg) {
+  return *msg->_impl_.drone_info_;
 }
-SetDroneStatusRequest::SetDroneStatusRequest(::google::protobuf::Arena* arena)
+SetDroneInfoRequest::SetDroneInfoRequest(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SetDroneStatusRequest)
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SetDroneInfoRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE SetDroneStatusRequest::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE SetDroneInfoRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
       : _has_bits_{from._has_bits_},
         _cached_size_{0} {}
 
-SetDroneStatusRequest::SetDroneStatusRequest(
+SetDroneInfoRequest::SetDroneInfoRequest(
     ::google::protobuf::Arena* arena,
-    const SetDroneStatusRequest& from)
+    const SetDroneInfoRequest& from)
     : ::google::protobuf::Message(arena) {
-  SetDroneStatusRequest* const _this = this;
+  SetDroneInfoRequest* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
   ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.drone_status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::mavsdk::rpc::lumos_server::DroneStatus>(arena, *from._impl_.drone_status_)
+  _impl_.drone_info_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::mavsdk::rpc::lumos_server::DroneInfo>(arena, *from._impl_.drone_info_)
                 : nullptr;
 
-  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SetDroneStatusRequest)
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SetDroneInfoRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE SetDroneStatusRequest::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE SetDroneInfoRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0} {}
 
-inline void SetDroneStatusRequest::SharedCtor(::_pb::Arena* arena) {
+inline void SetDroneInfoRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.drone_status_ = {};
+  _impl_.drone_info_ = {};
 }
-SetDroneStatusRequest::~SetDroneStatusRequest() {
-  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.SetDroneStatusRequest)
+SetDroneInfoRequest::~SetDroneInfoRequest() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.SetDroneInfoRequest)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void SetDroneStatusRequest::SharedDtor() {
+inline void SetDroneInfoRequest::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.drone_status_;
+  delete _impl_.drone_info_;
   _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void SetDroneStatusRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.SetDroneStatusRequest)
+PROTOBUF_NOINLINE void SetDroneInfoRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.SetDroneInfoRequest)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -346,14 +412,14 @@ PROTOBUF_NOINLINE void SetDroneStatusRequest::Clear() {
 
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.drone_status_ != nullptr);
-    _impl_.drone_status_->Clear();
+    ABSL_DCHECK(_impl_.drone_info_ != nullptr);
+    _impl_.drone_info_->Clear();
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* SetDroneStatusRequest::_InternalParse(
+const char* SetDroneInfoRequest::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -361,9 +427,9 @@ const char* SetDroneStatusRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SetDroneStatusRequest::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SetDroneInfoRequest::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(SetDroneStatusRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(SetDroneInfoRequest, _impl_._has_bits_),
     0, // no _extensions_
     1, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -372,37 +438,37 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SetDroneStatusRequest::_table_ = {
     1,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
-    &_SetDroneStatusRequest_default_instance_._instance,
+    &_SetDroneInfoRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // .mavsdk.rpc.lumos_server.DroneStatus drone_status = 1;
+    // .mavsdk.rpc.lumos_server.DroneInfo drone_info = 1;
     {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SetDroneStatusRequest, _impl_.drone_status_)}},
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SetDroneInfoRequest, _impl_.drone_info_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // .mavsdk.rpc.lumos_server.DroneStatus drone_status = 1;
-    {PROTOBUF_FIELD_OFFSET(SetDroneStatusRequest, _impl_.drone_status_), _Internal::kHasBitsOffset + 0, 0,
+    // .mavsdk.rpc.lumos_server.DroneInfo drone_info = 1;
+    {PROTOBUF_FIELD_OFFSET(SetDroneInfoRequest, _impl_.drone_info_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
-    {::_pbi::TcParser::GetTable<::mavsdk::rpc::lumos_server::DroneStatus>()},
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::lumos_server::DroneInfo>()},
   }}, {{
   }},
 };
 
-::uint8_t* SetDroneStatusRequest::_InternalSerialize(
+::uint8_t* SetDroneInfoRequest::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.SetDroneStatusRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.SetDroneInfoRequest)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  // .mavsdk.rpc.lumos_server.DroneStatus drone_status = 1;
+  // .mavsdk.rpc.lumos_server.DroneInfo drone_info = 1;
   if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::drone_status(this),
-        _Internal::drone_status(this).GetCachedSize(), target, stream);
+        1, _Internal::drone_info(this),
+        _Internal::drone_info(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -410,97 +476,97 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SetDroneStatusRequest::_table_ = {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.SetDroneStatusRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.SetDroneInfoRequest)
   return target;
 }
 
-::size_t SetDroneStatusRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.SetDroneStatusRequest)
+::size_t SetDroneInfoRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.SetDroneInfoRequest)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .mavsdk.rpc.lumos_server.DroneStatus drone_status = 1;
+  // .mavsdk.rpc.lumos_server.DroneInfo drone_info = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.drone_status_);
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.drone_info_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData SetDroneStatusRequest::_class_data_ = {
-    SetDroneStatusRequest::MergeImpl,
+const ::google::protobuf::Message::ClassData SetDroneInfoRequest::_class_data_ = {
+    SetDroneInfoRequest::MergeImpl,
     nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData* SetDroneStatusRequest::GetClassData() const {
+const ::google::protobuf::Message::ClassData* SetDroneInfoRequest::GetClassData() const {
   return &_class_data_;
 }
 
-void SetDroneStatusRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<SetDroneStatusRequest*>(&to_msg);
-  auto& from = static_cast<const SetDroneStatusRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.SetDroneStatusRequest)
+void SetDroneInfoRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<SetDroneInfoRequest*>(&to_msg);
+  auto& from = static_cast<const SetDroneInfoRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.SetDroneInfoRequest)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_internal_mutable_drone_status()->::mavsdk::rpc::lumos_server::DroneStatus::MergeFrom(
-        from._internal_drone_status());
+    _this->_internal_mutable_drone_info()->::mavsdk::rpc::lumos_server::DroneInfo::MergeFrom(
+        from._internal_drone_info());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void SetDroneStatusRequest::CopyFrom(const SetDroneStatusRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.SetDroneStatusRequest)
+void SetDroneInfoRequest::CopyFrom(const SetDroneInfoRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.SetDroneInfoRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool SetDroneStatusRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool SetDroneInfoRequest::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* SetDroneStatusRequest::AccessCachedSize() const {
+::_pbi::CachedSize* SetDroneInfoRequest::AccessCachedSize() const {
   return &_impl_._cached_size_;
 }
-void SetDroneStatusRequest::InternalSwap(SetDroneStatusRequest* PROTOBUF_RESTRICT other) {
+void SetDroneInfoRequest::InternalSwap(SetDroneInfoRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  swap(_impl_.drone_status_, other->_impl_.drone_status_);
+  swap(_impl_.drone_info_, other->_impl_.drone_info_);
 }
 
-::google::protobuf::Metadata SetDroneStatusRequest::GetMetadata() const {
+::google::protobuf::Metadata SetDroneInfoRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
       file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[0]);
 }
 // ===================================================================
 
-class SetDroneStatusResponse::_Internal {
+class SetDroneInfoResponse::_Internal {
  public:
 };
 
-SetDroneStatusResponse::SetDroneStatusResponse(::google::protobuf::Arena* arena)
+SetDroneInfoResponse::SetDroneInfoResponse(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
-  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SetDroneStatusResponse)
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SetDroneInfoResponse)
 }
-SetDroneStatusResponse::SetDroneStatusResponse(
+SetDroneInfoResponse::SetDroneInfoResponse(
     ::google::protobuf::Arena* arena,
-    const SetDroneStatusResponse& from)
+    const SetDroneInfoResponse& from)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
-  SetDroneStatusResponse* const _this = this;
+  SetDroneInfoResponse* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
 
-  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SetDroneStatusResponse)
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SetDroneInfoResponse)
 }
 
 
@@ -511,10 +577,252 @@ SetDroneStatusResponse::SetDroneStatusResponse(
 
 
 
-::google::protobuf::Metadata SetDroneStatusResponse::GetMetadata() const {
+::google::protobuf::Metadata SetDroneInfoResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
       file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[1]);
+}
+// ===================================================================
+
+class SetCompanionStatusRequest::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SetCompanionStatusRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(SetCompanionStatusRequest, _impl_._has_bits_);
+  static const ::mavsdk::rpc::lumos_server::CompanionStatus& drone_info(const SetCompanionStatusRequest* msg);
+  static void set_has_drone_info(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::mavsdk::rpc::lumos_server::CompanionStatus& SetCompanionStatusRequest::_Internal::drone_info(const SetCompanionStatusRequest* msg) {
+  return *msg->_impl_.drone_info_;
+}
+SetCompanionStatusRequest::SetCompanionStatusRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SetCompanionStatusRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE SetCompanionStatusRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+SetCompanionStatusRequest::SetCompanionStatusRequest(
+    ::google::protobuf::Arena* arena,
+    const SetCompanionStatusRequest& from)
+    : ::google::protobuf::Message(arena) {
+  SetCompanionStatusRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.drone_info_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::mavsdk::rpc::lumos_server::CompanionStatus>(arena, *from._impl_.drone_info_)
+                : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SetCompanionStatusRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE SetCompanionStatusRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SetCompanionStatusRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.drone_info_ = {};
+}
+SetCompanionStatusRequest::~SetCompanionStatusRequest() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.SetCompanionStatusRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void SetCompanionStatusRequest::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.drone_info_;
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void SetCompanionStatusRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.SetCompanionStatusRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.drone_info_ != nullptr);
+    _impl_.drone_info_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* SetCompanionStatusRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SetCompanionStatusRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(SetCompanionStatusRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_SetCompanionStatusRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .mavsdk.rpc.lumos_server.CompanionStatus drone_info = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SetCompanionStatusRequest, _impl_.drone_info_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.lumos_server.CompanionStatus drone_info = 1;
+    {PROTOBUF_FIELD_OFFSET(SetCompanionStatusRequest, _impl_.drone_info_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::lumos_server::CompanionStatus>()},
+  }}, {{
+  }},
+};
+
+::uint8_t* SetCompanionStatusRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.SetCompanionStatusRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .mavsdk.rpc.lumos_server.CompanionStatus drone_info = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::drone_info(this),
+        _Internal::drone_info(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.SetCompanionStatusRequest)
+  return target;
+}
+
+::size_t SetCompanionStatusRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.SetCompanionStatusRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .mavsdk.rpc.lumos_server.CompanionStatus drone_info = 1;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.drone_info_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData SetCompanionStatusRequest::_class_data_ = {
+    SetCompanionStatusRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* SetCompanionStatusRequest::GetClassData() const {
+  return &_class_data_;
+}
+
+void SetCompanionStatusRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<SetCompanionStatusRequest*>(&to_msg);
+  auto& from = static_cast<const SetCompanionStatusRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.SetCompanionStatusRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_drone_info()->::mavsdk::rpc::lumos_server::CompanionStatus::MergeFrom(
+        from._internal_drone_info());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetCompanionStatusRequest::CopyFrom(const SetCompanionStatusRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.SetCompanionStatusRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool SetCompanionStatusRequest::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* SetCompanionStatusRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SetCompanionStatusRequest::InternalSwap(SetCompanionStatusRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.drone_info_, other->_impl_.drone_info_);
+}
+
+::google::protobuf::Metadata SetCompanionStatusRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[2]);
+}
+// ===================================================================
+
+class SetCompanionStatusResponse::_Internal {
+ public:
+};
+
+SetCompanionStatusResponse::SetCompanionStatusResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SetCompanionStatusResponse)
+}
+SetCompanionStatusResponse::SetCompanionStatusResponse(
+    ::google::protobuf::Arena* arena,
+    const SetCompanionStatusResponse& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  SetCompanionStatusResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SetCompanionStatusResponse)
+}
+
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SetCompanionStatusResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[3]);
 }
 // ===================================================================
 
@@ -730,85 +1038,85 @@ void LumosResult::InternalSwap(LumosResult* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata LumosResult::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
-      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[2]);
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[4]);
 }
 // ===================================================================
 
-class DroneStatus::_Internal {
+class DroneInfo::_Internal {
  public:
 };
 
-DroneStatus::DroneStatus(::google::protobuf::Arena* arena)
+DroneInfo::DroneInfo(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.DroneStatus)
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.DroneInfo)
 }
-inline PROTOBUF_NDEBUG_INLINE DroneStatus::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE DroneInfo::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
       : uuid_(arena, from.uuid_),
         _cached_size_{0} {}
 
-DroneStatus::DroneStatus(
+DroneInfo::DroneInfo(
     ::google::protobuf::Arena* arena,
-    const DroneStatus& from)
+    const DroneInfo& from)
     : ::google::protobuf::Message(arena) {
-  DroneStatus* const _this = this;
+  DroneInfo* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
   ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, battery_status_),
+               offsetof(Impl_, fw_major_),
            reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, battery_status_),
-           offsetof(Impl_, alt_ref_) -
-               offsetof(Impl_, battery_status_) +
-               sizeof(Impl_::alt_ref_));
+               offsetof(Impl_, fw_major_),
+           offsetof(Impl_, fw_patch_) -
+               offsetof(Impl_, fw_major_) +
+               sizeof(Impl_::fw_patch_));
 
-  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.DroneStatus)
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.DroneInfo)
 }
-inline PROTOBUF_NDEBUG_INLINE DroneStatus::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE DroneInfo::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : uuid_(arena),
         _cached_size_{0} {}
 
-inline void DroneStatus::SharedCtor(::_pb::Arena* arena) {
+inline void DroneInfo::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, battery_status_),
+               offsetof(Impl_, fw_major_),
            0,
-           offsetof(Impl_, alt_ref_) -
-               offsetof(Impl_, battery_status_) +
-               sizeof(Impl_::alt_ref_));
+           offsetof(Impl_, fw_patch_) -
+               offsetof(Impl_, fw_major_) +
+               sizeof(Impl_::fw_patch_));
 }
-DroneStatus::~DroneStatus() {
-  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.DroneStatus)
+DroneInfo::~DroneInfo() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.DroneInfo)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void DroneStatus::SharedDtor() {
+inline void DroneInfo::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
   _impl_.uuid_.Destroy();
   _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void DroneStatus::Clear() {
-// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.DroneStatus)
+PROTOBUF_NOINLINE void DroneInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.DroneInfo)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.uuid_.ClearToEmpty();
-  ::memset(&_impl_.battery_status_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.alt_ref_) -
-      reinterpret_cast<char*>(&_impl_.battery_status_)) + sizeof(_impl_.alt_ref_));
+  ::memset(&_impl_.fw_major_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.fw_patch_) -
+      reinterpret_cast<char*>(&_impl_.fw_major_)) + sizeof(_impl_.fw_patch_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* DroneStatus::_InternalParse(
+const char* DroneInfo::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -816,192 +1124,68 @@ const char* DroneStatus::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 16, 0, 64, 2> DroneStatus::_table_ = {
+const ::_pbi::TcParseTable<2, 4, 0, 46, 2> DroneInfo::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    16, 120,  // max_field_number, fast_idx_mask
+    10, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294901760,  // skipmap
+    4294966335,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    16,  // num_field_entries
+    4,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_DroneStatus_default_instance_._instance,
+    &_DroneInfo_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // uint32 alt_ref = 16;
-    {::_pbi::TcParser::FastV32S2,
-     {384, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.alt_ref_)}},
-    // float battery_status = 1;
-    {::_pbi::TcParser::FastF32S1,
-     {13, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.battery_status_)}},
-    // int32 lat = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.lat_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.lat_)}},
-    // int32 lon = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.lon_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.lon_)}},
-    // int32 alt = 4;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.alt_), 63>(),
-     {32, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.alt_)}},
-    // float mag_norm = 5;
-    {::_pbi::TcParser::FastF32S1,
-     {45, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.mag_norm_)}},
-    // uint32 hdg = 6;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.hdg_), 63>(),
-     {48, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.hdg_)}},
+    // uint32 fw_major = 8;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneInfo, _impl_.fw_major_), 63>(),
+     {64, 63, 0, PROTOBUF_FIELD_OFFSET(DroneInfo, _impl_.fw_major_)}},
+    // uint32 fw_minor = 9;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneInfo, _impl_.fw_minor_), 63>(),
+     {72, 63, 0, PROTOBUF_FIELD_OFFSET(DroneInfo, _impl_.fw_minor_)}},
+    // uint32 fw_patch = 10;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneInfo, _impl_.fw_patch_), 63>(),
+     {80, 63, 0, PROTOBUF_FIELD_OFFSET(DroneInfo, _impl_.fw_patch_)}},
     // string uuid = 7;
     {::_pbi::TcParser::FastUS1,
-     {58, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.uuid_)}},
-    // uint32 fw_major = 8;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.fw_major_), 63>(),
-     {64, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.fw_major_)}},
-    // uint32 fw_minor = 9;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.fw_minor_), 63>(),
-     {72, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.fw_minor_)}},
-    // uint32 fw_patch = 10;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.fw_patch_), 63>(),
-     {80, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.fw_patch_)}},
-    // uint32 dance_status = 11;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.dance_status_), 63>(),
-     {88, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.dance_status_)}},
-    // uint32 rssi_wifi = 12;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.rssi_wifi_), 63>(),
-     {96, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.rssi_wifi_)}},
-    // uint32 rssi_xbee = 13;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.rssi_xbee_), 63>(),
-     {104, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.rssi_xbee_)}},
-    // uint32 satellites_used = 14;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.satellites_used_), 63>(),
-     {112, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.satellites_used_)}},
-    // uint32 fix_type = 15;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DroneStatus, _impl_.fix_type_), 63>(),
-     {120, 63, 0, PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.fix_type_)}},
+     {58, 63, 0, PROTOBUF_FIELD_OFFSET(DroneInfo, _impl_.uuid_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // float battery_status = 1;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.battery_status_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // int32 lat = 2;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.lat_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 lon = 3;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.lon_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 alt = 4;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.alt_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // float mag_norm = 5;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.mag_norm_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // uint32 hdg = 6;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.hdg_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
     // string uuid = 7;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.uuid_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(DroneInfo, _impl_.uuid_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // uint32 fw_major = 8;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.fw_major_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(DroneInfo, _impl_.fw_major_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
     // uint32 fw_minor = 9;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.fw_minor_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(DroneInfo, _impl_.fw_minor_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
     // uint32 fw_patch = 10;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.fw_patch_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-    // uint32 dance_status = 11;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.dance_status_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-    // uint32 rssi_wifi = 12;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.rssi_wifi_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-    // uint32 rssi_xbee = 13;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.rssi_xbee_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-    // uint32 satellites_used = 14;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.satellites_used_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-    // uint32 fix_type = 15;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.fix_type_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-    // uint32 alt_ref = 16;
-    {PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.alt_ref_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(DroneInfo, _impl_.fw_patch_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
   }},
   // no aux_entries
   {{
-    "\43\0\0\0\0\0\0\4\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
-    "mavsdk.rpc.lumos_server.DroneStatus"
+    "\41\4\0\0\0\0\0\0"
+    "mavsdk.rpc.lumos_server.DroneInfo"
     "uuid"
   }},
 };
 
-::uint8_t* DroneStatus::_InternalSerialize(
+::uint8_t* DroneInfo::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.DroneStatus)
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.DroneInfo)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
-
-  // float battery_status = 1;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
-  float tmp_battery_status = this->_internal_battery_status();
-  ::uint32_t raw_battery_status;
-  memcpy(&raw_battery_status, &tmp_battery_status, sizeof(tmp_battery_status));
-  if (raw_battery_status != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(
-        1, this->_internal_battery_status(), target);
-  }
-
-  // int32 lat = 2;
-  if (this->_internal_lat() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_lat(), target);
-  }
-
-  // int32 lon = 3;
-  if (this->_internal_lon() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<3>(
-            stream, this->_internal_lon(), target);
-  }
-
-  // int32 alt = 4;
-  if (this->_internal_alt() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<4>(
-            stream, this->_internal_alt(), target);
-  }
-
-  // float mag_norm = 5;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
-  float tmp_mag_norm = this->_internal_mag_norm();
-  ::uint32_t raw_mag_norm;
-  memcpy(&raw_mag_norm, &tmp_mag_norm, sizeof(tmp_mag_norm));
-  if (raw_mag_norm != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(
-        5, this->_internal_mag_norm(), target);
-  }
-
-  // uint32 hdg = 6;
-  if (this->_internal_hdg() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        6, this->_internal_hdg(), target);
-  }
 
   // string uuid = 7;
   if (!this->_internal_uuid().empty()) {
     const std::string& _s = this->_internal_uuid();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "mavsdk.rpc.lumos_server.DroneStatus.uuid");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "mavsdk.rpc.lumos_server.DroneInfo.uuid");
     target = stream->WriteStringMaybeAliased(7, _s, target);
   }
 
@@ -1026,59 +1210,17 @@ const ::_pbi::TcParseTable<4, 16, 0, 64, 2> DroneStatus::_table_ = {
         10, this->_internal_fw_patch(), target);
   }
 
-  // uint32 dance_status = 11;
-  if (this->_internal_dance_status() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        11, this->_internal_dance_status(), target);
-  }
-
-  // uint32 rssi_wifi = 12;
-  if (this->_internal_rssi_wifi() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        12, this->_internal_rssi_wifi(), target);
-  }
-
-  // uint32 rssi_xbee = 13;
-  if (this->_internal_rssi_xbee() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        13, this->_internal_rssi_xbee(), target);
-  }
-
-  // uint32 satellites_used = 14;
-  if (this->_internal_satellites_used() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        14, this->_internal_satellites_used(), target);
-  }
-
-  // uint32 fix_type = 15;
-  if (this->_internal_fix_type() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        15, this->_internal_fix_type(), target);
-  }
-
-  // uint32 alt_ref = 16;
-  if (this->_internal_alt_ref() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        16, this->_internal_alt_ref(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.DroneStatus)
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.DroneInfo)
   return target;
 }
 
-::size_t DroneStatus::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.DroneStatus)
+::size_t DroneInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.DroneInfo)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -1089,50 +1231,6 @@ const ::_pbi::TcParseTable<4, 16, 0, 64, 2> DroneStatus::_table_ = {
   if (!this->_internal_uuid().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_uuid());
-  }
-
-  // float battery_status = 1;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
-  float tmp_battery_status = this->_internal_battery_status();
-  ::uint32_t raw_battery_status;
-  memcpy(&raw_battery_status, &tmp_battery_status, sizeof(tmp_battery_status));
-  if (raw_battery_status != 0) {
-    total_size += 5;
-  }
-
-  // int32 lat = 2;
-  if (this->_internal_lat() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_lat());
-  }
-
-  // int32 lon = 3;
-  if (this->_internal_lon() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_lon());
-  }
-
-  // int32 alt = 4;
-  if (this->_internal_alt() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_alt());
-  }
-
-  // float mag_norm = 5;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
-  float tmp_mag_norm = this->_internal_mag_norm();
-  ::uint32_t raw_mag_norm;
-  memcpy(&raw_mag_norm, &tmp_mag_norm, sizeof(tmp_mag_norm));
-  if (raw_mag_norm != 0) {
-    total_size += 5;
-  }
-
-  // uint32 hdg = 6;
-  if (this->_internal_hdg() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_hdg());
   }
 
   // uint32 fw_major = 8;
@@ -1153,91 +1251,27 @@ const ::_pbi::TcParseTable<4, 16, 0, 64, 2> DroneStatus::_table_ = {
         this->_internal_fw_patch());
   }
 
-  // uint32 dance_status = 11;
-  if (this->_internal_dance_status() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_dance_status());
-  }
-
-  // uint32 rssi_wifi = 12;
-  if (this->_internal_rssi_wifi() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_rssi_wifi());
-  }
-
-  // uint32 rssi_xbee = 13;
-  if (this->_internal_rssi_xbee() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_rssi_xbee());
-  }
-
-  // uint32 satellites_used = 14;
-  if (this->_internal_satellites_used() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_satellites_used());
-  }
-
-  // uint32 fix_type = 15;
-  if (this->_internal_fix_type() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_fix_type());
-  }
-
-  // uint32 alt_ref = 16;
-  if (this->_internal_alt_ref() != 0) {
-    total_size += 2 + ::_pbi::WireFormatLite::UInt32Size(
-                                    this->_internal_alt_ref());
-  }
-
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DroneStatus::_class_data_ = {
-    DroneStatus::MergeImpl,
+const ::google::protobuf::Message::ClassData DroneInfo::_class_data_ = {
+    DroneInfo::MergeImpl,
     nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData* DroneStatus::GetClassData() const {
+const ::google::protobuf::Message::ClassData* DroneInfo::GetClassData() const {
   return &_class_data_;
 }
 
-void DroneStatus::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<DroneStatus*>(&to_msg);
-  auto& from = static_cast<const DroneStatus&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.DroneStatus)
+void DroneInfo::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<DroneInfo*>(&to_msg);
+  auto& from = static_cast<const DroneInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.DroneInfo)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_uuid().empty()) {
     _this->_internal_set_uuid(from._internal_uuid());
-  }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
-  float tmp_battery_status = from._internal_battery_status();
-  ::uint32_t raw_battery_status;
-  memcpy(&raw_battery_status, &tmp_battery_status, sizeof(tmp_battery_status));
-  if (raw_battery_status != 0) {
-    _this->_internal_set_battery_status(from._internal_battery_status());
-  }
-  if (from._internal_lat() != 0) {
-    _this->_internal_set_lat(from._internal_lat());
-  }
-  if (from._internal_lon() != 0) {
-    _this->_internal_set_lon(from._internal_lon());
-  }
-  if (from._internal_alt() != 0) {
-    _this->_internal_set_alt(from._internal_alt());
-  }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
-  float tmp_mag_norm = from._internal_mag_norm();
-  ::uint32_t raw_mag_norm;
-  memcpy(&raw_mag_norm, &tmp_mag_norm, sizeof(tmp_mag_norm));
-  if (raw_mag_norm != 0) {
-    _this->_internal_set_mag_norm(from._internal_mag_norm());
-  }
-  if (from._internal_hdg() != 0) {
-    _this->_internal_set_hdg(from._internal_hdg());
   }
   if (from._internal_fw_major() != 0) {
     _this->_internal_set_fw_major(from._internal_fw_major());
@@ -1248,6 +1282,227 @@ void DroneStatus::MergeImpl(::google::protobuf::Message& to_msg, const ::google:
   if (from._internal_fw_patch() != 0) {
     _this->_internal_set_fw_patch(from._internal_fw_patch());
   }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DroneInfo::CopyFrom(const DroneInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.DroneInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool DroneInfo::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* DroneInfo::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void DroneInfo::InternalSwap(DroneInfo* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.uuid_, &other->_impl_.uuid_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(DroneInfo, _impl_.fw_patch_)
+      + sizeof(DroneInfo::_impl_.fw_patch_)
+      - PROTOBUF_FIELD_OFFSET(DroneInfo, _impl_.fw_major_)>(
+          reinterpret_cast<char*>(&_impl_.fw_major_),
+          reinterpret_cast<char*>(&other->_impl_.fw_major_));
+}
+
+::google::protobuf::Metadata DroneInfo::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[5]);
+}
+// ===================================================================
+
+class CompanionStatus::_Internal {
+ public:
+};
+
+CompanionStatus::CompanionStatus(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.CompanionStatus)
+}
+CompanionStatus::CompanionStatus(
+    ::google::protobuf::Arena* arena, const CompanionStatus& from)
+    : CompanionStatus(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE CompanionStatus::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void CompanionStatus::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, dance_status_),
+           0,
+           offsetof(Impl_, rssi_xbee_) -
+               offsetof(Impl_, dance_status_) +
+               sizeof(Impl_::rssi_xbee_));
+}
+CompanionStatus::~CompanionStatus() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.CompanionStatus)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void CompanionStatus::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void CompanionStatus::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.CompanionStatus)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.dance_status_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.rssi_xbee_) -
+      reinterpret_cast<char*>(&_impl_.dance_status_)) + sizeof(_impl_.rssi_xbee_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* CompanionStatus::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 0, 2> CompanionStatus::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_CompanionStatus_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint32 dance_status = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(CompanionStatus, _impl_.dance_status_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.dance_status_)}},
+    // uint32 rssi_wifi = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(CompanionStatus, _impl_.rssi_wifi_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.rssi_wifi_)}},
+    // uint32 rssi_xbee = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(CompanionStatus, _impl_.rssi_xbee_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.rssi_xbee_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 dance_status = 1;
+    {PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.dance_status_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 rssi_wifi = 2;
+    {PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.rssi_wifi_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 rssi_xbee = 3;
+    {PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.rssi_xbee_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* CompanionStatus::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.CompanionStatus)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // uint32 dance_status = 1;
+  if (this->_internal_dance_status() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+        1, this->_internal_dance_status(), target);
+  }
+
+  // uint32 rssi_wifi = 2;
+  if (this->_internal_rssi_wifi() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+        2, this->_internal_rssi_wifi(), target);
+  }
+
+  // uint32 rssi_xbee = 3;
+  if (this->_internal_rssi_xbee() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+        3, this->_internal_rssi_xbee(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.CompanionStatus)
+  return target;
+}
+
+::size_t CompanionStatus::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.CompanionStatus)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint32 dance_status = 1;
+  if (this->_internal_dance_status() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+        this->_internal_dance_status());
+  }
+
+  // uint32 rssi_wifi = 2;
+  if (this->_internal_rssi_wifi() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+        this->_internal_rssi_wifi());
+  }
+
+  // uint32 rssi_xbee = 3;
+  if (this->_internal_rssi_xbee() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+        this->_internal_rssi_xbee());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData CompanionStatus::_class_data_ = {
+    CompanionStatus::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* CompanionStatus::GetClassData() const {
+  return &_class_data_;
+}
+
+void CompanionStatus::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<CompanionStatus*>(&to_msg);
+  auto& from = static_cast<const CompanionStatus&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.CompanionStatus)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
   if (from._internal_dance_status() != 0) {
     _this->_internal_set_dance_status(from._internal_dance_status());
   }
@@ -1257,50 +1512,38 @@ void DroneStatus::MergeImpl(::google::protobuf::Message& to_msg, const ::google:
   if (from._internal_rssi_xbee() != 0) {
     _this->_internal_set_rssi_xbee(from._internal_rssi_xbee());
   }
-  if (from._internal_satellites_used() != 0) {
-    _this->_internal_set_satellites_used(from._internal_satellites_used());
-  }
-  if (from._internal_fix_type() != 0) {
-    _this->_internal_set_fix_type(from._internal_fix_type());
-  }
-  if (from._internal_alt_ref() != 0) {
-    _this->_internal_set_alt_ref(from._internal_alt_ref());
-  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void DroneStatus::CopyFrom(const DroneStatus& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.DroneStatus)
+void CompanionStatus::CopyFrom(const CompanionStatus& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.CompanionStatus)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DroneStatus::IsInitialized() const {
+PROTOBUF_NOINLINE bool CompanionStatus::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DroneStatus::AccessCachedSize() const {
+::_pbi::CachedSize* CompanionStatus::AccessCachedSize() const {
   return &_impl_._cached_size_;
 }
-void DroneStatus::InternalSwap(DroneStatus* PROTOBUF_RESTRICT other) {
+void CompanionStatus::InternalSwap(CompanionStatus* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.uuid_, &other->_impl_.uuid_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.alt_ref_)
-      + sizeof(DroneStatus::_impl_.alt_ref_)
-      - PROTOBUF_FIELD_OFFSET(DroneStatus, _impl_.battery_status_)>(
-          reinterpret_cast<char*>(&_impl_.battery_status_),
-          reinterpret_cast<char*>(&other->_impl_.battery_status_));
+      PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.rssi_xbee_)
+      + sizeof(CompanionStatus::_impl_.rssi_xbee_)
+      - PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.dance_status_)>(
+          reinterpret_cast<char*>(&_impl_.dance_status_),
+          reinterpret_cast<char*>(&other->_impl_.dance_status_));
 }
 
-::google::protobuf::Metadata DroneStatus::GetMetadata() const {
+::google::protobuf::Metadata CompanionStatus::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
-      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[3]);
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[6]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace lumos_server

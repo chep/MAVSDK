@@ -9,7 +9,8 @@
 
 namespace mavsdk {
 
-using DroneStatus = LumosServer::DroneStatus;
+using DroneInfo = LumosServer::DroneInfo;
+using CompanionStatus = LumosServer::CompanionStatus;
 
 LumosServer::LumosServer(std::shared_ptr<ServerComponent> server_component) :
     ServerPluginBase(),
@@ -18,9 +19,14 @@ LumosServer::LumosServer(std::shared_ptr<ServerComponent> server_component) :
 
 LumosServer::~LumosServer() {}
 
-void LumosServer::set_drone_status(DroneStatus drone_status) const
+void LumosServer::set_drone_info(DroneInfo drone_info) const
 {
-    _impl->set_drone_status(drone_status);
+    _impl->set_drone_info(drone_info);
+}
+
+void LumosServer::set_companion_status(CompanionStatus drone_info) const
+{
+    _impl->set_companion_status(drone_info);
 }
 
 std::ostream& operator<<(std::ostream& str, LumosServer::Result const& result)
@@ -35,40 +41,37 @@ std::ostream& operator<<(std::ostream& str, LumosServer::Result const& result)
     }
 }
 
-bool operator==(const LumosServer::DroneStatus& lhs, const LumosServer::DroneStatus& rhs)
+bool operator==(const LumosServer::DroneInfo& lhs, const LumosServer::DroneInfo& rhs)
 {
-    return ((std::isnan(rhs.battery_status) && std::isnan(lhs.battery_status)) ||
-            rhs.battery_status == lhs.battery_status) &&
-           (rhs.lat == lhs.lat) && (rhs.lon == lhs.lon) && (rhs.alt == lhs.alt) &&
-           ((std::isnan(rhs.mag_norm) && std::isnan(lhs.mag_norm)) ||
-            rhs.mag_norm == lhs.mag_norm) &&
-           (rhs.hdg == lhs.hdg) && (rhs.uuid == lhs.uuid) && (rhs.fw_major == lhs.fw_major) &&
-           (rhs.fw_minor == lhs.fw_minor) && (rhs.fw_patch == lhs.fw_patch) &&
-           (rhs.dance_status == lhs.dance_status) && (rhs.rssi_wifi == lhs.rssi_wifi) &&
-           (rhs.rssi_xbee == lhs.rssi_xbee) && (rhs.satellites_used == lhs.satellites_used) &&
-           (rhs.fix_type == lhs.fix_type) && (rhs.alt_ref == lhs.alt_ref);
+    return (rhs.uuid == lhs.uuid) && (rhs.fw_major == lhs.fw_major) &&
+           (rhs.fw_minor == lhs.fw_minor) && (rhs.fw_patch == lhs.fw_patch);
 }
 
-std::ostream& operator<<(std::ostream& str, LumosServer::DroneStatus const& drone_status)
+std::ostream& operator<<(std::ostream& str, LumosServer::DroneInfo const& drone_info)
 {
     str << std::setprecision(15);
-    str << "drone_status:" << '\n' << "{\n";
-    str << "    battery_status: " << drone_status.battery_status << '\n';
-    str << "    lat: " << drone_status.lat << '\n';
-    str << "    lon: " << drone_status.lon << '\n';
-    str << "    alt: " << drone_status.alt << '\n';
-    str << "    mag_norm: " << drone_status.mag_norm << '\n';
-    str << "    hdg: " << drone_status.hdg << '\n';
-    str << "    uuid: " << drone_status.uuid << '\n';
-    str << "    fw_major: " << drone_status.fw_major << '\n';
-    str << "    fw_minor: " << drone_status.fw_minor << '\n';
-    str << "    fw_patch: " << drone_status.fw_patch << '\n';
-    str << "    dance_status: " << drone_status.dance_status << '\n';
-    str << "    rssi_wifi: " << drone_status.rssi_wifi << '\n';
-    str << "    rssi_xbee: " << drone_status.rssi_xbee << '\n';
-    str << "    satellites_used: " << drone_status.satellites_used << '\n';
-    str << "    fix_type: " << drone_status.fix_type << '\n';
-    str << "    alt_ref: " << drone_status.alt_ref << '\n';
+    str << "drone_info:" << '\n' << "{\n";
+    str << "    uuid: " << drone_info.uuid << '\n';
+    str << "    fw_major: " << drone_info.fw_major << '\n';
+    str << "    fw_minor: " << drone_info.fw_minor << '\n';
+    str << "    fw_patch: " << drone_info.fw_patch << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const LumosServer::CompanionStatus& lhs, const LumosServer::CompanionStatus& rhs)
+{
+    return (rhs.dance_status == lhs.dance_status) && (rhs.rssi_wifi == lhs.rssi_wifi) &&
+           (rhs.rssi_xbee == lhs.rssi_xbee);
+}
+
+std::ostream& operator<<(std::ostream& str, LumosServer::CompanionStatus const& companion_status)
+{
+    str << std::setprecision(15);
+    str << "companion_status:" << '\n' << "{\n";
+    str << "    dance_status: " << companion_status.dance_status << '\n';
+    str << "    rssi_wifi: " << companion_status.rssi_wifi << '\n';
+    str << "    rssi_xbee: " << companion_status.rssi_xbee << '\n';
     str << '}';
     return str;
 }

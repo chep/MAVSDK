@@ -63,41 +63,51 @@ public:
     /**
      * @brief
      */
-    struct DroneStatus {
-        float battery_status{}; /**< @brief */
-        int32_t lat{}; /**< @brief<  [degE7] Latitude (WGS84, EGM96 ellipsoid) */
-        int32_t lon{}; /**< @brief<  [degE7] Longitude (WGS84, EGM96 ellipsoid) */
-        int32_t alt{}; /**< @brief<  [mm] Altitude (AGL) */
-        float mag_norm{}; /**< @brief<  Magnetometer norm */
-        uint32_t hdg{}; /**< @brief<  [cdeg] Vehicle heading (yaw angle), 0.0..359.99 degrees. If
-                           unknown, set to: UINT16_MAX */
+    struct DroneInfo {
         std::string uuid{}; /**< @brief<  uuid */
         uint32_t fw_major{}; /**< @brief<  Firmware version major (first byte) */
         uint32_t fw_minor{}; /**< @brief<  Firmware version minor (second byte) */
         uint32_t fw_patch{}; /**< @brief<  Firmware version patch (third byte) */
-        uint32_t dance_status{}; /**< @brief<  Dance status */
-        uint32_t rssi_wifi{}; /**< @brief<  Rssi wifi */
-        uint32_t rssi_xbee{}; /**< @brief<  Rssi XBee */
-        uint32_t satellites_used{}; /**< @brief<  Number of satellites used */
-        uint32_t fix_type{}; /**< @brief<  GPS fix type */
-        uint32_t alt_ref{}; /**< @brief<  Alt reference status, boolean */
     };
 
     /**
-     * @brief Equal operator to compare two `LumosServer::DroneStatus` objects.
+     * @brief Equal operator to compare two `LumosServer::DroneInfo` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const LumosServer::DroneInfo& lhs, const LumosServer::DroneInfo& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `LumosServer::DroneInfo`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, LumosServer::DroneInfo const& drone_info);
+
+    /**
+     * @brief
+     */
+    struct CompanionStatus {
+        uint32_t dance_status{}; /**< @brief */
+        uint32_t rssi_wifi{}; /**< @brief */
+        uint32_t rssi_xbee{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `LumosServer::CompanionStatus` objects.
      *
      * @return `true` if items are equal.
      */
     friend bool
-    operator==(const LumosServer::DroneStatus& lhs, const LumosServer::DroneStatus& rhs);
+    operator==(const LumosServer::CompanionStatus& lhs, const LumosServer::CompanionStatus& rhs);
 
     /**
-     * @brief Stream operator to print information about a `LumosServer::DroneStatus`.
+     * @brief Stream operator to print information about a `LumosServer::CompanionStatus`.
      *
      * @return A reference to the stream.
      */
     friend std::ostream&
-    operator<<(std::ostream& str, LumosServer::DroneStatus const& drone_status);
+    operator<<(std::ostream& str, LumosServer::CompanionStatus const& companion_status);
 
     /**
      * @brief Callback type for asynchronous LumosServer calls.
@@ -111,7 +121,16 @@ public:
      *
      * @return Result of request.
      */
-    void set_drone_status(DroneStatus drone_status) const;
+    void set_drone_info(DroneInfo drone_info) const;
+
+    /**
+     * @brief
+     *
+     * This function is blocking.
+     *
+     * @return Result of request.
+     */
+    void set_companion_status(CompanionStatus drone_info) const;
 
     /**
      * @brief Copy constructor.

@@ -24,7 +24,8 @@ namespace rpc {
 namespace lumos_server {
 
 static const char* LumosServerService_method_names[] = {
-  "/mavsdk.rpc.lumos_server.LumosServerService/SetDroneStatus",
+  "/mavsdk.rpc.lumos_server.LumosServerService/SetDroneInfo",
+  "/mavsdk.rpc.lumos_server.LumosServerService/SetCompanionStatus",
 };
 
 std::unique_ptr< LumosServerService::Stub> LumosServerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -34,28 +35,52 @@ std::unique_ptr< LumosServerService::Stub> LumosServerService::NewStub(const std
 }
 
 LumosServerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_SetDroneStatus_(LumosServerService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_SetDroneInfo_(LumosServerService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetCompanionStatus_(LumosServerService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status LumosServerService::Stub::SetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::lumos_server::SetDroneStatusRequest, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetDroneStatus_, context, request, response);
+::grpc::Status LumosServerService::Stub::SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::lumos_server::SetDroneInfoRequest, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetDroneInfo_, context, request, response);
 }
 
-void LumosServerService::Stub::async::SetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::lumos_server::SetDroneStatusRequest, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetDroneStatus_, context, request, response, std::move(f));
+void LumosServerService::Stub::async::SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::lumos_server::SetDroneInfoRequest, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetDroneInfo_, context, request, response, std::move(f));
 }
 
-void LumosServerService::Stub::async::SetDroneStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetDroneStatus_, context, request, response, reactor);
+void LumosServerService::Stub::async::SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetDroneInfo_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>* LumosServerService::Stub::PrepareAsyncSetDroneStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse, ::mavsdk::rpc::lumos_server::SetDroneStatusRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetDroneStatus_, context, request);
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>* LumosServerService::Stub::PrepareAsyncSetDroneInfoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse, ::mavsdk::rpc::lumos_server::SetDroneInfoRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetDroneInfo_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneStatusResponse>* LumosServerService::Stub::AsyncSetDroneStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetDroneInfoResponse>* LumosServerService::Stub::AsyncSetDroneInfoRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncSetDroneStatusRaw(context, request, cq);
+    this->PrepareAsyncSetDroneInfoRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status LumosServerService::Stub::SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetCompanionStatus_, context, request, response);
+}
+
+void LumosServerService::Stub::async::SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetCompanionStatus_, context, request, response, std::move(f));
+}
+
+void LumosServerService::Stub::async::SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetCompanionStatus_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>* LumosServerService::Stub::PrepareAsyncSetCompanionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse, ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetCompanionStatus_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse>* LumosServerService::Stub::AsyncSetCompanionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetCompanionStatusRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -64,19 +89,36 @@ LumosServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LumosServerService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< LumosServerService::Service, ::mavsdk::rpc::lumos_server::SetDroneStatusRequest, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< LumosServerService::Service, ::mavsdk::rpc::lumos_server::SetDroneInfoRequest, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LumosServerService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* req,
-             ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* resp) {
-               return service->SetDroneStatus(ctx, req, resp);
+             const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* req,
+             ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* resp) {
+               return service->SetDroneInfo(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LumosServerService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< LumosServerService::Service, ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](LumosServerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* req,
+             ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* resp) {
+               return service->SetCompanionStatus(ctx, req, resp);
              }, this)));
 }
 
 LumosServerService::Service::~Service() {
 }
 
-::grpc::Status LumosServerService::Service::SetDroneStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SetDroneStatusRequest* request, ::mavsdk::rpc::lumos_server::SetDroneStatusResponse* response) {
+::grpc::Status LumosServerService::Service::SetDroneInfo(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LumosServerService::Service::SetCompanionStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -3,8 +3,10 @@
 #include <thread>
 
 #include "plugins/lumos_server/lumos_server.h"
-
+#include "callback_list.tpp"
 #include "server_plugin_impl_base.h"
+
+#include "dance_data.h"
 
 namespace mavsdk {
 
@@ -19,6 +21,9 @@ public:
 
     void set_drone_info(LumosServer::DroneInfo drone_info);
     void set_companion_status(LumosServer::CompanionStatus companion_status);
+    LumosServer::DanceHandle subscribe_dance(const LumosServer::DanceCallback& callback);
+    void unsubscribe_dance(LumosServer::DanceHandle handle);
+    LumosServer::Dance dance();
 
 private:
     struct PX4Status {
@@ -41,6 +46,8 @@ private:
     void gps_raw_handler(const mavlink_message_t& msg);
     void highres_imu_handler(const mavlink_message_t& msg);
 
+    void fram_ftp_handler(const mavlink_message_t& msg);
+
     LumosServer::DroneInfo _drone_info;
     bool _info_never_set{true};
 
@@ -53,6 +60,11 @@ private:
     PX4Status _PX4_status;
 
     std::chrono::time_point<std::chrono::steady_clock> _boot_time;
+
+    DanceData _dance_data;
+
+    std::mutex _subscription_mutex{};
+    CallbackList<LumosServer::Dance> _dance_callbacks;
 };
 
 } // namespace mavsdk

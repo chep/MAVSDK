@@ -46,6 +46,28 @@ public:
     ~LumosServer() override;
 
     /**
+     * @brief
+     */
+    struct Dance {
+        std::vector<uint32_t> data{}; /**< @brief */
+        uint32_t len{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `LumosServer::Dance` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const LumosServer::Dance& lhs, const LumosServer::Dance& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `LumosServer::Dance`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, LumosServer::Dance const& dance);
+
+    /**
      * @brief Possible results returned for commands
      */
     enum class Result {
@@ -131,6 +153,33 @@ public:
      * @return Result of request.
      */
     void set_companion_status(CompanionStatus drone_info) const;
+
+    /**
+     * @brief Callback type for subscribe_dance.
+     */
+    using DanceCallback = std::function<void(Dance)>;
+
+    /**
+     * @brief Handle type for subscribe_dance.
+     */
+    using DanceHandle = Handle<Dance>;
+
+    /**
+     * @brief
+     */
+    DanceHandle subscribe_dance(const DanceCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_dance
+     */
+    void unsubscribe_dance(DanceHandle handle);
+
+    /**
+     * @brief Poll for 'Dance' (blocking).
+     *
+     * @return One Dance update.
+     */
+    Dance dance() const;
 
     /**
      * @brief Copy constructor.

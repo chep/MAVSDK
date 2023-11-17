@@ -2,6 +2,7 @@ target_sources(mavsdk
     PRIVATE
     lumos_server.cpp
     lumos_server_impl.cpp
+	dance_data.cpp
 )
 
 target_include_directories(mavsdk PUBLIC

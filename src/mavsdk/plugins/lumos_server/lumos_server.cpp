@@ -9,6 +9,8 @@
 
 namespace mavsdk {
 
+using Dance = LumosServer::Dance;
+
 using DroneInfo = LumosServer::DroneInfo;
 using CompanionStatus = LumosServer::CompanionStatus;
 
@@ -27,6 +29,40 @@ void LumosServer::set_drone_info(DroneInfo drone_info) const
 void LumosServer::set_companion_status(CompanionStatus drone_info) const
 {
     _impl->set_companion_status(drone_info);
+}
+
+LumosServer::DanceHandle LumosServer::subscribe_dance(const DanceCallback& callback)
+{
+    return _impl->subscribe_dance(callback);
+}
+
+void LumosServer::unsubscribe_dance(DanceHandle handle)
+{
+    _impl->unsubscribe_dance(handle);
+}
+
+LumosServer::Dance LumosServer::dance() const
+{
+    return _impl->dance();
+}
+
+bool operator==(const LumosServer::Dance& lhs, const LumosServer::Dance& rhs)
+{
+    return (rhs.data == lhs.data) && (rhs.len == lhs.len);
+}
+
+std::ostream& operator<<(std::ostream& str, LumosServer::Dance const& dance)
+{
+    str << std::setprecision(15);
+    str << "dance:" << '\n' << "{\n";
+    str << "    data: [";
+    for (auto it = dance.data.begin(); it != dance.data.end(); ++it) {
+        str << *it;
+        str << (it + 1 != dance.data.end() ? ", " : "]\n");
+    }
+    str << "    len: " << dance.len << '\n';
+    str << '}';
+    return str;
 }
 
 std::ostream& operator<<(std::ostream& str, LumosServer::Result const& result)

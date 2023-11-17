@@ -26,6 +26,7 @@ namespace lumos_server {
 static const char* LumosServerService_method_names[] = {
   "/mavsdk.rpc.lumos_server.LumosServerService/SetDroneInfo",
   "/mavsdk.rpc.lumos_server.LumosServerService/SetCompanionStatus",
+  "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeDance",
 };
 
 std::unique_ptr< LumosServerService::Stub> LumosServerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,6 +38,7 @@ std::unique_ptr< LumosServerService::Stub> LumosServerService::NewStub(const std
 LumosServerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_SetDroneInfo_(LumosServerService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetCompanionStatus_(LumosServerService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubscribeDance_(LumosServerService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::Status LumosServerService::Stub::SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response) {
@@ -85,6 +87,22 @@ void LumosServerService::Stub::async::SetCompanionStatus(::grpc::ClientContext* 
   return result;
 }
 
+::grpc::ClientReader< ::mavsdk::rpc::lumos_server::DanceResponse>* LumosServerService::Stub::SubscribeDanceRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::lumos_server::DanceResponse>::Create(channel_.get(), rpcmethod_SubscribeDance_, context, request);
+}
+
+void LumosServerService::Stub::async::SubscribeDance(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::DanceResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::lumos_server::DanceResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeDance_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::DanceResponse>* LumosServerService::Stub::AsyncSubscribeDanceRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::DanceResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeDance_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::DanceResponse>* LumosServerService::Stub::PrepareAsyncSubscribeDanceRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::DanceResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeDance_, context, request, false, nullptr);
+}
+
 LumosServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LumosServerService_method_names[0],
@@ -106,6 +124,16 @@ LumosServerService::Service::Service() {
              ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* resp) {
                return service->SetCompanionStatus(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LumosServerService_method_names[2],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< LumosServerService::Service, ::mavsdk::rpc::lumos_server::SubscribeDanceRequest, ::mavsdk::rpc::lumos_server::DanceResponse>(
+          [](LumosServerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::lumos_server::DanceResponse>* writer) {
+               return service->SubscribeDance(ctx, req, writer);
+             }, this)));
 }
 
 LumosServerService::Service::~Service() {
@@ -122,6 +150,13 @@ LumosServerService::Service::~Service() {
   (void) context;
   (void) request;
   (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LumosServerService::Service::SubscribeDance(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::DanceResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

@@ -64,6 +64,12 @@ namespace lumos_server {
 class CompanionStatus;
 struct CompanionStatusDefaultTypeInternal;
 extern CompanionStatusDefaultTypeInternal _CompanionStatus_default_instance_;
+class Dance;
+struct DanceDefaultTypeInternal;
+extern DanceDefaultTypeInternal _Dance_default_instance_;
+class DanceResponse;
+struct DanceResponseDefaultTypeInternal;
+extern DanceResponseDefaultTypeInternal _DanceResponse_default_instance_;
 class DroneInfo;
 struct DroneInfoDefaultTypeInternal;
 extern DroneInfoDefaultTypeInternal _DroneInfo_default_instance_;
@@ -82,6 +88,9 @@ extern SetDroneInfoRequestDefaultTypeInternal _SetDroneInfoRequest_default_insta
 class SetDroneInfoResponse;
 struct SetDroneInfoResponseDefaultTypeInternal;
 extern SetDroneInfoResponseDefaultTypeInternal _SetDroneInfoResponse_default_instance_;
+class SubscribeDanceRequest;
+struct SubscribeDanceRequestDefaultTypeInternal;
+extern SubscribeDanceRequestDefaultTypeInternal _SubscribeDanceRequest_default_instance_;
 }  // namespace lumos_server
 }  // namespace rpc
 }  // namespace mavsdk
@@ -131,6 +140,142 @@ inline bool LumosResult_Result_Parse(absl::string_view name, LumosResult_Result*
 
 
 // -------------------------------------------------------------------
+
+class SubscribeDanceRequest final :
+    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.SubscribeDanceRequest) */ {
+ public:
+  inline SubscribeDanceRequest() : SubscribeDanceRequest(nullptr) {}
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR SubscribeDanceRequest(::google::protobuf::internal::ConstantInitialized);
+
+  inline SubscribeDanceRequest(const SubscribeDanceRequest& from)
+      : SubscribeDanceRequest(nullptr, from) {}
+  SubscribeDanceRequest(SubscribeDanceRequest&& from) noexcept
+    : SubscribeDanceRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SubscribeDanceRequest& operator=(const SubscribeDanceRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubscribeDanceRequest& operator=(SubscribeDanceRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubscribeDanceRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubscribeDanceRequest* internal_default_instance() {
+    return reinterpret_cast<const SubscribeDanceRequest*>(
+               &_SubscribeDanceRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(SubscribeDanceRequest& a, SubscribeDanceRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SubscribeDanceRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubscribeDanceRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SubscribeDanceRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SubscribeDanceRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SubscribeDanceRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SubscribeDanceRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.SubscribeDanceRequest";
+  }
+  protected:
+  explicit SubscribeDanceRequest(::google::protobuf::Arena* arena);
+  SubscribeDanceRequest(::google::protobuf::Arena* arena, const SubscribeDanceRequest& from);
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.SubscribeDanceRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
 
 class SetDroneInfoResponse final :
     public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.SetDroneInfoResponse) */ {
@@ -463,7 +608,7 @@ class LumosResult final :
                &_LumosResult_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    7;
 
   friend void swap(LumosResult& a, LumosResult& b) {
     a.Swap(&b);
@@ -676,7 +821,7 @@ class DroneInfo final :
                &_DroneInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    8;
 
   friend void swap(DroneInfo& a, DroneInfo& b) {
     a.Swap(&b);
@@ -834,6 +979,202 @@ class DroneInfo final :
   friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
 };// -------------------------------------------------------------------
 
+class Dance final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.Dance) */ {
+ public:
+  inline Dance() : Dance(nullptr) {}
+  ~Dance() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Dance(::google::protobuf::internal::ConstantInitialized);
+
+  inline Dance(const Dance& from)
+      : Dance(nullptr, from) {}
+  Dance(Dance&& from) noexcept
+    : Dance() {
+    *this = ::std::move(from);
+  }
+
+  inline Dance& operator=(const Dance& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Dance& operator=(Dance&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Dance& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Dance* internal_default_instance() {
+    return reinterpret_cast<const Dance*>(
+               &_Dance_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(Dance& a, Dance& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Dance* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Dance* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Dance* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Dance>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Dance& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Dance& from) {
+    Dance::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Dance* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.Dance";
+  }
+  protected:
+  explicit Dance(::google::protobuf::Arena* arena);
+  Dance(::google::protobuf::Arena* arena, const Dance& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDataFieldNumber = 1,
+    kLenFieldNumber = 2,
+  };
+  // repeated uint32 data = 1;
+  int data_size() const;
+  private:
+  int _internal_data_size() const;
+
+  public:
+  void clear_data() ;
+  ::uint32_t data(int index) const;
+  void set_data(int index, ::uint32_t value);
+  void add_data(::uint32_t value);
+  const ::google::protobuf::RepeatedField<::uint32_t>& data() const;
+  ::google::protobuf::RepeatedField<::uint32_t>* mutable_data();
+
+  private:
+  const ::google::protobuf::RepeatedField<::uint32_t>& _internal_data() const;
+  ::google::protobuf::RepeatedField<::uint32_t>* _internal_mutable_data();
+
+  public:
+  // uint32 len = 2;
+  void clear_len() ;
+  ::uint32_t len() const;
+  void set_len(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_len() const;
+  void _internal_set_len(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.Dance)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::RepeatedField<::uint32_t> data_;
+    mutable ::google::protobuf::internal::CachedSize _data_cached_byte_size_;
+    ::uint32_t len_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
 class CompanionStatus final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.CompanionStatus) */ {
  public:
@@ -893,7 +1234,7 @@ class CompanionStatus final :
                &_CompanionStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    9;
 
   friend void swap(CompanionStatus& a, CompanionStatus& b) {
     a.Swap(&b);
@@ -1393,6 +1734,187 @@ class SetCompanionStatusRequest final :
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
+class DanceResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.DanceResponse) */ {
+ public:
+  inline DanceResponse() : DanceResponse(nullptr) {}
+  ~DanceResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR DanceResponse(::google::protobuf::internal::ConstantInitialized);
+
+  inline DanceResponse(const DanceResponse& from)
+      : DanceResponse(nullptr, from) {}
+  DanceResponse(DanceResponse&& from) noexcept
+    : DanceResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline DanceResponse& operator=(const DanceResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DanceResponse& operator=(DanceResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DanceResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DanceResponse* internal_default_instance() {
+    return reinterpret_cast<const DanceResponse*>(
+               &_DanceResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(DanceResponse& a, DanceResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DanceResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DanceResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DanceResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DanceResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const DanceResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const DanceResponse& from) {
+    DanceResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(DanceResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.DanceResponse";
+  }
+  protected:
+  explicit DanceResponse(::google::protobuf::Arena* arena);
+  DanceResponse(::google::protobuf::Arena* arena, const DanceResponse& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDanceFieldNumber = 1,
+  };
+  // .mavsdk.rpc.lumos_server.Dance dance = 1;
+  bool has_dance() const;
+  void clear_dance() ;
+  const ::mavsdk::rpc::lumos_server::Dance& dance() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::lumos_server::Dance* release_dance();
+  ::mavsdk::rpc::lumos_server::Dance* mutable_dance();
+  void set_allocated_dance(::mavsdk::rpc::lumos_server::Dance* value);
+  void unsafe_arena_set_allocated_dance(::mavsdk::rpc::lumos_server::Dance* value);
+  ::mavsdk::rpc::lumos_server::Dance* unsafe_arena_release_dance();
+
+  private:
+  const ::mavsdk::rpc::lumos_server::Dance& _internal_dance() const;
+  ::mavsdk::rpc::lumos_server::Dance* _internal_mutable_dance();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.DanceResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::lumos_server::Dance* dance_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
 };
 
 // ===================================================================
@@ -1614,6 +2136,182 @@ inline void SetCompanionStatusRequest::set_allocated_drone_info(::mavsdk::rpc::l
 // -------------------------------------------------------------------
 
 // SetCompanionStatusResponse
+
+// -------------------------------------------------------------------
+
+// SubscribeDanceRequest
+
+// -------------------------------------------------------------------
+
+// DanceResponse
+
+// .mavsdk.rpc.lumos_server.Dance dance = 1;
+inline bool DanceResponse::has_dance() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.dance_ != nullptr);
+  return value;
+}
+inline void DanceResponse::clear_dance() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.dance_ != nullptr) _impl_.dance_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::lumos_server::Dance& DanceResponse::_internal_dance() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::mavsdk::rpc::lumos_server::Dance* p = _impl_.dance_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::lumos_server::Dance&>(::mavsdk::rpc::lumos_server::_Dance_default_instance_);
+}
+inline const ::mavsdk::rpc::lumos_server::Dance& DanceResponse::dance() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.DanceResponse.dance)
+  return _internal_dance();
+}
+inline void DanceResponse::unsafe_arena_set_allocated_dance(::mavsdk::rpc::lumos_server::Dance* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.dance_);
+  }
+  _impl_.dance_ = reinterpret_cast<::mavsdk::rpc::lumos_server::Dance*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.lumos_server.DanceResponse.dance)
+}
+inline ::mavsdk::rpc::lumos_server::Dance* DanceResponse::release_dance() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::lumos_server::Dance* released = _impl_.dance_;
+  _impl_.dance_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::mavsdk::rpc::lumos_server::Dance* DanceResponse::unsafe_arena_release_dance() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.lumos_server.DanceResponse.dance)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::lumos_server::Dance* temp = _impl_.dance_;
+  _impl_.dance_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::lumos_server::Dance* DanceResponse::_internal_mutable_dance() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.dance_ == nullptr) {
+    auto* p = CreateMaybeMessage<::mavsdk::rpc::lumos_server::Dance>(GetArena());
+    _impl_.dance_ = reinterpret_cast<::mavsdk::rpc::lumos_server::Dance*>(p);
+  }
+  return _impl_.dance_;
+}
+inline ::mavsdk::rpc::lumos_server::Dance* DanceResponse::mutable_dance() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::mavsdk::rpc::lumos_server::Dance* _msg = _internal_mutable_dance();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.lumos_server.DanceResponse.dance)
+  return _msg;
+}
+inline void DanceResponse::set_allocated_dance(::mavsdk::rpc::lumos_server::Dance* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::mavsdk::rpc::lumos_server::Dance*>(_impl_.dance_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::mavsdk::rpc::lumos_server::Dance*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.dance_ = reinterpret_cast<::mavsdk::rpc::lumos_server::Dance*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.lumos_server.DanceResponse.dance)
+}
+
+// -------------------------------------------------------------------
+
+// Dance
+
+// repeated uint32 data = 1;
+inline int Dance::_internal_data_size() const {
+  return _internal_data().size();
+}
+inline int Dance::data_size() const {
+  return _internal_data_size();
+}
+inline void Dance::clear_data() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.data_.Clear();
+}
+inline ::uint32_t Dance::data(int index) const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.Dance.data)
+  return _internal_data().Get(index);
+}
+inline void Dance::set_data(int index, ::uint32_t value) {
+  _internal_mutable_data()->Set(index, value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.Dance.data)
+}
+inline void Dance::add_data(::uint32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_data()->Add(value);
+  // @@protoc_insertion_point(field_add:mavsdk.rpc.lumos_server.Dance.data)
+}
+inline const ::google::protobuf::RepeatedField<::uint32_t>& Dance::data() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:mavsdk.rpc.lumos_server.Dance.data)
+  return _internal_data();
+}
+inline ::google::protobuf::RepeatedField<::uint32_t>* Dance::mutable_data()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:mavsdk.rpc.lumos_server.Dance.data)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_data();
+}
+inline const ::google::protobuf::RepeatedField<::uint32_t>& Dance::_internal_data()
+    const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.data_;
+}
+inline ::google::protobuf::RepeatedField<::uint32_t>* Dance::_internal_mutable_data() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.data_;
+}
+
+// uint32 len = 2;
+inline void Dance::clear_len() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.len_ = 0u;
+}
+inline ::uint32_t Dance::len() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.Dance.len)
+  return _internal_len();
+}
+inline void Dance::set_len(::uint32_t value) {
+  _internal_set_len(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.Dance.len)
+}
+inline ::uint32_t Dance::_internal_len() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.len_;
+}
+inline void Dance::_internal_set_len(::uint32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.len_ = value;
+}
 
 // -------------------------------------------------------------------
 

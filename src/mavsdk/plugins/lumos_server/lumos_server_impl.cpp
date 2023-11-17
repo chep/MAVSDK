@@ -42,6 +42,12 @@ void LumosServerImpl::init()
         MAVLINK_MSG_ID_HIGHRES_IMU,
         std::bind(&LumosServerImpl::highres_imu_handler, this, std::placeholders::_1),
         nullptr);
+
+    // GCS messages handlers
+    _server_component_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_DANCE_FRAM_FTP,
+        std::bind(&LumosServerImpl::fram_ftp_handler, this, std::placeholders::_1),
+        nullptr);
 }
 
 void LumosServerImpl::deinit()
@@ -57,7 +63,6 @@ void LumosServerImpl::drone_status_thread()
         std::this_thread::sleep_for(STATUS_MESSAGE_INTERVAL);
         if (!_info_never_set) {
             std::lock_guard<std::mutex> lock(_status_mutex);
-            LogDebug() << "Sending drone status";
             auto result = _server_component_impl->queue_message(
                 [&](MavlinkAddress mavlink_address, uint8_t channel) {
                     mavlink_message_t message;
@@ -153,6 +158,56 @@ void LumosServerImpl::highres_imu_handler(const mavlink_message_t& msg)
     mavlink_msg_highres_imu_decode(&msg, &imu);
     _PX4_status.mag_norm =
         std::sqrt(imu.xmag * imu.xmag + imu.ymag * imu.ymag + imu.zmag * imu.zmag);
+}
+
+void LumosServerImpl::fram_ftp_handler(const mavlink_message_t& msg)
+{
+    mavlink_dance_fram_ftp_t ftp;
+    mavlink_msg_dance_fram_ftp_decode(&msg, &ftp);
+
+    auto answer = _dance_data.parse(ftp);
+
+    auto result = _server_component_impl->queue_message([&](MavlinkAddress mavlink_address,
+                                                            uint8_t channel) {
+        mavlink_message_t message;
+        mavlink_msg_dance_fram_ftp_encode_chan(
+            mavlink_address.system_id, mavlink_address.component_id, channel, &message, &answer);
+        return message;
+    });
+    if (!result)
+        LogErr() << "Unable to send drone status.";
+
+    if (_dance_data.is_valid()) {
+        std::lock_guard<std::mutex> lock(_subscription_mutex);
+        _dance_callbacks.queue(dance(), [this](const auto& func) {
+            _server_component_impl->call_user_callback(func);
+        });
+    }
+}
+
+LumosServer::DanceHandle
+LumosServerImpl::subscribe_dance(const LumosServer::DanceCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    return _dance_callbacks.subscribe(callback);
+}
+
+void LumosServerImpl::unsubscribe_dance(LumosServer::DanceHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _dance_callbacks.unsubscribe(handle);
+}
+
+LumosServer::Dance LumosServerImpl::dance()
+{
+    LumosServer::Dance dance;
+    dance.len = 0;
+    if (_dance_data.is_valid()) {
+        dance.data.resize((_dance_data.size() / sizeof(uint32_t)) + 1);
+        dance.len = _dance_data.size();
+        memcpy(dance.data.data(), _dance_data.data(), _dance_data.size());
+    }
+    return dance;
 }
 
 } // namespace mavsdk

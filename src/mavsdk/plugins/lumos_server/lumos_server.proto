@@ -7,6 +7,7 @@ import "mavsdk_options.proto";
 service LumosServerService {
     rpc SetDroneInfo(SetDroneInfoRequest) returns(SetDroneInfoResponse) {option (mavsdk.options.async_type) = SYNC;}
     rpc SetCompanionStatus(SetCompanionStatusRequest) returns(SetCompanionStatusResponse) {option (mavsdk.options.async_type) = SYNC;}
+    rpc SubscribeDance(SubscribeDanceRequest) returns(stream DanceResponse) {}
 }
 
 message SetDroneInfoRequest {
@@ -23,6 +24,15 @@ message SetCompanionStatusRequest {
 message SetCompanionStatusResponse {
 }
 
+message SubscribeDanceRequest {}
+message DanceResponse{
+    Dance dance = 1;
+}
+
+message Dance {
+    repeated uint32 data = 1;
+    uint32 len = 2;
+}
 
 message LumosResult {
     // Possible results returned for commands
@@ -42,6 +52,7 @@ message DroneInfo {
 }
 
 message CompanionStatus {
-	uint32 rssi_wifi = 1;
-	uint32 rssi_xbee = 2;
+	uint32 dance_status = 1;
+	uint32 rssi_wifi = 2;
+	uint32 rssi_xbee = 3;
 }

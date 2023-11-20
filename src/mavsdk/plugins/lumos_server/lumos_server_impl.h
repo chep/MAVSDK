@@ -24,6 +24,9 @@ public:
     LumosServer::DanceHandle subscribe_dance(const LumosServer::DanceCallback& callback);
     void unsubscribe_dance(LumosServer::DanceHandle handle);
     LumosServer::Dance dance();
+    LumosServer::ParamsHandle subscribe_params(const LumosServer::ParamsCallback& callback);
+    void unsubscribe_params(LumosServer::ParamsHandle handle);
+    LumosServer::Params params();
 
 private:
     struct PX4Status {
@@ -65,6 +68,7 @@ private:
 
     std::mutex _subscription_mutex{};
     CallbackList<LumosServer::Dance> _dance_callbacks;
+    CallbackList<LumosServer::Params> _params_callbacks;
 };
 
 } // namespace mavsdk

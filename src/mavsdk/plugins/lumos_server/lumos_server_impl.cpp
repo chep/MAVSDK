@@ -177,11 +177,25 @@ void LumosServerImpl::fram_ftp_handler(const mavlink_message_t& msg)
     if (!result)
         LogErr() << "Unable to send drone status.";
 
-    if (_dance_data.is_valid()) {
-        std::lock_guard<std::mutex> lock(_subscription_mutex);
-        _dance_callbacks.queue(dance(), [this](const auto& func) {
-            _server_component_impl->call_user_callback(func);
-        });
+    if (answer.payload[0] == DanceData::ACK) {
+        switch (answer.opcode) {
+            case MAV_DANCE_FRAM_OPCODES_CRC32:
+                if (_dance_data.is_valid()) {
+                    std::lock_guard<std::mutex> lock(_subscription_mutex);
+                    _dance_callbacks.queue(dance(), [this](const auto& func) {
+                        _server_component_impl->call_user_callback(func);
+                    });
+                    break;
+                }
+            case MAV_DANCE_FRAM_OPCODES_PARAMS: {
+                std::lock_guard<std::mutex> lock(_subscription_mutex);
+                _params_callbacks.queue(params(), [this](const auto& func) {
+                    _server_component_impl->call_user_callback(func);
+                });
+            } break;
+            default:
+                break;
+        }
     }
 }
 
@@ -208,6 +222,40 @@ LumosServer::Dance LumosServerImpl::dance()
         memcpy(dance.data.data(), _dance_data.data(), _dance_data.size());
     }
     return dance;
+}
+
+LumosServer::ParamsHandle
+LumosServerImpl::subscribe_params(const LumosServer::ParamsCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    return _params_callbacks.subscribe(callback);
+}
+
+void LumosServerImpl::unsubscribe_params(LumosServer::ParamsHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _params_callbacks.unsubscribe(handle);
+}
+
+LumosServer::Params LumosServerImpl::params()
+{
+    LumosServer::Params params;
+
+    auto p = _dance_data.params();
+    params.alt = p.alt;
+    params.gf_alt = p.gf_alt;
+    params.gps_start = p.gps_start;
+    params.lat = p.lat;
+    params.lon = p.lon;
+
+    for (const auto& poly : p.poly) {
+        LumosServer::Coord c;
+        c.x = poly.x;
+        c.y = poly.y;
+        params.vertices.push_back(c);
+    }
+
+    return params;
 }
 
 } // namespace mavsdk

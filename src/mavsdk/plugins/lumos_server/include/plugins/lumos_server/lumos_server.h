@@ -68,6 +68,54 @@ public:
     friend std::ostream& operator<<(std::ostream& str, LumosServer::Dance const& dance);
 
     /**
+     * @brief
+     */
+    struct Coord {
+        float x{}; /**< @brief */
+        float y{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `LumosServer::Coord` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const LumosServer::Coord& lhs, const LumosServer::Coord& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `LumosServer::Coord`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, LumosServer::Coord const& coord);
+
+    /**
+     * @brief
+     */
+    struct Params {
+        float lon{}; /**< @brief */
+        float lat{}; /**< @brief */
+        float alt{}; /**< @brief */
+        int32_t gps_start{}; /**< @brief */
+        float gf_alt{}; /**< @brief */
+        std::vector<Coord> vertices{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `LumosServer::Params` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const LumosServer::Params& lhs, const LumosServer::Params& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `LumosServer::Params`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, LumosServer::Params const& params);
+
+    /**
      * @brief Possible results returned for commands
      */
     enum class Result {
@@ -180,6 +228,33 @@ public:
      * @return One Dance update.
      */
     Dance dance() const;
+
+    /**
+     * @brief Callback type for subscribe_params.
+     */
+    using ParamsCallback = std::function<void(Params)>;
+
+    /**
+     * @brief Handle type for subscribe_params.
+     */
+    using ParamsHandle = Handle<Params>;
+
+    /**
+     * @brief
+     */
+    ParamsHandle subscribe_params(const ParamsCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_params
+     */
+    void unsubscribe_params(ParamsHandle handle);
+
+    /**
+     * @brief Poll for 'Params' (blocking).
+     *
+     * @return One Params update.
+     */
+    Params params() const;
 
     /**
      * @brief Copy constructor.

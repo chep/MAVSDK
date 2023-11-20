@@ -68,8 +68,7 @@ mavlink_dance_fram_ftp_t DanceData::parse(mavlink_dance_fram_ftp_t& req)
         } break;
 
         case MAV_DANCE_FRAM_OPCODES_PARAMS:
-#warning TODO
-            ans.payload[0] = ACK;
+            ans.payload[0] = set_params(req);
             break;
 
         default:
@@ -97,6 +96,34 @@ bool DanceData::compare_crc(uint32_t crc)
 
     _is_valid = true;
     return true;
+}
+
+static float get_float(const uint8_t* data)
+{
+    uint32_t tmp;
+    float f;
+    memcpy(&tmp, data, 4);
+    tmp = ntohl(tmp);
+    memcpy(&f, &tmp, 4);
+    return f;
+}
+
+uint8_t DanceData::set_params(const mavlink_dance_fram_ftp_t& req)
+{
+    _params.lon = get_float(req.payload);
+    _params.lat = get_float(req.payload + 4);
+    _params.alt = get_float(req.payload + 8);
+    memcpy(&_params.gps_start, req.payload + 12, 4);
+    _params.gps_start = ntohl(_params.gps_start);
+    _params.gf_alt = get_float(req.payload + 16);
+
+    size_t offset = 20;
+    for (uint8_t i = 0; i < MAX_POLY; ++i) {
+        _params.poly[i].x = get_float(req.payload + offset);
+        _params.poly[i].y = get_float(req.payload + offset + 4);
+        offset += 8;
+    }
+    return ACK;
 }
 
 } // namespace mavsdk

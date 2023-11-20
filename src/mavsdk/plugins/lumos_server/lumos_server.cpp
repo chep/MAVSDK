@@ -10,6 +10,8 @@
 namespace mavsdk {
 
 using Dance = LumosServer::Dance;
+using Coord = LumosServer::Coord;
+using Params = LumosServer::Params;
 
 using DroneInfo = LumosServer::DroneInfo;
 using CompanionStatus = LumosServer::CompanionStatus;
@@ -46,6 +48,21 @@ LumosServer::Dance LumosServer::dance() const
     return _impl->dance();
 }
 
+LumosServer::ParamsHandle LumosServer::subscribe_params(const ParamsCallback& callback)
+{
+    return _impl->subscribe_params(callback);
+}
+
+void LumosServer::unsubscribe_params(ParamsHandle handle)
+{
+    _impl->unsubscribe_params(handle);
+}
+
+LumosServer::Params LumosServer::params() const
+{
+    return _impl->params();
+}
+
 bool operator==(const LumosServer::Dance& lhs, const LumosServer::Dance& rhs)
 {
     return (rhs.data == lhs.data) && (rhs.len == lhs.len);
@@ -61,6 +78,50 @@ std::ostream& operator<<(std::ostream& str, LumosServer::Dance const& dance)
         str << (it + 1 != dance.data.end() ? ", " : "]\n");
     }
     str << "    len: " << dance.len << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const LumosServer::Coord& lhs, const LumosServer::Coord& rhs)
+{
+    return ((std::isnan(rhs.x) && std::isnan(lhs.x)) || rhs.x == lhs.x) &&
+           ((std::isnan(rhs.y) && std::isnan(lhs.y)) || rhs.y == lhs.y);
+}
+
+std::ostream& operator<<(std::ostream& str, LumosServer::Coord const& coord)
+{
+    str << std::setprecision(15);
+    str << "coord:" << '\n' << "{\n";
+    str << "    x: " << coord.x << '\n';
+    str << "    y: " << coord.y << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const LumosServer::Params& lhs, const LumosServer::Params& rhs)
+{
+    return ((std::isnan(rhs.lon) && std::isnan(lhs.lon)) || rhs.lon == lhs.lon) &&
+           ((std::isnan(rhs.lat) && std::isnan(lhs.lat)) || rhs.lat == lhs.lat) &&
+           ((std::isnan(rhs.alt) && std::isnan(lhs.alt)) || rhs.alt == lhs.alt) &&
+           (rhs.gps_start == lhs.gps_start) &&
+           ((std::isnan(rhs.gf_alt) && std::isnan(lhs.gf_alt)) || rhs.gf_alt == lhs.gf_alt) &&
+           (rhs.vertices == lhs.vertices);
+}
+
+std::ostream& operator<<(std::ostream& str, LumosServer::Params const& params)
+{
+    str << std::setprecision(15);
+    str << "params:" << '\n' << "{\n";
+    str << "    lon: " << params.lon << '\n';
+    str << "    lat: " << params.lat << '\n';
+    str << "    alt: " << params.alt << '\n';
+    str << "    gps_start: " << params.gps_start << '\n';
+    str << "    gf_alt: " << params.gf_alt << '\n';
+    str << "    vertices: [";
+    for (auto it = params.vertices.begin(); it != params.vertices.end(); ++it) {
+        str << *it;
+        str << (it + 1 != params.vertices.end() ? ", " : "]\n");
+    }
     str << '}';
     return str;
 }

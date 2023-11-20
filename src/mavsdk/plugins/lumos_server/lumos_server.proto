@@ -8,6 +8,7 @@ service LumosServerService {
     rpc SetDroneInfo(SetDroneInfoRequest) returns(SetDroneInfoResponse) {option (mavsdk.options.async_type) = SYNC;}
     rpc SetCompanionStatus(SetCompanionStatusRequest) returns(SetCompanionStatusResponse) {option (mavsdk.options.async_type) = SYNC;}
     rpc SubscribeDance(SubscribeDanceRequest) returns(stream DanceResponse) {}
+    rpc SubscribeParams(SubscribeParamsRequest) returns(stream ParamsResponse) {}
 }
 
 message SetDroneInfoRequest {
@@ -32,6 +33,26 @@ message DanceResponse{
 message Dance {
     repeated uint32 data = 1;
     uint32 len = 2;
+}
+
+message SubscribeParamsRequest {}
+message ParamsResponse {
+    Params params = 1;
+}
+
+message Coord {
+	float x = 1;
+	float y = 2;
+}
+
+message Params {
+	float lon = 1;
+    float lat = 2;
+    float alt = 3;
+    int32 gps_start = 4;
+    float gf_alt = 5;
+
+	repeated Coord vertices = 6;
 }
 
 message LumosResult {

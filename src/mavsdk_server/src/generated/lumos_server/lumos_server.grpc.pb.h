@@ -60,6 +60,15 @@ class LumosServerService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::DanceResponse>> PrepareAsyncSubscribeDance(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::DanceResponse>>(PrepareAsyncSubscribeDanceRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::lumos_server::ParamsResponse>> SubscribeParams(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::lumos_server::ParamsResponse>>(SubscribeParamsRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ParamsResponse>> AsyncSubscribeParams(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ParamsResponse>>(AsyncSubscribeParamsRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ParamsResponse>> PrepareAsyncSubscribeParams(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ParamsResponse>>(PrepareAsyncSubscribeParamsRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -68,6 +77,7 @@ class LumosServerService final {
       virtual void SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SubscribeDance(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::DanceResponse>* reactor) = 0;
+      virtual void SubscribeParams(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::ParamsResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -80,6 +90,9 @@ class LumosServerService final {
     virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::lumos_server::DanceResponse>* SubscribeDanceRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::DanceResponse>* AsyncSubscribeDanceRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::DanceResponse>* PrepareAsyncSubscribeDanceRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::lumos_server::ParamsResponse>* SubscribeParamsRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ParamsResponse>* AsyncSubscribeParamsRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ParamsResponse>* PrepareAsyncSubscribeParamsRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -107,6 +120,15 @@ class LumosServerService final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::DanceResponse>> PrepareAsyncSubscribeDance(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::DanceResponse>>(PrepareAsyncSubscribeDanceRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::lumos_server::ParamsResponse>> SubscribeParams(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::lumos_server::ParamsResponse>>(SubscribeParamsRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ParamsResponse>> AsyncSubscribeParams(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ParamsResponse>>(AsyncSubscribeParamsRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ParamsResponse>> PrepareAsyncSubscribeParams(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ParamsResponse>>(PrepareAsyncSubscribeParamsRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -115,6 +137,7 @@ class LumosServerService final {
       void SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response, std::function<void(::grpc::Status)>) override;
       void SetCompanionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SubscribeDance(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::DanceResponse>* reactor) override;
+      void SubscribeParams(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::ParamsResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -133,9 +156,13 @@ class LumosServerService final {
     ::grpc::ClientReader< ::mavsdk::rpc::lumos_server::DanceResponse>* SubscribeDanceRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::DanceResponse>* AsyncSubscribeDanceRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::DanceResponse>* PrepareAsyncSubscribeDanceRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::mavsdk::rpc::lumos_server::ParamsResponse>* SubscribeParamsRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ParamsResponse>* AsyncSubscribeParamsRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ParamsResponse>* PrepareAsyncSubscribeParamsRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SetDroneInfo_;
     const ::grpc::internal::RpcMethod rpcmethod_SetCompanionStatus_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeDance_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubscribeParams_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -146,6 +173,7 @@ class LumosServerService final {
     virtual ::grpc::Status SetDroneInfo(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest* request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response);
     virtual ::grpc::Status SetCompanionStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SetCompanionStatusRequest* request, ::mavsdk::rpc::lumos_server::SetCompanionStatusResponse* response);
     virtual ::grpc::Status SubscribeDance(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::DanceResponse>* writer);
+    virtual ::grpc::Status SubscribeParams(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ParamsResponse>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_SetDroneInfo : public BaseClass {
@@ -207,7 +235,27 @@ class LumosServerService final {
       ::grpc::Service::RequestAsyncServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SetDroneInfo<WithAsyncMethod_SetCompanionStatus<WithAsyncMethod_SubscribeDance<Service > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_SubscribeParams : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SubscribeParams() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_SubscribeParams() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeParams(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ParamsResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeParams(::grpc::ServerContext* context, ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* request, ::grpc::ServerAsyncWriter< ::mavsdk::rpc::lumos_server::ParamsResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(3, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SetDroneInfo<WithAsyncMethod_SetCompanionStatus<WithAsyncMethod_SubscribeDance<WithAsyncMethod_SubscribeParams<Service > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SetDroneInfo : public BaseClass {
    private:
@@ -284,7 +332,29 @@ class LumosServerService final {
     virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::lumos_server::DanceResponse>* SubscribeDance(
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest* /*request*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SetDroneInfo<WithCallbackMethod_SetCompanionStatus<WithCallbackMethod_SubscribeDance<Service > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SubscribeParams : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SubscribeParams() {
+      ::grpc::Service::MarkMethodCallback(3,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::mavsdk::rpc::lumos_server::SubscribeParamsRequest, ::mavsdk::rpc::lumos_server::ParamsResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* request) { return this->SubscribeParams(context, request); }));
+    }
+    ~WithCallbackMethod_SubscribeParams() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeParams(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ParamsResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::lumos_server::ParamsResponse>* SubscribeParams(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* /*request*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_SetDroneInfo<WithCallbackMethod_SetCompanionStatus<WithCallbackMethod_SubscribeDance<WithCallbackMethod_SubscribeParams<Service > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SetDroneInfo : public BaseClass {
@@ -333,6 +403,23 @@ class LumosServerService final {
     }
     // disable synchronous version of this method
     ::grpc::Status SubscribeDance(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeDanceRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::DanceResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubscribeParams : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SubscribeParams() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_SubscribeParams() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeParams(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ParamsResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -395,6 +482,26 @@ class LumosServerService final {
     }
     void RequestSubscribeDance(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubscribeParams : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SubscribeParams() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_SubscribeParams() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeParams(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ParamsResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeParams(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(3, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -461,6 +568,28 @@ class LumosServerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeDance(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SubscribeParams : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SubscribeParams() {
+      ::grpc::Service::MarkMethodRawCallback(3,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->SubscribeParams(context, request); }));
+    }
+    ~WithRawCallbackMethod_SubscribeParams() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeParams(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ParamsResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeParams(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -545,8 +674,35 @@ class LumosServerService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedSubscribeDance(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::lumos_server::SubscribeDanceRequest,::mavsdk::rpc::lumos_server::DanceResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_SubscribeDance<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SetDroneInfo<WithStreamedUnaryMethod_SetCompanionStatus<WithSplitStreamingMethod_SubscribeDance<Service > > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_SubscribeParams : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_SubscribeParams() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::mavsdk::rpc::lumos_server::SubscribeParamsRequest, ::mavsdk::rpc::lumos_server::ParamsResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::mavsdk::rpc::lumos_server::SubscribeParamsRequest, ::mavsdk::rpc::lumos_server::ParamsResponse>* streamer) {
+                       return this->StreamedSubscribeParams(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_SubscribeParams() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubscribeParams(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeParamsRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ParamsResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSubscribeParams(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::lumos_server::SubscribeParamsRequest,::mavsdk::rpc::lumos_server::ParamsResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_SubscribeDance<WithSplitStreamingMethod_SubscribeParams<Service > > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_SetDroneInfo<WithStreamedUnaryMethod_SetCompanionStatus<WithSplitStreamingMethod_SubscribeDance<WithSplitStreamingMethod_SubscribeParams<Service > > > > StreamedService;
 };
 
 }  // namespace lumos_server

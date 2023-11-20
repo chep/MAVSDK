@@ -64,6 +64,9 @@ namespace lumos_server {
 class CompanionStatus;
 struct CompanionStatusDefaultTypeInternal;
 extern CompanionStatusDefaultTypeInternal _CompanionStatus_default_instance_;
+class Coord;
+struct CoordDefaultTypeInternal;
+extern CoordDefaultTypeInternal _Coord_default_instance_;
 class Dance;
 struct DanceDefaultTypeInternal;
 extern DanceDefaultTypeInternal _Dance_default_instance_;
@@ -76,6 +79,12 @@ extern DroneInfoDefaultTypeInternal _DroneInfo_default_instance_;
 class LumosResult;
 struct LumosResultDefaultTypeInternal;
 extern LumosResultDefaultTypeInternal _LumosResult_default_instance_;
+class Params;
+struct ParamsDefaultTypeInternal;
+extern ParamsDefaultTypeInternal _Params_default_instance_;
+class ParamsResponse;
+struct ParamsResponseDefaultTypeInternal;
+extern ParamsResponseDefaultTypeInternal _ParamsResponse_default_instance_;
 class SetCompanionStatusRequest;
 struct SetCompanionStatusRequestDefaultTypeInternal;
 extern SetCompanionStatusRequestDefaultTypeInternal _SetCompanionStatusRequest_default_instance_;
@@ -91,6 +100,9 @@ extern SetDroneInfoResponseDefaultTypeInternal _SetDroneInfoResponse_default_ins
 class SubscribeDanceRequest;
 struct SubscribeDanceRequestDefaultTypeInternal;
 extern SubscribeDanceRequestDefaultTypeInternal _SubscribeDanceRequest_default_instance_;
+class SubscribeParamsRequest;
+struct SubscribeParamsRequestDefaultTypeInternal;
+extern SubscribeParamsRequestDefaultTypeInternal _SubscribeParamsRequest_default_instance_;
 }  // namespace lumos_server
 }  // namespace rpc
 }  // namespace mavsdk
@@ -140,6 +152,142 @@ inline bool LumosResult_Result_Parse(absl::string_view name, LumosResult_Result*
 
 
 // -------------------------------------------------------------------
+
+class SubscribeParamsRequest final :
+    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.SubscribeParamsRequest) */ {
+ public:
+  inline SubscribeParamsRequest() : SubscribeParamsRequest(nullptr) {}
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR SubscribeParamsRequest(::google::protobuf::internal::ConstantInitialized);
+
+  inline SubscribeParamsRequest(const SubscribeParamsRequest& from)
+      : SubscribeParamsRequest(nullptr, from) {}
+  SubscribeParamsRequest(SubscribeParamsRequest&& from) noexcept
+    : SubscribeParamsRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SubscribeParamsRequest& operator=(const SubscribeParamsRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubscribeParamsRequest& operator=(SubscribeParamsRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubscribeParamsRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubscribeParamsRequest* internal_default_instance() {
+    return reinterpret_cast<const SubscribeParamsRequest*>(
+               &_SubscribeParamsRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(SubscribeParamsRequest& a, SubscribeParamsRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SubscribeParamsRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubscribeParamsRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SubscribeParamsRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SubscribeParamsRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SubscribeParamsRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SubscribeParamsRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.SubscribeParamsRequest";
+  }
+  protected:
+  explicit SubscribeParamsRequest(::google::protobuf::Arena* arena);
+  SubscribeParamsRequest(::google::protobuf::Arena* arena, const SubscribeParamsRequest& from);
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.SubscribeParamsRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
 
 class SubscribeDanceRequest final :
     public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.SubscribeDanceRequest) */ {
@@ -608,7 +756,7 @@ class LumosResult final :
                &_LumosResult_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    11;
 
   friend void swap(LumosResult& a, LumosResult& b) {
     a.Swap(&b);
@@ -821,7 +969,7 @@ class DroneInfo final :
                &_DroneInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    12;
 
   friend void swap(DroneInfo& a, DroneInfo& b) {
     a.Swap(&b);
@@ -1175,6 +1323,193 @@ class Dance final :
   friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
 };// -------------------------------------------------------------------
 
+class Coord final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.Coord) */ {
+ public:
+  inline Coord() : Coord(nullptr) {}
+  ~Coord() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Coord(::google::protobuf::internal::ConstantInitialized);
+
+  inline Coord(const Coord& from)
+      : Coord(nullptr, from) {}
+  Coord(Coord&& from) noexcept
+    : Coord() {
+    *this = ::std::move(from);
+  }
+
+  inline Coord& operator=(const Coord& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Coord& operator=(Coord&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Coord& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Coord* internal_default_instance() {
+    return reinterpret_cast<const Coord*>(
+               &_Coord_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(Coord& a, Coord& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Coord* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Coord* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Coord* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Coord>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Coord& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Coord& from) {
+    Coord::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Coord* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.Coord";
+  }
+  protected:
+  explicit Coord(::google::protobuf::Arena* arena);
+  Coord(::google::protobuf::Arena* arena, const Coord& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+  };
+  // float x = 1;
+  void clear_x() ;
+  float x() const;
+  void set_x(float value);
+
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+
+  public:
+  // float y = 2;
+  void clear_y() ;
+  float y() const;
+  void set_y(float value);
+
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.Coord)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    float x_;
+    float y_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
 class CompanionStatus final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.CompanionStatus) */ {
  public:
@@ -1234,7 +1569,7 @@ class CompanionStatus final :
                &_CompanionStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    13;
 
   friend void swap(CompanionStatus& a, CompanionStatus& b) {
     a.Swap(&b);
@@ -1736,6 +2071,249 @@ class SetCompanionStatusRequest final :
   friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
 };// -------------------------------------------------------------------
 
+class Params final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.Params) */ {
+ public:
+  inline Params() : Params(nullptr) {}
+  ~Params() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Params(::google::protobuf::internal::ConstantInitialized);
+
+  inline Params(const Params& from)
+      : Params(nullptr, from) {}
+  Params(Params&& from) noexcept
+    : Params() {
+    *this = ::std::move(from);
+  }
+
+  inline Params& operator=(const Params& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Params& operator=(Params&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Params& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Params* internal_default_instance() {
+    return reinterpret_cast<const Params*>(
+               &_Params_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(Params& a, Params& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Params* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Params* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Params* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Params>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Params& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Params& from) {
+    Params::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Params* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.Params";
+  }
+  protected:
+  explicit Params(::google::protobuf::Arena* arena);
+  Params(::google::protobuf::Arena* arena, const Params& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kVerticesFieldNumber = 6,
+    kLonFieldNumber = 1,
+    kLatFieldNumber = 2,
+    kAltFieldNumber = 3,
+    kGpsStartFieldNumber = 4,
+    kGfAltFieldNumber = 5,
+  };
+  // repeated .mavsdk.rpc.lumos_server.Coord vertices = 6;
+  int vertices_size() const;
+  private:
+  int _internal_vertices_size() const;
+
+  public:
+  void clear_vertices() ;
+  ::mavsdk::rpc::lumos_server::Coord* mutable_vertices(int index);
+  ::google::protobuf::RepeatedPtrField< ::mavsdk::rpc::lumos_server::Coord >*
+      mutable_vertices();
+  private:
+  const ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::lumos_server::Coord>& _internal_vertices() const;
+  ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::lumos_server::Coord>* _internal_mutable_vertices();
+  public:
+  const ::mavsdk::rpc::lumos_server::Coord& vertices(int index) const;
+  ::mavsdk::rpc::lumos_server::Coord* add_vertices();
+  const ::google::protobuf::RepeatedPtrField< ::mavsdk::rpc::lumos_server::Coord >&
+      vertices() const;
+  // float lon = 1;
+  void clear_lon() ;
+  float lon() const;
+  void set_lon(float value);
+
+  private:
+  float _internal_lon() const;
+  void _internal_set_lon(float value);
+
+  public:
+  // float lat = 2;
+  void clear_lat() ;
+  float lat() const;
+  void set_lat(float value);
+
+  private:
+  float _internal_lat() const;
+  void _internal_set_lat(float value);
+
+  public:
+  // float alt = 3;
+  void clear_alt() ;
+  float alt() const;
+  void set_alt(float value);
+
+  private:
+  float _internal_alt() const;
+  void _internal_set_alt(float value);
+
+  public:
+  // int32 gps_start = 4;
+  void clear_gps_start() ;
+  ::int32_t gps_start() const;
+  void set_gps_start(::int32_t value);
+
+  private:
+  ::int32_t _internal_gps_start() const;
+  void _internal_set_gps_start(::int32_t value);
+
+  public:
+  // float gf_alt = 5;
+  void clear_gf_alt() ;
+  float gf_alt() const;
+  void set_gf_alt(float value);
+
+  private:
+  float _internal_gf_alt() const;
+  void _internal_set_gf_alt(float value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.Params)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 6, 1,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::RepeatedPtrField< ::mavsdk::rpc::lumos_server::Coord > vertices_;
+    float lon_;
+    float lat_;
+    float alt_;
+    ::int32_t gps_start_;
+    float gf_alt_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
 class DanceResponse final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.DanceResponse) */ {
  public:
@@ -1911,6 +2489,187 @@ class DanceResponse final :
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     ::mavsdk::rpc::lumos_server::Dance* dance_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
+class ParamsResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.ParamsResponse) */ {
+ public:
+  inline ParamsResponse() : ParamsResponse(nullptr) {}
+  ~ParamsResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR ParamsResponse(::google::protobuf::internal::ConstantInitialized);
+
+  inline ParamsResponse(const ParamsResponse& from)
+      : ParamsResponse(nullptr, from) {}
+  ParamsResponse(ParamsResponse&& from) noexcept
+    : ParamsResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ParamsResponse& operator=(const ParamsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ParamsResponse& operator=(ParamsResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ParamsResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ParamsResponse* internal_default_instance() {
+    return reinterpret_cast<const ParamsResponse*>(
+               &_ParamsResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(ParamsResponse& a, ParamsResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ParamsResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ParamsResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ParamsResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ParamsResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ParamsResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const ParamsResponse& from) {
+    ParamsResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(ParamsResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.ParamsResponse";
+  }
+  protected:
+  explicit ParamsResponse(::google::protobuf::Arena* arena);
+  ParamsResponse(::google::protobuf::Arena* arena, const ParamsResponse& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kParamsFieldNumber = 1,
+  };
+  // .mavsdk.rpc.lumos_server.Params params = 1;
+  bool has_params() const;
+  void clear_params() ;
+  const ::mavsdk::rpc::lumos_server::Params& params() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::lumos_server::Params* release_params();
+  ::mavsdk::rpc::lumos_server::Params* mutable_params();
+  void set_allocated_params(::mavsdk::rpc::lumos_server::Params* value);
+  void unsafe_arena_set_allocated_params(::mavsdk::rpc::lumos_server::Params* value);
+  ::mavsdk::rpc::lumos_server::Params* unsafe_arena_release_params();
+
+  private:
+  const ::mavsdk::rpc::lumos_server::Params& _internal_params() const;
+  ::mavsdk::rpc::lumos_server::Params* _internal_mutable_params();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.ParamsResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::lumos_server::Params* params_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -2311,6 +3070,328 @@ inline void Dance::_internal_set_len(::uint32_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.len_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SubscribeParamsRequest
+
+// -------------------------------------------------------------------
+
+// ParamsResponse
+
+// .mavsdk.rpc.lumos_server.Params params = 1;
+inline bool ParamsResponse::has_params() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.params_ != nullptr);
+  return value;
+}
+inline void ParamsResponse::clear_params() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.params_ != nullptr) _impl_.params_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::lumos_server::Params& ParamsResponse::_internal_params() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::mavsdk::rpc::lumos_server::Params* p = _impl_.params_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::lumos_server::Params&>(::mavsdk::rpc::lumos_server::_Params_default_instance_);
+}
+inline const ::mavsdk::rpc::lumos_server::Params& ParamsResponse::params() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.ParamsResponse.params)
+  return _internal_params();
+}
+inline void ParamsResponse::unsafe_arena_set_allocated_params(::mavsdk::rpc::lumos_server::Params* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.params_);
+  }
+  _impl_.params_ = reinterpret_cast<::mavsdk::rpc::lumos_server::Params*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.lumos_server.ParamsResponse.params)
+}
+inline ::mavsdk::rpc::lumos_server::Params* ParamsResponse::release_params() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::lumos_server::Params* released = _impl_.params_;
+  _impl_.params_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::mavsdk::rpc::lumos_server::Params* ParamsResponse::unsafe_arena_release_params() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.lumos_server.ParamsResponse.params)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::lumos_server::Params* temp = _impl_.params_;
+  _impl_.params_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::lumos_server::Params* ParamsResponse::_internal_mutable_params() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.params_ == nullptr) {
+    auto* p = CreateMaybeMessage<::mavsdk::rpc::lumos_server::Params>(GetArena());
+    _impl_.params_ = reinterpret_cast<::mavsdk::rpc::lumos_server::Params*>(p);
+  }
+  return _impl_.params_;
+}
+inline ::mavsdk::rpc::lumos_server::Params* ParamsResponse::mutable_params() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::mavsdk::rpc::lumos_server::Params* _msg = _internal_mutable_params();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.lumos_server.ParamsResponse.params)
+  return _msg;
+}
+inline void ParamsResponse::set_allocated_params(::mavsdk::rpc::lumos_server::Params* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::mavsdk::rpc::lumos_server::Params*>(_impl_.params_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::mavsdk::rpc::lumos_server::Params*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.params_ = reinterpret_cast<::mavsdk::rpc::lumos_server::Params*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.lumos_server.ParamsResponse.params)
+}
+
+// -------------------------------------------------------------------
+
+// Coord
+
+// float x = 1;
+inline void Coord::clear_x() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.x_ = 0;
+}
+inline float Coord::x() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.Coord.x)
+  return _internal_x();
+}
+inline void Coord::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.Coord.x)
+}
+inline float Coord::_internal_x() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.x_;
+}
+inline void Coord::_internal_set_x(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.x_ = value;
+}
+
+// float y = 2;
+inline void Coord::clear_y() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.y_ = 0;
+}
+inline float Coord::y() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.Coord.y)
+  return _internal_y();
+}
+inline void Coord::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.Coord.y)
+}
+inline float Coord::_internal_y() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.y_;
+}
+inline void Coord::_internal_set_y(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.y_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// Params
+
+// float lon = 1;
+inline void Params::clear_lon() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.lon_ = 0;
+}
+inline float Params::lon() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.Params.lon)
+  return _internal_lon();
+}
+inline void Params::set_lon(float value) {
+  _internal_set_lon(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.Params.lon)
+}
+inline float Params::_internal_lon() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.lon_;
+}
+inline void Params::_internal_set_lon(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.lon_ = value;
+}
+
+// float lat = 2;
+inline void Params::clear_lat() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.lat_ = 0;
+}
+inline float Params::lat() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.Params.lat)
+  return _internal_lat();
+}
+inline void Params::set_lat(float value) {
+  _internal_set_lat(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.Params.lat)
+}
+inline float Params::_internal_lat() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.lat_;
+}
+inline void Params::_internal_set_lat(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.lat_ = value;
+}
+
+// float alt = 3;
+inline void Params::clear_alt() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.alt_ = 0;
+}
+inline float Params::alt() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.Params.alt)
+  return _internal_alt();
+}
+inline void Params::set_alt(float value) {
+  _internal_set_alt(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.Params.alt)
+}
+inline float Params::_internal_alt() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.alt_;
+}
+inline void Params::_internal_set_alt(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.alt_ = value;
+}
+
+// int32 gps_start = 4;
+inline void Params::clear_gps_start() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.gps_start_ = 0;
+}
+inline ::int32_t Params::gps_start() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.Params.gps_start)
+  return _internal_gps_start();
+}
+inline void Params::set_gps_start(::int32_t value) {
+  _internal_set_gps_start(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.Params.gps_start)
+}
+inline ::int32_t Params::_internal_gps_start() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.gps_start_;
+}
+inline void Params::_internal_set_gps_start(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.gps_start_ = value;
+}
+
+// float gf_alt = 5;
+inline void Params::clear_gf_alt() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.gf_alt_ = 0;
+}
+inline float Params::gf_alt() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.Params.gf_alt)
+  return _internal_gf_alt();
+}
+inline void Params::set_gf_alt(float value) {
+  _internal_set_gf_alt(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.Params.gf_alt)
+}
+inline float Params::_internal_gf_alt() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.gf_alt_;
+}
+inline void Params::_internal_set_gf_alt(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.gf_alt_ = value;
+}
+
+// repeated .mavsdk.rpc.lumos_server.Coord vertices = 6;
+inline int Params::_internal_vertices_size() const {
+  return _internal_vertices().size();
+}
+inline int Params::vertices_size() const {
+  return _internal_vertices_size();
+}
+inline void Params::clear_vertices() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.vertices_.Clear();
+}
+inline ::mavsdk::rpc::lumos_server::Coord* Params::mutable_vertices(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.lumos_server.Params.vertices)
+  return _internal_mutable_vertices()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::lumos_server::Coord>* Params::mutable_vertices()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:mavsdk.rpc.lumos_server.Params.vertices)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_vertices();
+}
+inline const ::mavsdk::rpc::lumos_server::Coord& Params::vertices(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.Params.vertices)
+  return _internal_vertices().Get(index);
+}
+inline ::mavsdk::rpc::lumos_server::Coord* Params::add_vertices() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::mavsdk::rpc::lumos_server::Coord* _add = _internal_mutable_vertices()->Add();
+  // @@protoc_insertion_point(field_add:mavsdk.rpc.lumos_server.Params.vertices)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::lumos_server::Coord>& Params::vertices() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:mavsdk.rpc.lumos_server.Params.vertices)
+  return _internal_vertices();
+}
+inline const ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::lumos_server::Coord>&
+Params::_internal_vertices() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.vertices_;
+}
+inline ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::lumos_server::Coord>*
+Params::_internal_mutable_vertices() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.vertices_;
 }
 
 // -------------------------------------------------------------------

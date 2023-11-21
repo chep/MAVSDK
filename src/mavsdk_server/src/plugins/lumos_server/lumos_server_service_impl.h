@@ -529,6 +529,47 @@ public:
         return grpc::Status::OK;
     }
 
+    grpc::Status SubscribeLandCmd(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::lumos_server::SubscribeLandCmdRequest* /* request */,
+        grpc::ServerWriter<rpc::lumos_server::LandCmdResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        const mavsdk::LumosServer::LandCmdHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_land_cmd(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const int32_t land_cmd) {
+                    rpc::lumos_server::LandCmdResponse rpc_response;
+
+                    rpc_response.set_unused(land_cmd);
+
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_land_cmd(handle);
+
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
     void stop()
     {
         _stopped.store(true);

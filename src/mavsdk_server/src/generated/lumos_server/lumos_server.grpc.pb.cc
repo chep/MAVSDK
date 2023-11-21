@@ -31,6 +31,7 @@ static const char* LumosServerService_method_names[] = {
   "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeStart",
   "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeLocalPos",
   "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeGlobalPos",
+  "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeLandCmd",
 };
 
 std::unique_ptr< LumosServerService::Stub> LumosServerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -47,6 +48,7 @@ LumosServerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>&
   , rpcmethod_SubscribeStart_(LumosServerService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SubscribeLocalPos_(LumosServerService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SubscribeGlobalPos_(LumosServerService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeLandCmd_(LumosServerService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::Status LumosServerService::Stub::SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response) {
@@ -175,6 +177,22 @@ void LumosServerService::Stub::async::SubscribeGlobalPos(::grpc::ClientContext* 
   return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::GlobalPosResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeGlobalPos_, context, request, false, nullptr);
 }
 
+::grpc::ClientReader< ::mavsdk::rpc::lumos_server::LandCmdResponse>* LumosServerService::Stub::SubscribeLandCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::lumos_server::LandCmdResponse>::Create(channel_.get(), rpcmethod_SubscribeLandCmd_, context, request);
+}
+
+void LumosServerService::Stub::async::SubscribeLandCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::LandCmdResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::lumos_server::LandCmdResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeLandCmd_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::LandCmdResponse>* LumosServerService::Stub::AsyncSubscribeLandCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::LandCmdResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeLandCmd_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::LandCmdResponse>* LumosServerService::Stub::PrepareAsyncSubscribeLandCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::LandCmdResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeLandCmd_, context, request, false, nullptr);
+}
+
 LumosServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LumosServerService_method_names[0],
@@ -246,6 +264,16 @@ LumosServerService::Service::Service() {
              ::grpc::ServerWriter<::mavsdk::rpc::lumos_server::GlobalPosResponse>* writer) {
                return service->SubscribeGlobalPos(ctx, req, writer);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LumosServerService_method_names[7],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< LumosServerService::Service, ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest, ::mavsdk::rpc::lumos_server::LandCmdResponse>(
+          [](LumosServerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::lumos_server::LandCmdResponse>* writer) {
+               return service->SubscribeLandCmd(ctx, req, writer);
+             }, this)));
 }
 
 LumosServerService::Service::~Service() {
@@ -294,6 +322,13 @@ LumosServerService::Service::~Service() {
 }
 
 ::grpc::Status LumosServerService::Service::SubscribeGlobalPos(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeGlobalPosRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::GlobalPosResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LumosServerService::Service::SubscribeLandCmd(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::LandCmdResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

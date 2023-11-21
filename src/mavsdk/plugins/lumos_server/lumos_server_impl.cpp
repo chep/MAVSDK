@@ -60,6 +60,10 @@ void LumosServerImpl::init()
         MAV_CMD_DO_SET_MODE,
         std::bind(&LumosServerImpl::do_set_mode_handler, this, std::placeholders::_1),
         nullptr);
+    _server_component_impl->register_mavlink_command_handler(
+        MAV_CMD_NAV_LAND,
+        std::bind(&LumosServerImpl::nav_land_handler, this, std::placeholders::_1),
+        nullptr);
 }
 
 void LumosServerImpl::deinit()
@@ -356,6 +360,35 @@ LumosServer::GlobalPosition LumosServerImpl::global_pos()
         double(_PX4_status.lon) / 1E7,
         float(_PX4_status.alt) / 1000.f};
     return pos;
+}
+
+LumosServer::LandCmdHandle
+LumosServerImpl::subscribe_land_cmd(const LumosServer::LandCmdCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    return _land_cmd_callbacks.subscribe(callback);
+}
+
+void LumosServerImpl::unsubscribe_land_cmd(LumosServer::LandCmdHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _land_cmd_callbacks.unsubscribe(handle);
+}
+
+int32_t LumosServerImpl::land_cmd()
+{
+    return 0;
+}
+
+std::optional<mavlink_command_ack_t>
+LumosServerImpl::nav_land_handler(const MavlinkCommandReceiver::CommandLong& command)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _land_cmd_callbacks.queue(
+        0, [this](const auto& func) { _server_component_impl->call_user_callback(func); });
+
+    return _server_component_impl->make_command_ack_message(
+        command, MAV_RESULT::MAV_RESULT_ACCEPTED);
 }
 
 } // namespace mavsdk

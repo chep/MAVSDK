@@ -82,6 +82,9 @@ extern GlobalPosResponseDefaultTypeInternal _GlobalPosResponse_default_instance_
 class GlobalPosition;
 struct GlobalPositionDefaultTypeInternal;
 extern GlobalPositionDefaultTypeInternal _GlobalPosition_default_instance_;
+class LandCmdResponse;
+struct LandCmdResponseDefaultTypeInternal;
+extern LandCmdResponseDefaultTypeInternal _LandCmdResponse_default_instance_;
 class LocalPosResponse;
 struct LocalPosResponseDefaultTypeInternal;
 extern LocalPosResponseDefaultTypeInternal _LocalPosResponse_default_instance_;
@@ -118,6 +121,9 @@ extern SubscribeDanceRequestDefaultTypeInternal _SubscribeDanceRequest_default_i
 class SubscribeGlobalPosRequest;
 struct SubscribeGlobalPosRequestDefaultTypeInternal;
 extern SubscribeGlobalPosRequestDefaultTypeInternal _SubscribeGlobalPosRequest_default_instance_;
+class SubscribeLandCmdRequest;
+struct SubscribeLandCmdRequestDefaultTypeInternal;
+extern SubscribeLandCmdRequestDefaultTypeInternal _SubscribeLandCmdRequest_default_instance_;
 class SubscribeLocalPosRequest;
 struct SubscribeLocalPosRequestDefaultTypeInternal;
 extern SubscribeLocalPosRequestDefaultTypeInternal _SubscribeLocalPosRequest_default_instance_;
@@ -563,6 +569,142 @@ class SubscribeLocalPosRequest final :
   // accessors -------------------------------------------------------
 
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.SubscribeLocalPosRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
+class SubscribeLandCmdRequest final :
+    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.SubscribeLandCmdRequest) */ {
+ public:
+  inline SubscribeLandCmdRequest() : SubscribeLandCmdRequest(nullptr) {}
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR SubscribeLandCmdRequest(::google::protobuf::internal::ConstantInitialized);
+
+  inline SubscribeLandCmdRequest(const SubscribeLandCmdRequest& from)
+      : SubscribeLandCmdRequest(nullptr, from) {}
+  SubscribeLandCmdRequest(SubscribeLandCmdRequest&& from) noexcept
+    : SubscribeLandCmdRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SubscribeLandCmdRequest& operator=(const SubscribeLandCmdRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubscribeLandCmdRequest& operator=(SubscribeLandCmdRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubscribeLandCmdRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubscribeLandCmdRequest* internal_default_instance() {
+    return reinterpret_cast<const SubscribeLandCmdRequest*>(
+               &_SubscribeLandCmdRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    22;
+
+  friend void swap(SubscribeLandCmdRequest& a, SubscribeLandCmdRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SubscribeLandCmdRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubscribeLandCmdRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SubscribeLandCmdRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SubscribeLandCmdRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SubscribeLandCmdRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SubscribeLandCmdRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.SubscribeLandCmdRequest";
+  }
+  protected:
+  explicit SubscribeLandCmdRequest(::google::protobuf::Arena* arena);
+  SubscribeLandCmdRequest(::google::protobuf::Arena* arena, const SubscribeLandCmdRequest& from);
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.SubscribeLandCmdRequest)
  private:
   class _Internal;
 
@@ -1709,6 +1851,181 @@ class LumosResult final :
                               ::google::protobuf::Arena* arena, const Impl_& from);
     ::google::protobuf::internal::ArenaStringPtr result_str_;
     int result_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
+class LandCmdResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.LandCmdResponse) */ {
+ public:
+  inline LandCmdResponse() : LandCmdResponse(nullptr) {}
+  ~LandCmdResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR LandCmdResponse(::google::protobuf::internal::ConstantInitialized);
+
+  inline LandCmdResponse(const LandCmdResponse& from)
+      : LandCmdResponse(nullptr, from) {}
+  LandCmdResponse(LandCmdResponse&& from) noexcept
+    : LandCmdResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline LandCmdResponse& operator=(const LandCmdResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline LandCmdResponse& operator=(LandCmdResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const LandCmdResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const LandCmdResponse* internal_default_instance() {
+    return reinterpret_cast<const LandCmdResponse*>(
+               &_LandCmdResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    23;
+
+  friend void swap(LandCmdResponse& a, LandCmdResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(LandCmdResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(LandCmdResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  LandCmdResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LandCmdResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const LandCmdResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const LandCmdResponse& from) {
+    LandCmdResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(LandCmdResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.LandCmdResponse";
+  }
+  protected:
+  explicit LandCmdResponse(::google::protobuf::Arena* arena);
+  LandCmdResponse(::google::protobuf::Arena* arena, const LandCmdResponse& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUnusedFieldNumber = 1,
+  };
+  // int32 unused = 1;
+  void clear_unused() ;
+  ::int32_t unused() const;
+  void set_unused(::int32_t value);
+
+  private:
+  ::int32_t _internal_unused() const;
+  void _internal_set_unused(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.LandCmdResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::int32_t unused_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -5423,6 +5740,37 @@ inline void CompanionStatus::_internal_set_rssi_xbee(::uint32_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.rssi_xbee_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SubscribeLandCmdRequest
+
+// -------------------------------------------------------------------
+
+// LandCmdResponse
+
+// int32 unused = 1;
+inline void LandCmdResponse::clear_unused() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.unused_ = 0;
+}
+inline ::int32_t LandCmdResponse::unused() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.LandCmdResponse.unused)
+  return _internal_unused();
+}
+inline void LandCmdResponse::set_unused(::int32_t value) {
+  _internal_set_unused(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.LandCmdResponse.unused)
+}
+inline ::int32_t LandCmdResponse::_internal_unused() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.unused_;
+}
+inline void LandCmdResponse::_internal_set_unused(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.unused_ = value;
 }
 
 #ifdef __GNUC__

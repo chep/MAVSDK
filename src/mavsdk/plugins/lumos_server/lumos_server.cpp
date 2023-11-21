@@ -110,6 +110,21 @@ LumosServer::GlobalPosition LumosServer::global_pos() const
     return _impl->global_pos();
 }
 
+LumosServer::LandCmdHandle LumosServer::subscribe_land_cmd(const LandCmdCallback& callback)
+{
+    return _impl->subscribe_land_cmd(callback);
+}
+
+void LumosServer::unsubscribe_land_cmd(LandCmdHandle handle)
+{
+    _impl->unsubscribe_land_cmd(handle);
+}
+
+int32_t LumosServer::land_cmd() const
+{
+    return _impl->land_cmd();
+}
+
 bool operator==(const LumosServer::Dance& lhs, const LumosServer::Dance& rhs)
 {
     return (rhs.data == lhs.data) && (rhs.len == lhs.len);

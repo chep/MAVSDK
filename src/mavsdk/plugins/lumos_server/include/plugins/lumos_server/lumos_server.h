@@ -386,6 +386,33 @@ public:
     GlobalPosition global_pos() const;
 
     /**
+     * @brief Callback type for subscribe_land_cmd.
+     */
+    using LandCmdCallback = std::function<void(int32_t)>;
+
+    /**
+     * @brief Handle type for subscribe_land_cmd.
+     */
+    using LandCmdHandle = Handle<int32_t>;
+
+    /**
+     * @brief
+     */
+    LandCmdHandle subscribe_land_cmd(const LandCmdCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_land_cmd
+     */
+    void unsubscribe_land_cmd(LandCmdHandle handle);
+
+    /**
+     * @brief Poll for 'int32_t' (blocking).
+     *
+     * @return One int32_t update.
+     */
+    int32_t land_cmd() const;
+
+    /**
      * @brief Copy constructor.
      */
     LumosServer(const LumosServer& other);

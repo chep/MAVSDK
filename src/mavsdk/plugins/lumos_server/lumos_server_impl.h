@@ -37,6 +37,9 @@ public:
     subscribe_global_pos(const LumosServer::GlobalPosCallback& callback);
     void unsubscribe_global_pos(LumosServer::GlobalPosHandle handle);
     LumosServer::GlobalPosition global_pos();
+    LumosServer::LandCmdHandle subscribe_land_cmd(const LumosServer::LandCmdCallback& callback);
+    void unsubscribe_land_cmd(LumosServer::LandCmdHandle handle);
+    int32_t land_cmd();
 
 private:
     struct PX4Status {
@@ -62,6 +65,8 @@ private:
     void local_position_ned_handler(const mavlink_message_t& msg);
     std::optional<mavlink_command_ack_t>
     do_set_mode_handler(const MavlinkCommandReceiver::CommandLong& command);
+    std::optional<mavlink_command_ack_t>
+    nav_land_handler(const MavlinkCommandReceiver::CommandLong& command);
 
     LumosServer::DroneInfo _drone_info;
     bool _info_never_set{true};
@@ -86,6 +91,7 @@ private:
     CallbackList<int32_t> _start_callbacks;
     CallbackList<LumosServer::Position> _local_pos_callbacks;
     CallbackList<LumosServer::GlobalPosition> _global_pos_callbacks;
+    CallbackList<int32_t> _land_cmd_callbacks;
 };
 
 } // namespace mavsdk

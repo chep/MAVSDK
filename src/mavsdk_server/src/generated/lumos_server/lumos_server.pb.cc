@@ -60,6 +60,18 @@ struct SubscribeLocalPosRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeLocalPosRequestDefaultTypeInternal _SubscribeLocalPosRequest_default_instance_;
       template <typename>
+PROTOBUF_CONSTEXPR SubscribeLandCmdRequest::SubscribeLandCmdRequest(::_pbi::ConstantInitialized) {}
+struct SubscribeLandCmdRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeLandCmdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeLandCmdRequestDefaultTypeInternal() {}
+  union {
+    SubscribeLandCmdRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeLandCmdRequestDefaultTypeInternal _SubscribeLandCmdRequest_default_instance_;
+      template <typename>
 PROTOBUF_CONSTEXPR SubscribeGlobalPosRequest::SubscribeGlobalPosRequest(::_pbi::ConstantInitialized) {}
 struct SubscribeGlobalPosRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SubscribeGlobalPosRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
@@ -169,6 +181,25 @@ struct LumosResultDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LumosResultDefaultTypeInternal _LumosResult_default_instance_;
+
+inline constexpr LandCmdResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : unused_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LandCmdResponse::LandCmdResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct LandCmdResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LandCmdResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LandCmdResponseDefaultTypeInternal() {}
+  union {
+    LandCmdResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LandCmdResponseDefaultTypeInternal _LandCmdResponse_default_instance_;
 
 inline constexpr GlobalPosition::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -417,7 +448,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace lumos_server
 }  // namespace rpc
 }  // namespace mavsdk
-static ::_pb::Metadata file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[22];
+static ::_pb::Metadata file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[24];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_lumos_5fserver_2flumos_5fserver_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_lumos_5fserver_2flumos_5fserver_2eproto = nullptr;
@@ -637,6 +668,23 @@ const ::uint32_t TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets[] 
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _impl_.dance_status_),
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _impl_.rssi_wifi_),
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _impl_.rssi_xbee_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LandCmdResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LandCmdResponse, _impl_.unused_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -663,6 +711,8 @@ static const ::_pbi::MigrationSchema
         {181, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LumosResult)},
         {191, -1, -1, sizeof(::mavsdk::rpc::lumos_server::DroneInfo)},
         {203, -1, -1, sizeof(::mavsdk::rpc::lumos_server::CompanionStatus)},
+        {214, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest)},
+        {222, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LandCmdResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -688,6 +738,8 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::lumos_server::_LumosResult_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_DroneInfo_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_CompanionStatus_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_SubscribeLandCmdRequest_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_LandCmdResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\037lumos_server/lumos_server.proto\022\027mavsd"
@@ -723,29 +775,33 @@ const char descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto[] P
     "Info\022\014\n\004uuid\030\007 \001(\t\022\020\n\010fw_major\030\010 \001(\r\022\020\n\010"
     "fw_minor\030\t \001(\r\022\020\n\010fw_patch\030\n \001(\r\"M\n\017Comp"
     "anionStatus\022\024\n\014dance_status\030\001 \001(\r\022\021\n\trss"
-    "i_wifi\030\002 \001(\r\022\021\n\trssi_xbee\030\003 \001(\r2\313\006\n\022Lumo"
-    "sServerService\022q\n\014SetDroneInfo\022,.mavsdk."
-    "rpc.lumos_server.SetDroneInfoRequest\032-.m"
-    "avsdk.rpc.lumos_server.SetDroneInfoRespo"
-    "nse\"\004\200\265\030\001\022\203\001\n\022SetCompanionStatus\0222.mavsd"
-    "k.rpc.lumos_server.SetCompanionStatusReq"
-    "uest\0323.mavsdk.rpc.lumos_server.SetCompan"
-    "ionStatusResponse\"\004\200\265\030\001\022l\n\016SubscribeDanc"
-    "e\022..mavsdk.rpc.lumos_server.SubscribeDan"
-    "ceRequest\032&.mavsdk.rpc.lumos_server.Danc"
-    "eResponse\"\0000\001\022o\n\017SubscribeParams\022/.mavsd"
-    "k.rpc.lumos_server.SubscribeParamsReques"
-    "t\032\'.mavsdk.rpc.lumos_server.ParamsRespon"
-    "se\"\0000\001\022l\n\016SubscribeStart\022..mavsdk.rpc.lu"
-    "mos_server.SubscribeStartRequest\032&.mavsd"
-    "k.rpc.lumos_server.StartResponse\"\0000\001\022u\n\021"
-    "SubscribeLocalPos\0221.mavsdk.rpc.lumos_ser"
-    "ver.SubscribeLocalPosRequest\032).mavsdk.rp"
-    "c.lumos_server.LocalPosResponse\"\0000\001\022x\n\022S"
-    "ubscribeGlobalPos\0222.mavsdk.rpc.lumos_ser"
-    "ver.SubscribeGlobalPosRequest\032*.mavsdk.r"
-    "pc.lumos_server.GlobalPosResponse\"\0000\001b\006p"
-    "roto3"
+    "i_wifi\030\002 \001(\r\022\021\n\trssi_xbee\030\003 \001(\r\"\031\n\027Subsc"
+    "ribeLandCmdRequest\"!\n\017LandCmdResponse\022\016\n"
+    "\006unused\030\001 \001(\0052\277\007\n\022LumosServerService\022q\n\014"
+    "SetDroneInfo\022,.mavsdk.rpc.lumos_server.S"
+    "etDroneInfoRequest\032-.mavsdk.rpc.lumos_se"
+    "rver.SetDroneInfoResponse\"\004\200\265\030\001\022\203\001\n\022SetC"
+    "ompanionStatus\0222.mavsdk.rpc.lumos_server"
+    ".SetCompanionStatusRequest\0323.mavsdk.rpc."
+    "lumos_server.SetCompanionStatusResponse\""
+    "\004\200\265\030\001\022l\n\016SubscribeDance\022..mavsdk.rpc.lum"
+    "os_server.SubscribeDanceRequest\032&.mavsdk"
+    ".rpc.lumos_server.DanceResponse\"\0000\001\022o\n\017S"
+    "ubscribeParams\022/.mavsdk.rpc.lumos_server"
+    ".SubscribeParamsRequest\032\'.mavsdk.rpc.lum"
+    "os_server.ParamsResponse\"\0000\001\022l\n\016Subscrib"
+    "eStart\022..mavsdk.rpc.lumos_server.Subscri"
+    "beStartRequest\032&.mavsdk.rpc.lumos_server"
+    ".StartResponse\"\0000\001\022u\n\021SubscribeLocalPos\022"
+    "1.mavsdk.rpc.lumos_server.SubscribeLocal"
+    "PosRequest\032).mavsdk.rpc.lumos_server.Loc"
+    "alPosResponse\"\0000\001\022x\n\022SubscribeGlobalPos\022"
+    "2.mavsdk.rpc.lumos_server.SubscribeGloba"
+    "lPosRequest\032*.mavsdk.rpc.lumos_server.Gl"
+    "obalPosResponse\"\0000\001\022r\n\020SubscribeLandCmd\022"
+    "0.mavsdk.rpc.lumos_server.SubscribeLandC"
+    "mdRequest\032(.mavsdk.rpc.lumos_server.Land"
+    "CmdResponse\"\0000\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps[1] =
     {
@@ -755,13 +811,13 @@ static ::absl::once_flag descriptor_table_lumos_5fserver_2flumos_5fserver_2eprot
 const ::_pbi::DescriptorTable descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto = {
     false,
     false,
-    2205,
+    2383,
     descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto,
     "lumos_server/lumos_server.proto",
     &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
     descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps,
     1,
-    22,
+    24,
     schemas,
     file_default_instances,
     TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets,
@@ -4548,6 +4604,211 @@ void CompanionStatus::InternalSwap(CompanionStatus* PROTOBUF_RESTRICT other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
       file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[21]);
+}
+// ===================================================================
+
+class SubscribeLandCmdRequest::_Internal {
+ public:
+};
+
+SubscribeLandCmdRequest::SubscribeLandCmdRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SubscribeLandCmdRequest)
+}
+SubscribeLandCmdRequest::SubscribeLandCmdRequest(
+    ::google::protobuf::Arena* arena,
+    const SubscribeLandCmdRequest& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  SubscribeLandCmdRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SubscribeLandCmdRequest)
+}
+
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SubscribeLandCmdRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[22]);
+}
+// ===================================================================
+
+class LandCmdResponse::_Internal {
+ public:
+};
+
+LandCmdResponse::LandCmdResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.LandCmdResponse)
+}
+LandCmdResponse::LandCmdResponse(
+    ::google::protobuf::Arena* arena, const LandCmdResponse& from)
+    : LandCmdResponse(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE LandCmdResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void LandCmdResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.unused_ = {};
+}
+LandCmdResponse::~LandCmdResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.LandCmdResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void LandCmdResponse::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void LandCmdResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.LandCmdResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.unused_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* LandCmdResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> LandCmdResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_LandCmdResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // int32 unused = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LandCmdResponse, _impl_.unused_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(LandCmdResponse, _impl_.unused_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 unused = 1;
+    {PROTOBUF_FIELD_OFFSET(LandCmdResponse, _impl_.unused_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* LandCmdResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.LandCmdResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // int32 unused = 1;
+  if (this->_internal_unused() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<1>(
+            stream, this->_internal_unused(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.LandCmdResponse)
+  return target;
+}
+
+::size_t LandCmdResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.LandCmdResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 unused = 1;
+  if (this->_internal_unused() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_unused());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData LandCmdResponse::_class_data_ = {
+    LandCmdResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* LandCmdResponse::GetClassData() const {
+  return &_class_data_;
+}
+
+void LandCmdResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<LandCmdResponse*>(&to_msg);
+  auto& from = static_cast<const LandCmdResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.LandCmdResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_unused() != 0) {
+    _this->_internal_set_unused(from._internal_unused());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void LandCmdResponse::CopyFrom(const LandCmdResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.LandCmdResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool LandCmdResponse::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* LandCmdResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void LandCmdResponse::InternalSwap(LandCmdResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+        swap(_impl_.unused_, other->_impl_.unused_);
+}
+
+::google::protobuf::Metadata LandCmdResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[23]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace lumos_server

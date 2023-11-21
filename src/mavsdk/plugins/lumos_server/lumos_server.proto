@@ -11,6 +11,8 @@ service LumosServerService {
     rpc SubscribeParams(SubscribeParamsRequest) returns(stream ParamsResponse) {}
     rpc SubscribeStart(SubscribeStartRequest) returns(stream StartResponse) {}
     rpc SubscribeLocalPos(SubscribeLocalPosRequest) returns(stream LocalPosResponse) {}
+    rpc SubscribeGlobalPos(SubscribeGlobalPosRequest) returns(stream GlobalPosResponse) {}
+    rpc SubscribeLandCmd(SubscribeLandCmdRequest) returns(stream LandCmdResponse) {}
 }
 
 message SetDroneInfoRequest {
@@ -58,6 +60,17 @@ message Position {
 	float z = 3;
 }
 
+message SubscribeGlobalPosRequest {}
+message GlobalPosResponse {
+	GlobalPosition pos = 1;
+}
+
+message GlobalPosition {
+    double lat = 1;
+	double lon = 2;
+	float alt = 3;
+}
+
 message Coord {
 	float x = 1;
 	float y = 2;
@@ -94,4 +107,9 @@ message CompanionStatus {
 	uint32 dance_status = 1;
 	uint32 rssi_wifi = 2;
 	uint32 rssi_xbee = 3;
+}
+
+message SubscribeLandCmdRequest {}
+message LandCmdResponse {
+	int32 unused = 1;
 }

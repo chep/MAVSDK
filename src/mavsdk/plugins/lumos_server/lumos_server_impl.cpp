@@ -3,6 +3,8 @@
 namespace mavsdk {
 
 static const std::chrono::milliseconds STATUS_MESSAGE_INTERVAL(1000);
+constexpr int PX4_MODE_UNKNOWN = 1;
+constexpr int PX4_CUSTOM_MODE_OFFBOARD = 6;
 
 LumosServerImpl::LumosServerImpl(std::shared_ptr<ServerComponent> server_component) :
     ServerPluginImplBase(server_component),
@@ -47,6 +49,12 @@ void LumosServerImpl::init()
     _server_component_impl->register_mavlink_message_handler(
         MAVLINK_MSG_ID_DANCE_FRAM_FTP,
         std::bind(&LumosServerImpl::fram_ftp_handler, this, std::placeholders::_1),
+        nullptr);
+
+    // GCS commands
+    _server_component_impl->register_mavlink_command_handler(
+        MAV_CMD_DO_SET_MODE,
+        std::bind(&LumosServerImpl::do_set_mode_handler, this, std::placeholders::_1),
         nullptr);
 }
 
@@ -185,8 +193,8 @@ void LumosServerImpl::fram_ftp_handler(const mavlink_message_t& msg)
                     _dance_callbacks.queue(dance(), [this](const auto& func) {
                         _server_component_impl->call_user_callback(func);
                     });
-                    break;
                 }
+                break;
             case MAV_DANCE_FRAM_OPCODES_PARAMS: {
                 std::lock_guard<std::mutex> lock(_subscription_mutex);
                 _params_callbacks.queue(params(), [this](const auto& func) {
@@ -256,6 +264,39 @@ LumosServer::Params LumosServerImpl::params()
     }
 
     return params;
+}
+
+LumosServer::StartHandle
+LumosServerImpl::subscribe_start(const LumosServer::StartCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    return _start_callbacks.subscribe(callback);
+}
+
+void LumosServerImpl::unsubscribe_start(LumosServer::StartHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _start_callbacks.unsubscribe(handle);
+}
+
+int32_t LumosServerImpl::start()
+{
+    return 0;
+}
+
+std::optional<mavlink_command_ack_t>
+LumosServerImpl::do_set_mode_handler(const MavlinkCommandReceiver::CommandLong& command)
+{
+    if (int(command.params.param1) == PX4_MODE_UNKNOWN and
+        int(command.params.param2) == PX4_CUSTOM_MODE_OFFBOARD) {
+        std::lock_guard<std::mutex> lock(_subscription_mutex);
+        _start_callbacks.queue(command.params.param1, [this](const auto& func) {
+            _server_component_impl->call_user_callback(func);
+        });
+    }
+
+    return _server_component_impl->make_command_ack_message(
+        command, MAV_RESULT::MAV_RESULT_ACCEPTED);
 }
 
 } // namespace mavsdk

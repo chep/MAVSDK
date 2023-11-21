@@ -9,6 +9,7 @@ service LumosServerService {
     rpc SetCompanionStatus(SetCompanionStatusRequest) returns(SetCompanionStatusResponse) {option (mavsdk.options.async_type) = SYNC;}
     rpc SubscribeDance(SubscribeDanceRequest) returns(stream DanceResponse) {}
     rpc SubscribeParams(SubscribeParamsRequest) returns(stream ParamsResponse) {}
+    rpc SubscribeStart(SubscribeStartRequest) returns(stream StartResponse) {}
 }
 
 message SetDroneInfoRequest {
@@ -38,6 +39,11 @@ message Dance {
 message SubscribeParamsRequest {}
 message ParamsResponse {
     Params params = 1;
+}
+
+message SubscribeStartRequest {}
+message StartResponse {
+    int32 mode = 1;
 }
 
 message Coord {

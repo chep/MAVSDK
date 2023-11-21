@@ -257,6 +257,33 @@ public:
     Params params() const;
 
     /**
+     * @brief Callback type for subscribe_start.
+     */
+    using StartCallback = std::function<void(int32_t)>;
+
+    /**
+     * @brief Handle type for subscribe_start.
+     */
+    using StartHandle = Handle<int32_t>;
+
+    /**
+     * @brief
+     */
+    StartHandle subscribe_start(const StartCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_start
+     */
+    void unsubscribe_start(StartHandle handle);
+
+    /**
+     * @brief Poll for 'int32_t' (blocking).
+     *
+     * @return One int32_t update.
+     */
+    int32_t start() const;
+
+    /**
      * @brief Copy constructor.
      */
     LumosServer(const LumosServer& other);

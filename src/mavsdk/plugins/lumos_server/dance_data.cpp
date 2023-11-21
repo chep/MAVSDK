@@ -113,8 +113,10 @@ uint8_t DanceData::set_params(const mavlink_dance_fram_ftp_t& req)
     _params.lon = get_float(req.payload);
     _params.lat = get_float(req.payload + 4);
     _params.alt = get_float(req.payload + 8);
+
     memcpy(&_params.gps_start, req.payload + 12, 4);
     _params.gps_start = ntohl(_params.gps_start);
+
     _params.gf_alt = get_float(req.payload + 16);
 
     size_t offset = 20;

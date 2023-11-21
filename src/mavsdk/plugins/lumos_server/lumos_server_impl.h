@@ -27,6 +27,9 @@ public:
     LumosServer::ParamsHandle subscribe_params(const LumosServer::ParamsCallback& callback);
     void unsubscribe_params(LumosServer::ParamsHandle handle);
     LumosServer::Params params();
+    LumosServer::StartHandle subscribe_start(const LumosServer::StartCallback& callback);
+    void unsubscribe_start(LumosServer::StartHandle handle);
+    int32_t start();
 
 private:
     struct PX4Status {
@@ -48,8 +51,9 @@ private:
     void gps_status_handler(const mavlink_message_t& msg);
     void gps_raw_handler(const mavlink_message_t& msg);
     void highres_imu_handler(const mavlink_message_t& msg);
-
     void fram_ftp_handler(const mavlink_message_t& msg);
+    std::optional<mavlink_command_ack_t>
+    do_set_mode_handler(const MavlinkCommandReceiver::CommandLong& command);
 
     LumosServer::DroneInfo _drone_info;
     bool _info_never_set{true};
@@ -69,6 +73,7 @@ private:
     std::mutex _subscription_mutex{};
     CallbackList<LumosServer::Dance> _dance_callbacks;
     CallbackList<LumosServer::Params> _params_callbacks;
+    CallbackList<int32_t> _start_callbacks;
 };
 
 } // namespace mavsdk

@@ -63,6 +63,21 @@ LumosServer::Params LumosServer::params() const
     return _impl->params();
 }
 
+LumosServer::StartHandle LumosServer::subscribe_start(const StartCallback& callback)
+{
+    return _impl->subscribe_start(callback);
+}
+
+void LumosServer::unsubscribe_start(StartHandle handle)
+{
+    _impl->unsubscribe_start(handle);
+}
+
+int32_t LumosServer::start() const
+{
+    return _impl->start();
+}
+
 bool operator==(const LumosServer::Dance& lhs, const LumosServer::Dance& rhs)
 {
     return (rhs.data == lhs.data) && (rhs.len == lhs.len);

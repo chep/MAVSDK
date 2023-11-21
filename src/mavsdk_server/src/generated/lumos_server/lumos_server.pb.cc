@@ -48,6 +48,30 @@ struct SubscribeParamsRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeParamsRequestDefaultTypeInternal _SubscribeParamsRequest_default_instance_;
       template <typename>
+PROTOBUF_CONSTEXPR SubscribeLocalPosRequest::SubscribeLocalPosRequest(::_pbi::ConstantInitialized) {}
+struct SubscribeLocalPosRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeLocalPosRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeLocalPosRequestDefaultTypeInternal() {}
+  union {
+    SubscribeLocalPosRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeLocalPosRequestDefaultTypeInternal _SubscribeLocalPosRequest_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR SubscribeGlobalPosRequest::SubscribeGlobalPosRequest(::_pbi::ConstantInitialized) {}
+struct SubscribeGlobalPosRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeGlobalPosRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeGlobalPosRequestDefaultTypeInternal() {}
+  union {
+    SubscribeGlobalPosRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeGlobalPosRequestDefaultTypeInternal _SubscribeGlobalPosRequest_default_instance_;
+      template <typename>
 PROTOBUF_CONSTEXPR SubscribeDanceRequest::SubscribeDanceRequest(::_pbi::ConstantInitialized) {}
 struct SubscribeDanceRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SubscribeDanceRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
@@ -103,6 +127,27 @@ struct SetCompanionStatusResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetCompanionStatusResponseDefaultTypeInternal _SetCompanionStatusResponse_default_instance_;
 
+inline constexpr Position::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : x_{0},
+        y_{0},
+        z_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Position::Position(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct PositionDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PositionDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PositionDefaultTypeInternal() {}
+  union {
+    Position _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PositionDefaultTypeInternal _Position_default_instance_;
+
 inline constexpr LumosResult::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : result_str_(
@@ -124,6 +169,27 @@ struct LumosResultDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LumosResultDefaultTypeInternal _LumosResult_default_instance_;
+
+inline constexpr GlobalPosition::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : lat_{0},
+        lon_{0},
+        alt_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GlobalPosition::GlobalPosition(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct GlobalPositionDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GlobalPositionDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GlobalPositionDefaultTypeInternal() {}
+  union {
+    GlobalPosition _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GlobalPositionDefaultTypeInternal _GlobalPosition_default_instance_;
 
 inline constexpr DroneInfo::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -273,6 +339,44 @@ struct ParamsDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ParamsDefaultTypeInternal _Params_default_instance_;
 
+inline constexpr LocalPosResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        pos_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LocalPosResponse::LocalPosResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct LocalPosResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LocalPosResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LocalPosResponseDefaultTypeInternal() {}
+  union {
+    LocalPosResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalPosResponseDefaultTypeInternal _LocalPosResponse_default_instance_;
+
+inline constexpr GlobalPosResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        pos_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GlobalPosResponse::GlobalPosResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct GlobalPosResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GlobalPosResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GlobalPosResponseDefaultTypeInternal() {}
+  union {
+    GlobalPosResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GlobalPosResponseDefaultTypeInternal _GlobalPosResponse_default_instance_;
+
 inline constexpr DanceResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -313,7 +417,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace lumos_server
 }  // namespace rpc
 }  // namespace mavsdk
-static ::_pb::Metadata file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[16];
+static ::_pb::Metadata file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[22];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_lumos_5fserver_2flumos_5fserver_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_lumos_5fserver_2flumos_5fserver_2eproto = nullptr;
@@ -419,6 +523,64 @@ const ::uint32_t TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets[] 
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::StartResponse, _impl_.mode_),
     ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SubscribeLocalPosRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LocalPosResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LocalPosResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LocalPosResponse, _impl_.pos_),
+    0,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::Position, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::Position, _impl_.x_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::Position, _impl_.y_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::Position, _impl_.z_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SubscribeGlobalPosRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::GlobalPosResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::GlobalPosResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::GlobalPosResponse, _impl_.pos_),
+    0,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::GlobalPosition, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::GlobalPosition, _impl_.lat_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::GlobalPosition, _impl_.lon_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::GlobalPosition, _impl_.alt_),
+    ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::Coord, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
@@ -490,11 +652,17 @@ static const ::_pbi::MigrationSchema
         {72, 81, -1, sizeof(::mavsdk::rpc::lumos_server::ParamsResponse)},
         {82, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeStartRequest)},
         {90, -1, -1, sizeof(::mavsdk::rpc::lumos_server::StartResponse)},
-        {99, -1, -1, sizeof(::mavsdk::rpc::lumos_server::Coord)},
-        {109, -1, -1, sizeof(::mavsdk::rpc::lumos_server::Params)},
-        {123, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LumosResult)},
-        {133, -1, -1, sizeof(::mavsdk::rpc::lumos_server::DroneInfo)},
-        {145, -1, -1, sizeof(::mavsdk::rpc::lumos_server::CompanionStatus)},
+        {99, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeLocalPosRequest)},
+        {107, 116, -1, sizeof(::mavsdk::rpc::lumos_server::LocalPosResponse)},
+        {117, -1, -1, sizeof(::mavsdk::rpc::lumos_server::Position)},
+        {128, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeGlobalPosRequest)},
+        {136, 145, -1, sizeof(::mavsdk::rpc::lumos_server::GlobalPosResponse)},
+        {146, -1, -1, sizeof(::mavsdk::rpc::lumos_server::GlobalPosition)},
+        {157, -1, -1, sizeof(::mavsdk::rpc::lumos_server::Coord)},
+        {167, -1, -1, sizeof(::mavsdk::rpc::lumos_server::Params)},
+        {181, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LumosResult)},
+        {191, -1, -1, sizeof(::mavsdk::rpc::lumos_server::DroneInfo)},
+        {203, -1, -1, sizeof(::mavsdk::rpc::lumos_server::CompanionStatus)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -509,6 +677,12 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::lumos_server::_ParamsResponse_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_SubscribeStartRequest_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_StartResponse_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_SubscribeLocalPosRequest_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_LocalPosResponse_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_Position_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_SubscribeGlobalPosRequest_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_GlobalPosResponse_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_GlobalPosition_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_Coord_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_Params_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_LumosResult_default_instance_._instance,
@@ -530,34 +704,48 @@ const char descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto[] P
     "beParamsRequest\"A\n\016ParamsResponse\022/\n\006par"
     "ams\030\001 \001(\0132\037.mavsdk.rpc.lumos_server.Para"
     "ms\"\027\n\025SubscribeStartRequest\"\035\n\rStartResp"
-    "onse\022\014\n\004mode\030\001 \001(\005\"\035\n\005Coord\022\t\n\001x\030\001 \001(\002\022\t"
-    "\n\001y\030\002 \001(\002\"\204\001\n\006Params\022\013\n\003lon\030\001 \001(\002\022\013\n\003lat"
-    "\030\002 \001(\002\022\013\n\003alt\030\003 \001(\002\022\021\n\tgps_start\030\004 \001(\005\022\016"
-    "\n\006gf_alt\030\005 \001(\002\0220\n\010vertices\030\006 \003(\0132\036.mavsd"
-    "k.rpc.lumos_server.Coord\"\216\001\n\013LumosResult"
-    "\022;\n\006result\030\001 \001(\0162+.mavsdk.rpc.lumos_serv"
-    "er.LumosResult.Result\022\022\n\nresult_str\030\002 \001("
-    "\t\".\n\006Result\022\022\n\016RESULT_SUCCESS\020\000\022\020\n\014RESUL"
-    "T_ERROR\020\001\"O\n\tDroneInfo\022\014\n\004uuid\030\007 \001(\t\022\020\n\010"
-    "fw_major\030\010 \001(\r\022\020\n\010fw_minor\030\t \001(\r\022\020\n\010fw_p"
-    "atch\030\n \001(\r\"M\n\017CompanionStatus\022\024\n\014dance_s"
-    "tatus\030\001 \001(\r\022\021\n\trssi_wifi\030\002 \001(\r\022\021\n\trssi_x"
-    "bee\030\003 \001(\r2\332\004\n\022LumosServerService\022q\n\014SetD"
-    "roneInfo\022,.mavsdk.rpc.lumos_server.SetDr"
-    "oneInfoRequest\032-.mavsdk.rpc.lumos_server"
-    ".SetDroneInfoResponse\"\004\200\265\030\001\022\203\001\n\022SetCompa"
-    "nionStatus\0222.mavsdk.rpc.lumos_server.Set"
-    "CompanionStatusRequest\0323.mavsdk.rpc.lumo"
-    "s_server.SetCompanionStatusResponse\"\004\200\265\030"
-    "\001\022l\n\016SubscribeDance\022..mavsdk.rpc.lumos_s"
-    "erver.SubscribeDanceRequest\032&.mavsdk.rpc"
-    ".lumos_server.DanceResponse\"\0000\001\022o\n\017Subsc"
-    "ribeParams\022/.mavsdk.rpc.lumos_server.Sub"
-    "scribeParamsRequest\032\'.mavsdk.rpc.lumos_s"
-    "erver.ParamsResponse\"\0000\001\022l\n\016SubscribeSta"
-    "rt\022..mavsdk.rpc.lumos_server.SubscribeSt"
-    "artRequest\032&.mavsdk.rpc.lumos_server.Sta"
-    "rtResponse\"\0000\001b\006proto3"
+    "onse\022\014\n\004mode\030\001 \001(\005\"\032\n\030SubscribeLocalPosR"
+    "equest\"B\n\020LocalPosResponse\022.\n\003pos\030\001 \001(\0132"
+    "!.mavsdk.rpc.lumos_server.Position\"+\n\010Po"
+    "sition\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\""
+    "\033\n\031SubscribeGlobalPosRequest\"I\n\021GlobalPo"
+    "sResponse\0224\n\003pos\030\001 \001(\0132\'.mavsdk.rpc.lumo"
+    "s_server.GlobalPosition\"7\n\016GlobalPositio"
+    "n\022\013\n\003lat\030\001 \001(\001\022\013\n\003lon\030\002 \001(\001\022\013\n\003alt\030\003 \001(\002"
+    "\"\035\n\005Coord\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"\204\001\n\006Para"
+    "ms\022\013\n\003lon\030\001 \001(\002\022\013\n\003lat\030\002 \001(\002\022\013\n\003alt\030\003 \001("
+    "\002\022\021\n\tgps_start\030\004 \001(\005\022\016\n\006gf_alt\030\005 \001(\002\0220\n\010"
+    "vertices\030\006 \003(\0132\036.mavsdk.rpc.lumos_server"
+    ".Coord\"\216\001\n\013LumosResult\022;\n\006result\030\001 \001(\0162+"
+    ".mavsdk.rpc.lumos_server.LumosResult.Res"
+    "ult\022\022\n\nresult_str\030\002 \001(\t\".\n\006Result\022\022\n\016RES"
+    "ULT_SUCCESS\020\000\022\020\n\014RESULT_ERROR\020\001\"O\n\tDrone"
+    "Info\022\014\n\004uuid\030\007 \001(\t\022\020\n\010fw_major\030\010 \001(\r\022\020\n\010"
+    "fw_minor\030\t \001(\r\022\020\n\010fw_patch\030\n \001(\r\"M\n\017Comp"
+    "anionStatus\022\024\n\014dance_status\030\001 \001(\r\022\021\n\trss"
+    "i_wifi\030\002 \001(\r\022\021\n\trssi_xbee\030\003 \001(\r2\313\006\n\022Lumo"
+    "sServerService\022q\n\014SetDroneInfo\022,.mavsdk."
+    "rpc.lumos_server.SetDroneInfoRequest\032-.m"
+    "avsdk.rpc.lumos_server.SetDroneInfoRespo"
+    "nse\"\004\200\265\030\001\022\203\001\n\022SetCompanionStatus\0222.mavsd"
+    "k.rpc.lumos_server.SetCompanionStatusReq"
+    "uest\0323.mavsdk.rpc.lumos_server.SetCompan"
+    "ionStatusResponse\"\004\200\265\030\001\022l\n\016SubscribeDanc"
+    "e\022..mavsdk.rpc.lumos_server.SubscribeDan"
+    "ceRequest\032&.mavsdk.rpc.lumos_server.Danc"
+    "eResponse\"\0000\001\022o\n\017SubscribeParams\022/.mavsd"
+    "k.rpc.lumos_server.SubscribeParamsReques"
+    "t\032\'.mavsdk.rpc.lumos_server.ParamsRespon"
+    "se\"\0000\001\022l\n\016SubscribeStart\022..mavsdk.rpc.lu"
+    "mos_server.SubscribeStartRequest\032&.mavsd"
+    "k.rpc.lumos_server.StartResponse\"\0000\001\022u\n\021"
+    "SubscribeLocalPos\0221.mavsdk.rpc.lumos_ser"
+    "ver.SubscribeLocalPosRequest\032).mavsdk.rp"
+    "c.lumos_server.LocalPosResponse\"\0000\001\022x\n\022S"
+    "ubscribeGlobalPos\0222.mavsdk.rpc.lumos_ser"
+    "ver.SubscribeGlobalPosRequest\032*.mavsdk.r"
+    "pc.lumos_server.GlobalPosResponse\"\0000\001b\006p"
+    "roto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps[1] =
     {
@@ -567,13 +755,13 @@ static ::absl::once_flag descriptor_table_lumos_5fserver_2flumos_5fserver_2eprot
 const ::_pbi::DescriptorTable descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto = {
     false,
     false,
-    1662,
+    2205,
     descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto,
     "lumos_server/lumos_server.proto",
     &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
     descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps,
     1,
-    16,
+    22,
     schemas,
     file_default_instances,
     TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets,
@@ -2015,6 +2203,1028 @@ void StartResponse::InternalSwap(StartResponse* PROTOBUF_RESTRICT other) {
 }
 // ===================================================================
 
+class SubscribeLocalPosRequest::_Internal {
+ public:
+};
+
+SubscribeLocalPosRequest::SubscribeLocalPosRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SubscribeLocalPosRequest)
+}
+SubscribeLocalPosRequest::SubscribeLocalPosRequest(
+    ::google::protobuf::Arena* arena,
+    const SubscribeLocalPosRequest& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  SubscribeLocalPosRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SubscribeLocalPosRequest)
+}
+
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SubscribeLocalPosRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[11]);
+}
+// ===================================================================
+
+class LocalPosResponse::_Internal {
+ public:
+  using HasBits = decltype(std::declval<LocalPosResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(LocalPosResponse, _impl_._has_bits_);
+  static const ::mavsdk::rpc::lumos_server::Position& pos(const LocalPosResponse* msg);
+  static void set_has_pos(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::mavsdk::rpc::lumos_server::Position& LocalPosResponse::_Internal::pos(const LocalPosResponse* msg) {
+  return *msg->_impl_.pos_;
+}
+LocalPosResponse::LocalPosResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.LocalPosResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE LocalPosResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+LocalPosResponse::LocalPosResponse(
+    ::google::protobuf::Arena* arena,
+    const LocalPosResponse& from)
+    : ::google::protobuf::Message(arena) {
+  LocalPosResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.pos_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::mavsdk::rpc::lumos_server::Position>(arena, *from._impl_.pos_)
+                : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.LocalPosResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE LocalPosResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void LocalPosResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.pos_ = {};
+}
+LocalPosResponse::~LocalPosResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.LocalPosResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void LocalPosResponse::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.pos_;
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void LocalPosResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.LocalPosResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.pos_ != nullptr);
+    _impl_.pos_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* LocalPosResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> LocalPosResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(LocalPosResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_LocalPosResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .mavsdk.rpc.lumos_server.Position pos = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(LocalPosResponse, _impl_.pos_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.lumos_server.Position pos = 1;
+    {PROTOBUF_FIELD_OFFSET(LocalPosResponse, _impl_.pos_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::lumos_server::Position>()},
+  }}, {{
+  }},
+};
+
+::uint8_t* LocalPosResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.LocalPosResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .mavsdk.rpc.lumos_server.Position pos = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::pos(this),
+        _Internal::pos(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.LocalPosResponse)
+  return target;
+}
+
+::size_t LocalPosResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.LocalPosResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .mavsdk.rpc.lumos_server.Position pos = 1;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pos_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData LocalPosResponse::_class_data_ = {
+    LocalPosResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* LocalPosResponse::GetClassData() const {
+  return &_class_data_;
+}
+
+void LocalPosResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<LocalPosResponse*>(&to_msg);
+  auto& from = static_cast<const LocalPosResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.LocalPosResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_pos()->::mavsdk::rpc::lumos_server::Position::MergeFrom(
+        from._internal_pos());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void LocalPosResponse::CopyFrom(const LocalPosResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.LocalPosResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool LocalPosResponse::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* LocalPosResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void LocalPosResponse::InternalSwap(LocalPosResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.pos_, other->_impl_.pos_);
+}
+
+::google::protobuf::Metadata LocalPosResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[12]);
+}
+// ===================================================================
+
+class Position::_Internal {
+ public:
+};
+
+Position::Position(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.Position)
+}
+Position::Position(
+    ::google::protobuf::Arena* arena, const Position& from)
+    : Position(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE Position::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void Position::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, x_),
+           0,
+           offsetof(Impl_, z_) -
+               offsetof(Impl_, x_) +
+               sizeof(Impl_::z_));
+}
+Position::~Position() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.Position)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void Position::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void Position::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.Position)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.x_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.z_) -
+      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.z_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* Position::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Position::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_Position_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // float x = 1;
+    {::_pbi::TcParser::FastF32S1,
+     {13, 63, 0, PROTOBUF_FIELD_OFFSET(Position, _impl_.x_)}},
+    // float y = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(Position, _impl_.y_)}},
+    // float z = 3;
+    {::_pbi::TcParser::FastF32S1,
+     {29, 63, 0, PROTOBUF_FIELD_OFFSET(Position, _impl_.z_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // float x = 1;
+    {PROTOBUF_FIELD_OFFSET(Position, _impl_.x_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float y = 2;
+    {PROTOBUF_FIELD_OFFSET(Position, _impl_.y_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float z = 3;
+    {PROTOBUF_FIELD_OFFSET(Position, _impl_.z_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* Position::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.Position)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // float x = 1;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        1, this->_internal_x(), target);
+  }
+
+  // float y = 2;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_y(), target);
+  }
+
+  // float z = 3;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  ::uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        3, this->_internal_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.Position)
+  return target;
+}
+
+::size_t Position::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.Position)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // float x = 1;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 5;
+  }
+
+  // float y = 2;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 5;
+  }
+
+  // float z = 3;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  ::uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    total_size += 5;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData Position::_class_data_ = {
+    Position::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* Position::GetClassData() const {
+  return &_class_data_;
+}
+
+void Position::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<Position*>(&to_msg);
+  auto& from = static_cast<const Position&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.Position)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _this->_internal_set_x(from._internal_x());
+  }
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _this->_internal_set_y(from._internal_y());
+  }
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_z = from._internal_z();
+  ::uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    _this->_internal_set_z(from._internal_z());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Position::CopyFrom(const Position& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.Position)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool Position::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* Position::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Position::InternalSwap(Position* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Position, _impl_.z_)
+      + sizeof(Position::_impl_.z_)
+      - PROTOBUF_FIELD_OFFSET(Position, _impl_.x_)>(
+          reinterpret_cast<char*>(&_impl_.x_),
+          reinterpret_cast<char*>(&other->_impl_.x_));
+}
+
+::google::protobuf::Metadata Position::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[13]);
+}
+// ===================================================================
+
+class SubscribeGlobalPosRequest::_Internal {
+ public:
+};
+
+SubscribeGlobalPosRequest::SubscribeGlobalPosRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SubscribeGlobalPosRequest)
+}
+SubscribeGlobalPosRequest::SubscribeGlobalPosRequest(
+    ::google::protobuf::Arena* arena,
+    const SubscribeGlobalPosRequest& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  SubscribeGlobalPosRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SubscribeGlobalPosRequest)
+}
+
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SubscribeGlobalPosRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[14]);
+}
+// ===================================================================
+
+class GlobalPosResponse::_Internal {
+ public:
+  using HasBits = decltype(std::declval<GlobalPosResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(GlobalPosResponse, _impl_._has_bits_);
+  static const ::mavsdk::rpc::lumos_server::GlobalPosition& pos(const GlobalPosResponse* msg);
+  static void set_has_pos(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::mavsdk::rpc::lumos_server::GlobalPosition& GlobalPosResponse::_Internal::pos(const GlobalPosResponse* msg) {
+  return *msg->_impl_.pos_;
+}
+GlobalPosResponse::GlobalPosResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.GlobalPosResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GlobalPosResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+GlobalPosResponse::GlobalPosResponse(
+    ::google::protobuf::Arena* arena,
+    const GlobalPosResponse& from)
+    : ::google::protobuf::Message(arena) {
+  GlobalPosResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.pos_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::mavsdk::rpc::lumos_server::GlobalPosition>(arena, *from._impl_.pos_)
+                : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.GlobalPosResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GlobalPosResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void GlobalPosResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.pos_ = {};
+}
+GlobalPosResponse::~GlobalPosResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.GlobalPosResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void GlobalPosResponse::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.pos_;
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void GlobalPosResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.GlobalPosResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.pos_ != nullptr);
+    _impl_.pos_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* GlobalPosResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> GlobalPosResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(GlobalPosResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_GlobalPosResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .mavsdk.rpc.lumos_server.GlobalPosition pos = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(GlobalPosResponse, _impl_.pos_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.lumos_server.GlobalPosition pos = 1;
+    {PROTOBUF_FIELD_OFFSET(GlobalPosResponse, _impl_.pos_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::lumos_server::GlobalPosition>()},
+  }}, {{
+  }},
+};
+
+::uint8_t* GlobalPosResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.GlobalPosResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .mavsdk.rpc.lumos_server.GlobalPosition pos = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::pos(this),
+        _Internal::pos(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.GlobalPosResponse)
+  return target;
+}
+
+::size_t GlobalPosResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.GlobalPosResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .mavsdk.rpc.lumos_server.GlobalPosition pos = 1;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pos_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData GlobalPosResponse::_class_data_ = {
+    GlobalPosResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* GlobalPosResponse::GetClassData() const {
+  return &_class_data_;
+}
+
+void GlobalPosResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<GlobalPosResponse*>(&to_msg);
+  auto& from = static_cast<const GlobalPosResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.GlobalPosResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_pos()->::mavsdk::rpc::lumos_server::GlobalPosition::MergeFrom(
+        from._internal_pos());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GlobalPosResponse::CopyFrom(const GlobalPosResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.GlobalPosResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool GlobalPosResponse::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* GlobalPosResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void GlobalPosResponse::InternalSwap(GlobalPosResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.pos_, other->_impl_.pos_);
+}
+
+::google::protobuf::Metadata GlobalPosResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[15]);
+}
+// ===================================================================
+
+class GlobalPosition::_Internal {
+ public:
+};
+
+GlobalPosition::GlobalPosition(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.GlobalPosition)
+}
+GlobalPosition::GlobalPosition(
+    ::google::protobuf::Arena* arena, const GlobalPosition& from)
+    : GlobalPosition(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE GlobalPosition::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void GlobalPosition::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, lat_),
+           0,
+           offsetof(Impl_, alt_) -
+               offsetof(Impl_, lat_) +
+               sizeof(Impl_::alt_));
+}
+GlobalPosition::~GlobalPosition() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.GlobalPosition)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void GlobalPosition::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void GlobalPosition::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.GlobalPosition)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.lat_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.alt_) -
+      reinterpret_cast<char*>(&_impl_.lat_)) + sizeof(_impl_.alt_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* GlobalPosition::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 0, 2> GlobalPosition::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_GlobalPosition_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // double lat = 1;
+    {::_pbi::TcParser::FastF64S1,
+     {9, 63, 0, PROTOBUF_FIELD_OFFSET(GlobalPosition, _impl_.lat_)}},
+    // double lon = 2;
+    {::_pbi::TcParser::FastF64S1,
+     {17, 63, 0, PROTOBUF_FIELD_OFFSET(GlobalPosition, _impl_.lon_)}},
+    // float alt = 3;
+    {::_pbi::TcParser::FastF32S1,
+     {29, 63, 0, PROTOBUF_FIELD_OFFSET(GlobalPosition, _impl_.alt_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // double lat = 1;
+    {PROTOBUF_FIELD_OFFSET(GlobalPosition, _impl_.lat_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double lon = 2;
+    {PROTOBUF_FIELD_OFFSET(GlobalPosition, _impl_.lon_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // float alt = 3;
+    {PROTOBUF_FIELD_OFFSET(GlobalPosition, _impl_.alt_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* GlobalPosition::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.GlobalPosition)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // double lat = 1;
+  static_assert(sizeof(::uint64_t) == sizeof(double),
+                "Code assumes ::uint64_t and double are the same size.");
+  double tmp_lat = this->_internal_lat();
+  ::uint64_t raw_lat;
+  memcpy(&raw_lat, &tmp_lat, sizeof(tmp_lat));
+  if (raw_lat != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+        1, this->_internal_lat(), target);
+  }
+
+  // double lon = 2;
+  static_assert(sizeof(::uint64_t) == sizeof(double),
+                "Code assumes ::uint64_t and double are the same size.");
+  double tmp_lon = this->_internal_lon();
+  ::uint64_t raw_lon;
+  memcpy(&raw_lon, &tmp_lon, sizeof(tmp_lon));
+  if (raw_lon != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+        2, this->_internal_lon(), target);
+  }
+
+  // float alt = 3;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_alt = this->_internal_alt();
+  ::uint32_t raw_alt;
+  memcpy(&raw_alt, &tmp_alt, sizeof(tmp_alt));
+  if (raw_alt != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        3, this->_internal_alt(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.GlobalPosition)
+  return target;
+}
+
+::size_t GlobalPosition::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.GlobalPosition)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // double lat = 1;
+  static_assert(sizeof(::uint64_t) == sizeof(double),
+                "Code assumes ::uint64_t and double are the same size.");
+  double tmp_lat = this->_internal_lat();
+  ::uint64_t raw_lat;
+  memcpy(&raw_lat, &tmp_lat, sizeof(tmp_lat));
+  if (raw_lat != 0) {
+    total_size += 9;
+  }
+
+  // double lon = 2;
+  static_assert(sizeof(::uint64_t) == sizeof(double),
+                "Code assumes ::uint64_t and double are the same size.");
+  double tmp_lon = this->_internal_lon();
+  ::uint64_t raw_lon;
+  memcpy(&raw_lon, &tmp_lon, sizeof(tmp_lon));
+  if (raw_lon != 0) {
+    total_size += 9;
+  }
+
+  // float alt = 3;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_alt = this->_internal_alt();
+  ::uint32_t raw_alt;
+  memcpy(&raw_alt, &tmp_alt, sizeof(tmp_alt));
+  if (raw_alt != 0) {
+    total_size += 5;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData GlobalPosition::_class_data_ = {
+    GlobalPosition::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* GlobalPosition::GetClassData() const {
+  return &_class_data_;
+}
+
+void GlobalPosition::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<GlobalPosition*>(&to_msg);
+  auto& from = static_cast<const GlobalPosition&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.GlobalPosition)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  static_assert(sizeof(::uint64_t) == sizeof(double),
+                "Code assumes ::uint64_t and double are the same size.");
+  double tmp_lat = from._internal_lat();
+  ::uint64_t raw_lat;
+  memcpy(&raw_lat, &tmp_lat, sizeof(tmp_lat));
+  if (raw_lat != 0) {
+    _this->_internal_set_lat(from._internal_lat());
+  }
+  static_assert(sizeof(::uint64_t) == sizeof(double),
+                "Code assumes ::uint64_t and double are the same size.");
+  double tmp_lon = from._internal_lon();
+  ::uint64_t raw_lon;
+  memcpy(&raw_lon, &tmp_lon, sizeof(tmp_lon));
+  if (raw_lon != 0) {
+    _this->_internal_set_lon(from._internal_lon());
+  }
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_alt = from._internal_alt();
+  ::uint32_t raw_alt;
+  memcpy(&raw_alt, &tmp_alt, sizeof(tmp_alt));
+  if (raw_alt != 0) {
+    _this->_internal_set_alt(from._internal_alt());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GlobalPosition::CopyFrom(const GlobalPosition& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.GlobalPosition)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool GlobalPosition::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* GlobalPosition::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void GlobalPosition::InternalSwap(GlobalPosition* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GlobalPosition, _impl_.alt_)
+      + sizeof(GlobalPosition::_impl_.alt_)
+      - PROTOBUF_FIELD_OFFSET(GlobalPosition, _impl_.lat_)>(
+          reinterpret_cast<char*>(&_impl_.lat_),
+          reinterpret_cast<char*>(&other->_impl_.lat_));
+}
+
+::google::protobuf::Metadata GlobalPosition::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[16]);
+}
+// ===================================================================
+
 class Coord::_Internal {
  public:
 };
@@ -2243,7 +3453,7 @@ void Coord::InternalSwap(Coord* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata Coord::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
-      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[11]);
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[17]);
 }
 // ===================================================================
 
@@ -2616,7 +3826,7 @@ void Params::InternalSwap(Params* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata Params::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
-      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[12]);
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[18]);
 }
 // ===================================================================
 
@@ -2832,7 +4042,7 @@ void LumosResult::InternalSwap(LumosResult* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata LumosResult::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
-      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[13]);
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[19]);
 }
 // ===================================================================
 
@@ -3110,7 +4320,7 @@ void DroneInfo::InternalSwap(DroneInfo* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata DroneInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
-      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[14]);
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[20]);
 }
 // ===================================================================
 
@@ -3337,7 +4547,7 @@ void CompanionStatus::InternalSwap(CompanionStatus* PROTOBUF_RESTRICT other) {
 ::google::protobuf::Metadata CompanionStatus::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
-      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[15]);
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[21]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace lumos_server

@@ -29,6 +29,8 @@ static const char* LumosServerService_method_names[] = {
   "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeDance",
   "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeParams",
   "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeStart",
+  "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeLocalPos",
+  "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeGlobalPos",
 };
 
 std::unique_ptr< LumosServerService::Stub> LumosServerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -43,6 +45,8 @@ LumosServerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>&
   , rpcmethod_SubscribeDance_(LumosServerService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SubscribeParams_(LumosServerService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SubscribeStart_(LumosServerService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeLocalPos_(LumosServerService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeGlobalPos_(LumosServerService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::Status LumosServerService::Stub::SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response) {
@@ -139,6 +143,38 @@ void LumosServerService::Stub::async::SubscribeStart(::grpc::ClientContext* cont
   return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::StartResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeStart_, context, request, false, nullptr);
 }
 
+::grpc::ClientReader< ::mavsdk::rpc::lumos_server::LocalPosResponse>* LumosServerService::Stub::SubscribeLocalPosRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLocalPosRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::lumos_server::LocalPosResponse>::Create(channel_.get(), rpcmethod_SubscribeLocalPos_, context, request);
+}
+
+void LumosServerService::Stub::async::SubscribeLocalPos(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLocalPosRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::LocalPosResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::lumos_server::LocalPosResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeLocalPos_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::LocalPosResponse>* LumosServerService::Stub::AsyncSubscribeLocalPosRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLocalPosRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::LocalPosResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeLocalPos_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::LocalPosResponse>* LumosServerService::Stub::PrepareAsyncSubscribeLocalPosRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLocalPosRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::LocalPosResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeLocalPos_, context, request, false, nullptr);
+}
+
+::grpc::ClientReader< ::mavsdk::rpc::lumos_server::GlobalPosResponse>* LumosServerService::Stub::SubscribeGlobalPosRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeGlobalPosRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::lumos_server::GlobalPosResponse>::Create(channel_.get(), rpcmethod_SubscribeGlobalPos_, context, request);
+}
+
+void LumosServerService::Stub::async::SubscribeGlobalPos(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeGlobalPosRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::GlobalPosResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::lumos_server::GlobalPosResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeGlobalPos_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::GlobalPosResponse>* LumosServerService::Stub::AsyncSubscribeGlobalPosRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeGlobalPosRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::GlobalPosResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeGlobalPos_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::GlobalPosResponse>* LumosServerService::Stub::PrepareAsyncSubscribeGlobalPosRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeGlobalPosRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::GlobalPosResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeGlobalPos_, context, request, false, nullptr);
+}
+
 LumosServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LumosServerService_method_names[0],
@@ -190,6 +226,26 @@ LumosServerService::Service::Service() {
              ::grpc::ServerWriter<::mavsdk::rpc::lumos_server::StartResponse>* writer) {
                return service->SubscribeStart(ctx, req, writer);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LumosServerService_method_names[5],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< LumosServerService::Service, ::mavsdk::rpc::lumos_server::SubscribeLocalPosRequest, ::mavsdk::rpc::lumos_server::LocalPosResponse>(
+          [](LumosServerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::lumos_server::SubscribeLocalPosRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::lumos_server::LocalPosResponse>* writer) {
+               return service->SubscribeLocalPos(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LumosServerService_method_names[6],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< LumosServerService::Service, ::mavsdk::rpc::lumos_server::SubscribeGlobalPosRequest, ::mavsdk::rpc::lumos_server::GlobalPosResponse>(
+          [](LumosServerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::lumos_server::SubscribeGlobalPosRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::lumos_server::GlobalPosResponse>* writer) {
+               return service->SubscribeGlobalPos(ctx, req, writer);
+             }, this)));
 }
 
 LumosServerService::Service::~Service() {
@@ -224,6 +280,20 @@ LumosServerService::Service::~Service() {
 }
 
 ::grpc::Status LumosServerService::Service::SubscribeStart(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeStartRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::StartResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LumosServerService::Service::SubscribeLocalPos(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLocalPosRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::LocalPosResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LumosServerService::Service::SubscribeGlobalPos(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeGlobalPosRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::GlobalPosResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

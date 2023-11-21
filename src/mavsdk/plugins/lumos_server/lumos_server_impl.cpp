@@ -30,7 +30,7 @@ void LumosServerImpl::init()
         nullptr);
     _server_component_impl->register_mavlink_message_handler(
         MAVLINK_MSG_ID_GLOBAL_POSITION_INT,
-        std::bind(&LumosServerImpl::position_handler, this, std::placeholders::_1),
+        std::bind(&LumosServerImpl::global_position_handler, this, std::placeholders::_1),
         nullptr);
     _server_component_impl->register_mavlink_message_handler(
         MAVLINK_MSG_ID_GPS_STATUS,
@@ -43,6 +43,10 @@ void LumosServerImpl::init()
     _server_component_impl->register_mavlink_message_handler(
         MAVLINK_MSG_ID_HIGHRES_IMU,
         std::bind(&LumosServerImpl::highres_imu_handler, this, std::placeholders::_1),
+        nullptr);
+    _server_component_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_LOCAL_POSITION_NED,
+        std::bind(&LumosServerImpl::local_position_ned_handler, this, std::placeholders::_1),
         nullptr);
 
     // GCS messages handlers
@@ -129,7 +133,7 @@ void LumosServerImpl::battery_status_handler(const mavlink_message_t& msg)
     _PX4_status.battery_status = status.battery_remaining / 100.;
 }
 
-void LumosServerImpl::position_handler(const mavlink_message_t& msg)
+void LumosServerImpl::global_position_handler(const mavlink_message_t& msg)
 {
     mavlink_global_position_int_t pos;
     mavlink_msg_global_position_int_decode(&msg, &pos);
@@ -137,6 +141,11 @@ void LumosServerImpl::position_handler(const mavlink_message_t& msg)
     _PX4_status.lon = pos.lon;
     _PX4_status.alt = pos.alt;
     _PX4_status.hdg = pos.hdg;
+
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _global_pos_callbacks.queue(global_pos(), [this](const auto& func) {
+        _server_component_impl->call_user_callback(func);
+    });
 }
 
 void LumosServerImpl::gps_status_handler(const mavlink_message_t& msg)
@@ -297,6 +306,56 @@ LumosServerImpl::do_set_mode_handler(const MavlinkCommandReceiver::CommandLong& 
 
     return _server_component_impl->make_command_ack_message(
         command, MAV_RESULT::MAV_RESULT_ACCEPTED);
+}
+
+LumosServer::LocalPosHandle
+LumosServerImpl::subscribe_local_pos(const LumosServer::LocalPosCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    return _local_pos_callbacks.subscribe(callback);
+}
+
+void LumosServerImpl::unsubscribe_local_pos(LumosServer::LocalPosHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _local_pos_callbacks.unsubscribe(handle);
+}
+
+LumosServer::Position LumosServerImpl::local_pos()
+{
+    LumosServer::Position pos{_local_pos_ned.x, _local_pos_ned.y, _local_pos_ned.z};
+    return pos;
+}
+
+void LumosServerImpl::local_position_ned_handler(const mavlink_message_t& msg)
+{
+    mavlink_msg_local_position_ned_decode(&msg, &_local_pos_ned);
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _local_pos_callbacks.queue(local_pos(), [this](const auto& func) {
+        _server_component_impl->call_user_callback(func);
+    });
+}
+
+LumosServer::GlobalPosHandle
+LumosServerImpl::subscribe_global_pos(const LumosServer::GlobalPosCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    return _global_pos_callbacks.subscribe(callback);
+}
+
+void LumosServerImpl::unsubscribe_global_pos(LumosServer::GlobalPosHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _global_pos_callbacks.unsubscribe(handle);
+}
+
+LumosServer::GlobalPosition LumosServerImpl::global_pos()
+{
+    LumosServer::GlobalPosition pos{
+        double(_PX4_status.lat) / 1E7,
+        double(_PX4_status.lon) / 1E7,
+        float(_PX4_status.alt) / 1000.f};
+    return pos;
 }
 
 } // namespace mavsdk

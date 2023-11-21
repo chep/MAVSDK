@@ -70,6 +70,54 @@ public:
     /**
      * @brief
      */
+    struct Position {
+        float x{}; /**< @brief */
+        float y{}; /**< @brief */
+        float z{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `LumosServer::Position` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const LumosServer::Position& lhs, const LumosServer::Position& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `LumosServer::Position`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, LumosServer::Position const& position);
+
+    /**
+     * @brief
+     */
+    struct GlobalPosition {
+        double lat{}; /**< @brief */
+        double lon{}; /**< @brief */
+        float alt{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `LumosServer::GlobalPosition` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool
+    operator==(const LumosServer::GlobalPosition& lhs, const LumosServer::GlobalPosition& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `LumosServer::GlobalPosition`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, LumosServer::GlobalPosition const& global_position);
+
+    /**
+     * @brief
+     */
     struct Coord {
         float x{}; /**< @brief */
         float y{}; /**< @brief */
@@ -282,6 +330,60 @@ public:
      * @return One int32_t update.
      */
     int32_t start() const;
+
+    /**
+     * @brief Callback type for subscribe_local_pos.
+     */
+    using LocalPosCallback = std::function<void(Position)>;
+
+    /**
+     * @brief Handle type for subscribe_local_pos.
+     */
+    using LocalPosHandle = Handle<Position>;
+
+    /**
+     * @brief
+     */
+    LocalPosHandle subscribe_local_pos(const LocalPosCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_local_pos
+     */
+    void unsubscribe_local_pos(LocalPosHandle handle);
+
+    /**
+     * @brief Poll for 'Position' (blocking).
+     *
+     * @return One Position update.
+     */
+    Position local_pos() const;
+
+    /**
+     * @brief Callback type for subscribe_global_pos.
+     */
+    using GlobalPosCallback = std::function<void(GlobalPosition)>;
+
+    /**
+     * @brief Handle type for subscribe_global_pos.
+     */
+    using GlobalPosHandle = Handle<GlobalPosition>;
+
+    /**
+     * @brief
+     */
+    GlobalPosHandle subscribe_global_pos(const GlobalPosCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_global_pos
+     */
+    void unsubscribe_global_pos(GlobalPosHandle handle);
+
+    /**
+     * @brief Poll for 'GlobalPosition' (blocking).
+     *
+     * @return One GlobalPosition update.
+     */
+    GlobalPosition global_pos() const;
 
     /**
      * @brief Copy constructor.

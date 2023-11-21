@@ -10,6 +10,7 @@ service LumosServerService {
     rpc SubscribeDance(SubscribeDanceRequest) returns(stream DanceResponse) {}
     rpc SubscribeParams(SubscribeParamsRequest) returns(stream ParamsResponse) {}
     rpc SubscribeStart(SubscribeStartRequest) returns(stream StartResponse) {}
+    rpc SubscribeLocalPos(SubscribeLocalPosRequest) returns(stream LocalPosResponse) {}
 }
 
 message SetDroneInfoRequest {
@@ -44,6 +45,17 @@ message ParamsResponse {
 message SubscribeStartRequest {}
 message StartResponse {
     int32 mode = 1;
+}
+
+message SubscribeLocalPosRequest {}
+message LocalPosResponse {
+	Position pos = 1;
+}
+
+message Position {
+    float x = 1;
+	float y = 2;
+	float z = 3;
 }
 
 message Coord {

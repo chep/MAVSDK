@@ -10,6 +10,8 @@
 namespace mavsdk {
 
 using Dance = LumosServer::Dance;
+using Position = LumosServer::Position;
+using GlobalPosition = LumosServer::GlobalPosition;
 using Coord = LumosServer::Coord;
 using Params = LumosServer::Params;
 
@@ -78,6 +80,36 @@ int32_t LumosServer::start() const
     return _impl->start();
 }
 
+LumosServer::LocalPosHandle LumosServer::subscribe_local_pos(const LocalPosCallback& callback)
+{
+    return _impl->subscribe_local_pos(callback);
+}
+
+void LumosServer::unsubscribe_local_pos(LocalPosHandle handle)
+{
+    _impl->unsubscribe_local_pos(handle);
+}
+
+LumosServer::Position LumosServer::local_pos() const
+{
+    return _impl->local_pos();
+}
+
+LumosServer::GlobalPosHandle LumosServer::subscribe_global_pos(const GlobalPosCallback& callback)
+{
+    return _impl->subscribe_global_pos(callback);
+}
+
+void LumosServer::unsubscribe_global_pos(GlobalPosHandle handle)
+{
+    _impl->unsubscribe_global_pos(handle);
+}
+
+LumosServer::GlobalPosition LumosServer::global_pos() const
+{
+    return _impl->global_pos();
+}
+
 bool operator==(const LumosServer::Dance& lhs, const LumosServer::Dance& rhs)
 {
     return (rhs.data == lhs.data) && (rhs.len == lhs.len);
@@ -93,6 +125,42 @@ std::ostream& operator<<(std::ostream& str, LumosServer::Dance const& dance)
         str << (it + 1 != dance.data.end() ? ", " : "]\n");
     }
     str << "    len: " << dance.len << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const LumosServer::Position& lhs, const LumosServer::Position& rhs)
+{
+    return ((std::isnan(rhs.x) && std::isnan(lhs.x)) || rhs.x == lhs.x) &&
+           ((std::isnan(rhs.y) && std::isnan(lhs.y)) || rhs.y == lhs.y) &&
+           ((std::isnan(rhs.z) && std::isnan(lhs.z)) || rhs.z == lhs.z);
+}
+
+std::ostream& operator<<(std::ostream& str, LumosServer::Position const& position)
+{
+    str << std::setprecision(15);
+    str << "position:" << '\n' << "{\n";
+    str << "    x: " << position.x << '\n';
+    str << "    y: " << position.y << '\n';
+    str << "    z: " << position.z << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const LumosServer::GlobalPosition& lhs, const LumosServer::GlobalPosition& rhs)
+{
+    return ((std::isnan(rhs.lat) && std::isnan(lhs.lat)) || rhs.lat == lhs.lat) &&
+           ((std::isnan(rhs.lon) && std::isnan(lhs.lon)) || rhs.lon == lhs.lon) &&
+           ((std::isnan(rhs.alt) && std::isnan(lhs.alt)) || rhs.alt == lhs.alt);
+}
+
+std::ostream& operator<<(std::ostream& str, LumosServer::GlobalPosition const& global_position)
+{
+    str << std::setprecision(15);
+    str << "global_position:" << '\n' << "{\n";
+    str << "    lat: " << global_position.lat << '\n';
+    str << "    lon: " << global_position.lon << '\n';
+    str << "    alt: " << global_position.alt << '\n';
     str << '}';
     return str;
 }

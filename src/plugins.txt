@@ -3,8 +3,6 @@ action_server
 calibration
 camera
 camera_server
-component_information
-component_information_server
 failure
 follow_me
 ftp
@@ -17,7 +15,6 @@ log_files
 lumos_server
 manual_control
 mission
-mission_raw
 mission_raw_server
 mocap
 offboard

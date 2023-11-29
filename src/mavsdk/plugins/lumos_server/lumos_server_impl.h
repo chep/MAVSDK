@@ -63,6 +63,7 @@ private:
     void highres_imu_handler(const mavlink_message_t& msg);
     void fram_ftp_handler(const mavlink_message_t& msg);
     void local_position_ned_handler(const mavlink_message_t& msg);
+    void gps_rtcm_data_handler(const mavlink_message_t& msg);
     std::optional<mavlink_command_ack_t>
     do_set_mode_handler(const MavlinkCommandReceiver::CommandLong& command);
     std::optional<mavlink_command_ack_t>

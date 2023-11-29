@@ -48,6 +48,10 @@ void LumosServerImpl::init()
         MAVLINK_MSG_ID_LOCAL_POSITION_NED,
         std::bind(&LumosServerImpl::local_position_ned_handler, this, std::placeholders::_1),
         nullptr);
+    _server_component_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_GPS_RTCM_DATA,
+        std::bind(&LumosServerImpl::gps_rtcm_data_handler, this, std::placeholders::_1),
+        nullptr);
 
     // GCS messages handlers
     _server_component_impl->register_mavlink_message_handler(
@@ -338,6 +342,16 @@ void LumosServerImpl::local_position_ned_handler(const mavlink_message_t& msg)
     _local_pos_callbacks.queue(local_pos(), [this](const auto& func) {
         _server_component_impl->call_user_callback(func);
     });
+}
+
+void LumosServerImpl::gps_rtcm_data_handler(const mavlink_message_t& msg)
+{
+    auto result = _server_component_impl->queue_message(
+        [&]([[maybe_unused]] MavlinkAddress mavlink_address, [[maybe_unused]] uint8_t channel) {
+            return msg;
+        });
+    if (!result)
+        LogErr() << "Unable to forward rtcm data.";
 }
 
 LumosServer::GlobalPosHandle

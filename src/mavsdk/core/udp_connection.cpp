@@ -205,7 +205,8 @@ bool UdpConnection::send_message(const mavlink_message_t& message)
             sizeof(dest_addr));
 
         if (send_len != buffer_len) {
-            LogErr() << "sendto failure: " << GET_ERROR(errno);
+            if (send_len != -EPERM)
+                LogErr() << "sendto failure: " << GET_ERROR(errno);
             send_successful = false;
             continue;
         }

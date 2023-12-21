@@ -13,6 +13,8 @@ service LumosServerService {
     rpc SubscribeLocalPos(SubscribeLocalPosRequest) returns(stream LocalPosResponse) {}
     rpc SubscribeGlobalPos(SubscribeGlobalPosRequest) returns(stream GlobalPosResponse) {}
     rpc SubscribeLandCmd(SubscribeLandCmdRequest) returns(stream LandCmdResponse) {}
+    rpc SubscribeRtlCmd(SubscribeRtlCmdRequest) returns(stream RtlCmdResponse) {}
+    rpc SubscribeKillCmd(SubscribeKillCmdRequest) returns(stream KillCmdResponse) {}
 }
 
 message SetDroneInfoRequest {
@@ -111,5 +113,15 @@ message CompanionStatus {
 
 message SubscribeLandCmdRequest {}
 message LandCmdResponse {
+	int32 unused = 1;
+}
+
+message SubscribeRtlCmdRequest {}
+message RtlCmdResponse {
+	int32 unused = 1;
+}
+
+message SubscribeKillCmdRequest {}
+message KillCmdResponse {
 	int32 unused = 1;
 }

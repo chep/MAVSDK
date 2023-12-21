@@ -413,6 +413,60 @@ public:
     int32_t land_cmd() const;
 
     /**
+     * @brief Callback type for subscribe_rtl_cmd.
+     */
+    using RtlCmdCallback = std::function<void(int32_t)>;
+
+    /**
+     * @brief Handle type for subscribe_rtl_cmd.
+     */
+    using RtlCmdHandle = Handle<int32_t>;
+
+    /**
+     * @brief
+     */
+    RtlCmdHandle subscribe_rtl_cmd(const RtlCmdCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_rtl_cmd
+     */
+    void unsubscribe_rtl_cmd(RtlCmdHandle handle);
+
+    /**
+     * @brief Poll for 'int32_t' (blocking).
+     *
+     * @return One int32_t update.
+     */
+    int32_t rtl_cmd() const;
+
+    /**
+     * @brief Callback type for subscribe_kill_cmd.
+     */
+    using KillCmdCallback = std::function<void(int32_t)>;
+
+    /**
+     * @brief Handle type for subscribe_kill_cmd.
+     */
+    using KillCmdHandle = Handle<int32_t>;
+
+    /**
+     * @brief
+     */
+    KillCmdHandle subscribe_kill_cmd(const KillCmdCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_kill_cmd
+     */
+    void unsubscribe_kill_cmd(KillCmdHandle handle);
+
+    /**
+     * @brief Poll for 'int32_t' (blocking).
+     *
+     * @return One int32_t update.
+     */
+    int32_t kill_cmd() const;
+
+    /**
      * @brief Copy constructor.
      */
     LumosServer(const LumosServer& other);

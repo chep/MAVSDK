@@ -32,6 +32,8 @@ static const char* LumosServerService_method_names[] = {
   "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeLocalPos",
   "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeGlobalPos",
   "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeLandCmd",
+  "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeRtlCmd",
+  "/mavsdk.rpc.lumos_server.LumosServerService/SubscribeKillCmd",
 };
 
 std::unique_ptr< LumosServerService::Stub> LumosServerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -49,6 +51,8 @@ LumosServerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>&
   , rpcmethod_SubscribeLocalPos_(LumosServerService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SubscribeGlobalPos_(LumosServerService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SubscribeLandCmd_(LumosServerService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeRtlCmd_(LumosServerService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeKillCmd_(LumosServerService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::Status LumosServerService::Stub::SetDroneInfo(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SetDroneInfoRequest& request, ::mavsdk::rpc::lumos_server::SetDroneInfoResponse* response) {
@@ -193,6 +197,38 @@ void LumosServerService::Stub::async::SubscribeLandCmd(::grpc::ClientContext* co
   return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::LandCmdResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeLandCmd_, context, request, false, nullptr);
 }
 
+::grpc::ClientReader< ::mavsdk::rpc::lumos_server::RtlCmdResponse>* LumosServerService::Stub::SubscribeRtlCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::lumos_server::RtlCmdResponse>::Create(channel_.get(), rpcmethod_SubscribeRtlCmd_, context, request);
+}
+
+void LumosServerService::Stub::async::SubscribeRtlCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::RtlCmdResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::lumos_server::RtlCmdResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeRtlCmd_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::RtlCmdResponse>* LumosServerService::Stub::AsyncSubscribeRtlCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::RtlCmdResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeRtlCmd_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::RtlCmdResponse>* LumosServerService::Stub::PrepareAsyncSubscribeRtlCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::RtlCmdResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeRtlCmd_, context, request, false, nullptr);
+}
+
+::grpc::ClientReader< ::mavsdk::rpc::lumos_server::KillCmdResponse>* LumosServerService::Stub::SubscribeKillCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::lumos_server::KillCmdResponse>::Create(channel_.get(), rpcmethod_SubscribeKillCmd_, context, request);
+}
+
+void LumosServerService::Stub::async::SubscribeKillCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::KillCmdResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::lumos_server::KillCmdResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeKillCmd_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::KillCmdResponse>* LumosServerService::Stub::AsyncSubscribeKillCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::KillCmdResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeKillCmd_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::KillCmdResponse>* LumosServerService::Stub::PrepareAsyncSubscribeKillCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::lumos_server::KillCmdResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeKillCmd_, context, request, false, nullptr);
+}
+
 LumosServerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LumosServerService_method_names[0],
@@ -274,6 +310,26 @@ LumosServerService::Service::Service() {
              ::grpc::ServerWriter<::mavsdk::rpc::lumos_server::LandCmdResponse>* writer) {
                return service->SubscribeLandCmd(ctx, req, writer);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LumosServerService_method_names[8],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< LumosServerService::Service, ::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest, ::mavsdk::rpc::lumos_server::RtlCmdResponse>(
+          [](LumosServerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::lumos_server::RtlCmdResponse>* writer) {
+               return service->SubscribeRtlCmd(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LumosServerService_method_names[9],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< LumosServerService::Service, ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest, ::mavsdk::rpc::lumos_server::KillCmdResponse>(
+          [](LumosServerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::lumos_server::KillCmdResponse>* writer) {
+               return service->SubscribeKillCmd(ctx, req, writer);
+             }, this)));
 }
 
 LumosServerService::Service::~Service() {
@@ -329,6 +385,20 @@ LumosServerService::Service::~Service() {
 }
 
 ::grpc::Status LumosServerService::Service::SubscribeLandCmd(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::LandCmdResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LumosServerService::Service::SubscribeRtlCmd(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::RtlCmdResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LumosServerService::Service::SubscribeKillCmd(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::KillCmdResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

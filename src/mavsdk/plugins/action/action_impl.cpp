@@ -229,6 +229,7 @@ void ActionImpl::arm_async(const Action::ResultCallback& callback) const
 
         command.command = MAV_CMD_COMPONENT_ARM_DISARM;
         command.params.maybe_param1 = 1.0f; // arm
+        command.params.maybe_param2 = 21196; // force
         command.target_component_id = _system_impl->get_autopilot_id();
 
         _system_impl->send_command_async(

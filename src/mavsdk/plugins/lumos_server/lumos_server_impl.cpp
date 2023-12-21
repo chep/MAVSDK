@@ -68,6 +68,16 @@ void LumosServerImpl::init()
         MAV_CMD_NAV_LAND,
         std::bind(&LumosServerImpl::nav_land_handler, this, std::placeholders::_1),
         nullptr);
+    _server_component_impl->register_mavlink_command_handler(
+        MAV_CMD_NAV_RETURN_TO_LAUNCH,
+        std::bind(&LumosServerImpl::rtl_handler, this, std::placeholders::_1),
+        nullptr);
+
+    // GCS messages
+    _server_component_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_FLIGHT_TERMINATION,
+        std::bind(&LumosServerImpl::kill_handler, this, std::placeholders::_1),
+        nullptr);
 }
 
 void LumosServerImpl::deinit()
@@ -403,6 +413,60 @@ LumosServerImpl::nav_land_handler(const MavlinkCommandReceiver::CommandLong& com
 
     return _server_component_impl->make_command_ack_message(
         command, MAV_RESULT::MAV_RESULT_ACCEPTED);
+}
+
+LumosServer::RtlCmdHandle
+LumosServerImpl::subscribe_rtl_cmd(const LumosServer::RtlCmdCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    return _rtl_cmd_callbacks.subscribe(callback);
+}
+
+void LumosServerImpl::unsubscribe_rtl_cmd(LumosServer::RtlCmdHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _rtl_cmd_callbacks.unsubscribe(handle);
+}
+
+int32_t LumosServerImpl::rtl_cmd()
+{
+    return 0;
+}
+
+std::optional<mavlink_command_ack_t>
+LumosServerImpl::rtl_handler(const MavlinkCommandReceiver::CommandLong& command)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _rtl_cmd_callbacks.queue(
+        0, [this](const auto& func) { _server_component_impl->call_user_callback(func); });
+
+    return _server_component_impl->make_command_ack_message(
+        command, MAV_RESULT::MAV_RESULT_ACCEPTED);
+}
+
+LumosServer::KillCmdHandle
+LumosServerImpl::subscribe_kill_cmd(const LumosServer::KillCmdCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    return _kill_cmd_callbacks.subscribe(callback);
+}
+
+void LumosServerImpl::unsubscribe_kill_cmd(LumosServer::KillCmdHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _kill_cmd_callbacks.unsubscribe(handle);
+}
+
+int32_t LumosServerImpl::kill_cmd()
+{
+    return 0;
+}
+
+void LumosServerImpl::kill_handler(const mavlink_message_t& msg)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _kill_cmd_callbacks.queue(
+        0, [this](const auto& func) { _server_component_impl->call_user_callback(func); });
 }
 
 } // namespace mavsdk

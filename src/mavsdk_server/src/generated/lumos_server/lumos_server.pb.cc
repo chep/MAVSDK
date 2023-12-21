@@ -36,6 +36,18 @@ struct SubscribeStartRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeStartRequestDefaultTypeInternal _SubscribeStartRequest_default_instance_;
       template <typename>
+PROTOBUF_CONSTEXPR SubscribeRtlCmdRequest::SubscribeRtlCmdRequest(::_pbi::ConstantInitialized) {}
+struct SubscribeRtlCmdRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeRtlCmdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeRtlCmdRequestDefaultTypeInternal() {}
+  union {
+    SubscribeRtlCmdRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeRtlCmdRequestDefaultTypeInternal _SubscribeRtlCmdRequest_default_instance_;
+      template <typename>
 PROTOBUF_CONSTEXPR SubscribeParamsRequest::SubscribeParamsRequest(::_pbi::ConstantInitialized) {}
 struct SubscribeParamsRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SubscribeParamsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
@@ -71,6 +83,18 @@ struct SubscribeLandCmdRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeLandCmdRequestDefaultTypeInternal _SubscribeLandCmdRequest_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR SubscribeKillCmdRequest::SubscribeKillCmdRequest(::_pbi::ConstantInitialized) {}
+struct SubscribeKillCmdRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeKillCmdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeKillCmdRequestDefaultTypeInternal() {}
+  union {
+    SubscribeKillCmdRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeKillCmdRequestDefaultTypeInternal _SubscribeKillCmdRequest_default_instance_;
       template <typename>
 PROTOBUF_CONSTEXPR SubscribeGlobalPosRequest::SubscribeGlobalPosRequest(::_pbi::ConstantInitialized) {}
 struct SubscribeGlobalPosRequestDefaultTypeInternal {
@@ -139,6 +163,25 @@ struct SetCompanionStatusResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetCompanionStatusResponseDefaultTypeInternal _SetCompanionStatusResponse_default_instance_;
 
+inline constexpr RtlCmdResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : unused_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RtlCmdResponse::RtlCmdResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RtlCmdResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RtlCmdResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RtlCmdResponseDefaultTypeInternal() {}
+  union {
+    RtlCmdResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RtlCmdResponseDefaultTypeInternal _RtlCmdResponse_default_instance_;
+
 inline constexpr Position::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : x_{0},
@@ -200,6 +243,25 @@ struct LandCmdResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LandCmdResponseDefaultTypeInternal _LandCmdResponse_default_instance_;
+
+inline constexpr KillCmdResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : unused_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR KillCmdResponse::KillCmdResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct KillCmdResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR KillCmdResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~KillCmdResponseDefaultTypeInternal() {}
+  union {
+    KillCmdResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 KillCmdResponseDefaultTypeInternal _KillCmdResponse_default_instance_;
 
 inline constexpr GlobalPosition::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -448,7 +510,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace lumos_server
 }  // namespace rpc
 }  // namespace mavsdk
-static ::_pb::Metadata file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[24];
+static ::_pb::Metadata file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[28];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_lumos_5fserver_2flumos_5fserver_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_lumos_5fserver_2flumos_5fserver_2eproto = nullptr;
@@ -685,6 +747,40 @@ const ::uint32_t TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets[] 
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LandCmdResponse, _impl_.unused_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::RtlCmdResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::RtlCmdResponse, _impl_.unused_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::KillCmdResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::KillCmdResponse, _impl_.unused_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -713,6 +809,10 @@ static const ::_pbi::MigrationSchema
         {203, -1, -1, sizeof(::mavsdk::rpc::lumos_server::CompanionStatus)},
         {214, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest)},
         {222, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LandCmdResponse)},
+        {231, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest)},
+        {239, -1, -1, sizeof(::mavsdk::rpc::lumos_server::RtlCmdResponse)},
+        {248, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest)},
+        {256, -1, -1, sizeof(::mavsdk::rpc::lumos_server::KillCmdResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -740,6 +840,10 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::lumos_server::_CompanionStatus_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_SubscribeLandCmdRequest_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_LandCmdResponse_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_SubscribeRtlCmdRequest_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_RtlCmdResponse_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_SubscribeKillCmdRequest_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_KillCmdResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\037lumos_server/lumos_server.proto\022\027mavsd"
@@ -777,31 +881,40 @@ const char descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto[] P
     "anionStatus\022\024\n\014dance_status\030\001 \001(\r\022\021\n\trss"
     "i_wifi\030\002 \001(\r\022\021\n\trssi_xbee\030\003 \001(\r\"\031\n\027Subsc"
     "ribeLandCmdRequest\"!\n\017LandCmdResponse\022\016\n"
-    "\006unused\030\001 \001(\0052\277\007\n\022LumosServerService\022q\n\014"
-    "SetDroneInfo\022,.mavsdk.rpc.lumos_server.S"
-    "etDroneInfoRequest\032-.mavsdk.rpc.lumos_se"
-    "rver.SetDroneInfoResponse\"\004\200\265\030\001\022\203\001\n\022SetC"
-    "ompanionStatus\0222.mavsdk.rpc.lumos_server"
-    ".SetCompanionStatusRequest\0323.mavsdk.rpc."
-    "lumos_server.SetCompanionStatusResponse\""
-    "\004\200\265\030\001\022l\n\016SubscribeDance\022..mavsdk.rpc.lum"
-    "os_server.SubscribeDanceRequest\032&.mavsdk"
-    ".rpc.lumos_server.DanceResponse\"\0000\001\022o\n\017S"
-    "ubscribeParams\022/.mavsdk.rpc.lumos_server"
-    ".SubscribeParamsRequest\032\'.mavsdk.rpc.lum"
-    "os_server.ParamsResponse\"\0000\001\022l\n\016Subscrib"
-    "eStart\022..mavsdk.rpc.lumos_server.Subscri"
-    "beStartRequest\032&.mavsdk.rpc.lumos_server"
-    ".StartResponse\"\0000\001\022u\n\021SubscribeLocalPos\022"
-    "1.mavsdk.rpc.lumos_server.SubscribeLocal"
-    "PosRequest\032).mavsdk.rpc.lumos_server.Loc"
-    "alPosResponse\"\0000\001\022x\n\022SubscribeGlobalPos\022"
-    "2.mavsdk.rpc.lumos_server.SubscribeGloba"
-    "lPosRequest\032*.mavsdk.rpc.lumos_server.Gl"
-    "obalPosResponse\"\0000\001\022r\n\020SubscribeLandCmd\022"
-    "0.mavsdk.rpc.lumos_server.SubscribeLandC"
-    "mdRequest\032(.mavsdk.rpc.lumos_server.Land"
-    "CmdResponse\"\0000\001b\006proto3"
+    "\006unused\030\001 \001(\005\"\030\n\026SubscribeRtlCmdRequest\""
+    " \n\016RtlCmdResponse\022\016\n\006unused\030\001 \001(\005\"\031\n\027Sub"
+    "scribeKillCmdRequest\"!\n\017KillCmdResponse\022"
+    "\016\n\006unused\030\001 \001(\0052\244\t\n\022LumosServerService\022q"
+    "\n\014SetDroneInfo\022,.mavsdk.rpc.lumos_server"
+    ".SetDroneInfoRequest\032-.mavsdk.rpc.lumos_"
+    "server.SetDroneInfoResponse\"\004\200\265\030\001\022\203\001\n\022Se"
+    "tCompanionStatus\0222.mavsdk.rpc.lumos_serv"
+    "er.SetCompanionStatusRequest\0323.mavsdk.rp"
+    "c.lumos_server.SetCompanionStatusRespons"
+    "e\"\004\200\265\030\001\022l\n\016SubscribeDance\022..mavsdk.rpc.l"
+    "umos_server.SubscribeDanceRequest\032&.mavs"
+    "dk.rpc.lumos_server.DanceResponse\"\0000\001\022o\n"
+    "\017SubscribeParams\022/.mavsdk.rpc.lumos_serv"
+    "er.SubscribeParamsRequest\032\'.mavsdk.rpc.l"
+    "umos_server.ParamsResponse\"\0000\001\022l\n\016Subscr"
+    "ibeStart\022..mavsdk.rpc.lumos_server.Subsc"
+    "ribeStartRequest\032&.mavsdk.rpc.lumos_serv"
+    "er.StartResponse\"\0000\001\022u\n\021SubscribeLocalPo"
+    "s\0221.mavsdk.rpc.lumos_server.SubscribeLoc"
+    "alPosRequest\032).mavsdk.rpc.lumos_server.L"
+    "ocalPosResponse\"\0000\001\022x\n\022SubscribeGlobalPo"
+    "s\0222.mavsdk.rpc.lumos_server.SubscribeGlo"
+    "balPosRequest\032*.mavsdk.rpc.lumos_server."
+    "GlobalPosResponse\"\0000\001\022r\n\020SubscribeLandCm"
+    "d\0220.mavsdk.rpc.lumos_server.SubscribeLan"
+    "dCmdRequest\032(.mavsdk.rpc.lumos_server.La"
+    "ndCmdResponse\"\0000\001\022o\n\017SubscribeRtlCmd\022/.m"
+    "avsdk.rpc.lumos_server.SubscribeRtlCmdRe"
+    "quest\032\'.mavsdk.rpc.lumos_server.RtlCmdRe"
+    "sponse\"\0000\001\022r\n\020SubscribeKillCmd\0220.mavsdk."
+    "rpc.lumos_server.SubscribeKillCmdRequest"
+    "\032(.mavsdk.rpc.lumos_server.KillCmdRespon"
+    "se\"\0000\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps[1] =
     {
@@ -811,13 +924,13 @@ static ::absl::once_flag descriptor_table_lumos_5fserver_2flumos_5fserver_2eprot
 const ::_pbi::DescriptorTable descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto = {
     false,
     false,
-    2383,
+    2734,
     descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto,
     "lumos_server/lumos_server.proto",
     &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
     descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps,
     1,
-    24,
+    28,
     schemas,
     file_default_instances,
     TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets,
@@ -4809,6 +4922,416 @@ void LandCmdResponse::InternalSwap(LandCmdResponse* PROTOBUF_RESTRICT other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
       file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[23]);
+}
+// ===================================================================
+
+class SubscribeRtlCmdRequest::_Internal {
+ public:
+};
+
+SubscribeRtlCmdRequest::SubscribeRtlCmdRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SubscribeRtlCmdRequest)
+}
+SubscribeRtlCmdRequest::SubscribeRtlCmdRequest(
+    ::google::protobuf::Arena* arena,
+    const SubscribeRtlCmdRequest& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  SubscribeRtlCmdRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SubscribeRtlCmdRequest)
+}
+
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SubscribeRtlCmdRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[24]);
+}
+// ===================================================================
+
+class RtlCmdResponse::_Internal {
+ public:
+};
+
+RtlCmdResponse::RtlCmdResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.RtlCmdResponse)
+}
+RtlCmdResponse::RtlCmdResponse(
+    ::google::protobuf::Arena* arena, const RtlCmdResponse& from)
+    : RtlCmdResponse(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE RtlCmdResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void RtlCmdResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.unused_ = {};
+}
+RtlCmdResponse::~RtlCmdResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.RtlCmdResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void RtlCmdResponse::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void RtlCmdResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.RtlCmdResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.unused_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* RtlCmdResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> RtlCmdResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_RtlCmdResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // int32 unused = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RtlCmdResponse, _impl_.unused_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(RtlCmdResponse, _impl_.unused_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 unused = 1;
+    {PROTOBUF_FIELD_OFFSET(RtlCmdResponse, _impl_.unused_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* RtlCmdResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.RtlCmdResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // int32 unused = 1;
+  if (this->_internal_unused() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<1>(
+            stream, this->_internal_unused(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.RtlCmdResponse)
+  return target;
+}
+
+::size_t RtlCmdResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.RtlCmdResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 unused = 1;
+  if (this->_internal_unused() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_unused());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData RtlCmdResponse::_class_data_ = {
+    RtlCmdResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* RtlCmdResponse::GetClassData() const {
+  return &_class_data_;
+}
+
+void RtlCmdResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<RtlCmdResponse*>(&to_msg);
+  auto& from = static_cast<const RtlCmdResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.RtlCmdResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_unused() != 0) {
+    _this->_internal_set_unused(from._internal_unused());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RtlCmdResponse::CopyFrom(const RtlCmdResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.RtlCmdResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool RtlCmdResponse::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* RtlCmdResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RtlCmdResponse::InternalSwap(RtlCmdResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+        swap(_impl_.unused_, other->_impl_.unused_);
+}
+
+::google::protobuf::Metadata RtlCmdResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[25]);
+}
+// ===================================================================
+
+class SubscribeKillCmdRequest::_Internal {
+ public:
+};
+
+SubscribeKillCmdRequest::SubscribeKillCmdRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SubscribeKillCmdRequest)
+}
+SubscribeKillCmdRequest::SubscribeKillCmdRequest(
+    ::google::protobuf::Arena* arena,
+    const SubscribeKillCmdRequest& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  SubscribeKillCmdRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SubscribeKillCmdRequest)
+}
+
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SubscribeKillCmdRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[26]);
+}
+// ===================================================================
+
+class KillCmdResponse::_Internal {
+ public:
+};
+
+KillCmdResponse::KillCmdResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.KillCmdResponse)
+}
+KillCmdResponse::KillCmdResponse(
+    ::google::protobuf::Arena* arena, const KillCmdResponse& from)
+    : KillCmdResponse(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE KillCmdResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void KillCmdResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.unused_ = {};
+}
+KillCmdResponse::~KillCmdResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.KillCmdResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void KillCmdResponse::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void KillCmdResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.KillCmdResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.unused_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* KillCmdResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> KillCmdResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_KillCmdResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // int32 unused = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(KillCmdResponse, _impl_.unused_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(KillCmdResponse, _impl_.unused_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 unused = 1;
+    {PROTOBUF_FIELD_OFFSET(KillCmdResponse, _impl_.unused_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* KillCmdResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.KillCmdResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // int32 unused = 1;
+  if (this->_internal_unused() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<1>(
+            stream, this->_internal_unused(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.KillCmdResponse)
+  return target;
+}
+
+::size_t KillCmdResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.KillCmdResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 unused = 1;
+  if (this->_internal_unused() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_unused());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData KillCmdResponse::_class_data_ = {
+    KillCmdResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* KillCmdResponse::GetClassData() const {
+  return &_class_data_;
+}
+
+void KillCmdResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<KillCmdResponse*>(&to_msg);
+  auto& from = static_cast<const KillCmdResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.KillCmdResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_unused() != 0) {
+    _this->_internal_set_unused(from._internal_unused());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void KillCmdResponse::CopyFrom(const KillCmdResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.KillCmdResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool KillCmdResponse::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* KillCmdResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void KillCmdResponse::InternalSwap(KillCmdResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+        swap(_impl_.unused_, other->_impl_.unused_);
+}
+
+::google::protobuf::Metadata KillCmdResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[27]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace lumos_server

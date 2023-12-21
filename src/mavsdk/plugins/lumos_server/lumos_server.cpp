@@ -125,6 +125,36 @@ int32_t LumosServer::land_cmd() const
     return _impl->land_cmd();
 }
 
+LumosServer::RtlCmdHandle LumosServer::subscribe_rtl_cmd(const RtlCmdCallback& callback)
+{
+    return _impl->subscribe_rtl_cmd(callback);
+}
+
+void LumosServer::unsubscribe_rtl_cmd(RtlCmdHandle handle)
+{
+    _impl->unsubscribe_rtl_cmd(handle);
+}
+
+int32_t LumosServer::rtl_cmd() const
+{
+    return _impl->rtl_cmd();
+}
+
+LumosServer::KillCmdHandle LumosServer::subscribe_kill_cmd(const KillCmdCallback& callback)
+{
+    return _impl->subscribe_kill_cmd(callback);
+}
+
+void LumosServer::unsubscribe_kill_cmd(KillCmdHandle handle)
+{
+    _impl->unsubscribe_kill_cmd(handle);
+}
+
+int32_t LumosServer::kill_cmd() const
+{
+    return _impl->kill_cmd();
+}
+
 bool operator==(const LumosServer::Dance& lhs, const LumosServer::Dance& rhs)
 {
     return (rhs.data == lhs.data) && (rhs.len == lhs.len);

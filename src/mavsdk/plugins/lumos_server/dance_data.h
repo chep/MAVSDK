@@ -26,7 +26,7 @@ struct DanceParams {
 
 class DanceData {
 public:
-    DanceData() {}
+    DanceData() : _data(0) {}
     ~DanceData() {}
 
     mavlink_dance_fram_ftp_t parse(mavlink_dance_fram_ftp_t& req);
@@ -34,6 +34,11 @@ public:
     size_t size() const { return _data.size(); }
     const uint8_t* data() const { return _data.data(); }
     DanceParams params() const { return _params; }
+    void clear()
+    {
+        _data.clear();
+        _is_valid = false;
+    }
 
     static constexpr uint8_t ACK = 0;
     static constexpr uint8_t NACK = 1;

@@ -220,6 +220,7 @@ void LumosServerImpl::fram_ftp_handler(const mavlink_message_t& msg)
                     _dance_callbacks.queue(dance(), [this](const auto& func) {
                         _server_component_impl->call_user_callback(func);
                     });
+                    _dance_data.clear();
                 }
                 break;
             case MAV_DANCE_FRAM_OPCODES_PARAMS: {

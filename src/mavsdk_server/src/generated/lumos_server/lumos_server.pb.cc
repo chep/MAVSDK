@@ -119,6 +119,18 @@ struct SubscribeDanceRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeDanceRequestDefaultTypeInternal _SubscribeDanceRequest_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR SubscribeColorLedCmdRequest::SubscribeColorLedCmdRequest(::_pbi::ConstantInitialized) {}
+struct SubscribeColorLedCmdRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeColorLedCmdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeColorLedCmdRequestDefaultTypeInternal() {}
+  union {
+    SubscribeColorLedCmdRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeColorLedCmdRequestDefaultTypeInternal _SubscribeColorLedCmdRequest_default_instance_;
 
 inline constexpr StartResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -224,6 +236,28 @@ struct LumosResultDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LumosResultDefaultTypeInternal _LumosResult_default_instance_;
+
+inline constexpr LedInfo::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : color_{0u},
+        mode_{0u},
+        blink_count_{0u},
+        prio_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LedInfo::LedInfo(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct LedInfoDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LedInfoDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LedInfoDefaultTypeInternal() {}
+  union {
+    LedInfo _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LedInfoDefaultTypeInternal _LedInfo_default_instance_;
 
 inline constexpr LandCmdResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -489,6 +523,25 @@ struct DanceResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DanceResponseDefaultTypeInternal _DanceResponse_default_instance_;
 
+inline constexpr ColorLedCmdResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        led_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ColorLedCmdResponse::ColorLedCmdResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ColorLedCmdResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ColorLedCmdResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ColorLedCmdResponseDefaultTypeInternal() {}
+  union {
+    ColorLedCmdResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ColorLedCmdResponseDefaultTypeInternal _ColorLedCmdResponse_default_instance_;
+
 inline constexpr ParamsResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -510,7 +563,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace lumos_server
 }  // namespace rpc
 }  // namespace mavsdk
-static ::_pb::Metadata file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[28];
+static ::_pb::Metadata file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[31];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_lumos_5fserver_2flumos_5fserver_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_lumos_5fserver_2flumos_5fserver_2eproto = nullptr;
@@ -781,6 +834,36 @@ const ::uint32_t TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets[] 
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::KillCmdResponse, _impl_.unused_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::ColorLedCmdResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::ColorLedCmdResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::ColorLedCmdResponse, _impl_.led_),
+    0,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LedInfo, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LedInfo, _impl_.color_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LedInfo, _impl_.mode_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LedInfo, _impl_.blink_count_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::LedInfo, _impl_.prio_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -813,6 +896,9 @@ static const ::_pbi::MigrationSchema
         {239, -1, -1, sizeof(::mavsdk::rpc::lumos_server::RtlCmdResponse)},
         {248, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest)},
         {256, -1, -1, sizeof(::mavsdk::rpc::lumos_server::KillCmdResponse)},
+        {265, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest)},
+        {273, 282, -1, sizeof(::mavsdk::rpc::lumos_server::ColorLedCmdResponse)},
+        {283, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LedInfo)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -844,6 +930,9 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::lumos_server::_RtlCmdResponse_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_SubscribeKillCmdRequest_default_instance_._instance,
     &::mavsdk::rpc::lumos_server::_KillCmdResponse_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_SubscribeColorLedCmdRequest_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_ColorLedCmdResponse_default_instance_._instance,
+    &::mavsdk::rpc::lumos_server::_LedInfo_default_instance_._instance,
 };
 const char descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\037lumos_server/lumos_server.proto\022\027mavsd"
@@ -884,37 +973,44 @@ const char descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto[] P
     "\006unused\030\001 \001(\005\"\030\n\026SubscribeRtlCmdRequest\""
     " \n\016RtlCmdResponse\022\016\n\006unused\030\001 \001(\005\"\031\n\027Sub"
     "scribeKillCmdRequest\"!\n\017KillCmdResponse\022"
-    "\016\n\006unused\030\001 \001(\0052\244\t\n\022LumosServerService\022q"
-    "\n\014SetDroneInfo\022,.mavsdk.rpc.lumos_server"
-    ".SetDroneInfoRequest\032-.mavsdk.rpc.lumos_"
-    "server.SetDroneInfoResponse\"\004\200\265\030\001\022\203\001\n\022Se"
-    "tCompanionStatus\0222.mavsdk.rpc.lumos_serv"
-    "er.SetCompanionStatusRequest\0323.mavsdk.rp"
-    "c.lumos_server.SetCompanionStatusRespons"
-    "e\"\004\200\265\030\001\022l\n\016SubscribeDance\022..mavsdk.rpc.l"
-    "umos_server.SubscribeDanceRequest\032&.mavs"
-    "dk.rpc.lumos_server.DanceResponse\"\0000\001\022o\n"
-    "\017SubscribeParams\022/.mavsdk.rpc.lumos_serv"
-    "er.SubscribeParamsRequest\032\'.mavsdk.rpc.l"
-    "umos_server.ParamsResponse\"\0000\001\022l\n\016Subscr"
-    "ibeStart\022..mavsdk.rpc.lumos_server.Subsc"
-    "ribeStartRequest\032&.mavsdk.rpc.lumos_serv"
-    "er.StartResponse\"\0000\001\022u\n\021SubscribeLocalPo"
-    "s\0221.mavsdk.rpc.lumos_server.SubscribeLoc"
-    "alPosRequest\032).mavsdk.rpc.lumos_server.L"
-    "ocalPosResponse\"\0000\001\022x\n\022SubscribeGlobalPo"
-    "s\0222.mavsdk.rpc.lumos_server.SubscribeGlo"
-    "balPosRequest\032*.mavsdk.rpc.lumos_server."
-    "GlobalPosResponse\"\0000\001\022r\n\020SubscribeLandCm"
-    "d\0220.mavsdk.rpc.lumos_server.SubscribeLan"
-    "dCmdRequest\032(.mavsdk.rpc.lumos_server.La"
-    "ndCmdResponse\"\0000\001\022o\n\017SubscribeRtlCmd\022/.m"
-    "avsdk.rpc.lumos_server.SubscribeRtlCmdRe"
-    "quest\032\'.mavsdk.rpc.lumos_server.RtlCmdRe"
-    "sponse\"\0000\001\022r\n\020SubscribeKillCmd\0220.mavsdk."
-    "rpc.lumos_server.SubscribeKillCmdRequest"
-    "\032(.mavsdk.rpc.lumos_server.KillCmdRespon"
-    "se\"\0000\001b\006proto3"
+    "\016\n\006unused\030\001 \001(\005\"\035\n\033SubscribeColorLedCmdR"
+    "equest\"D\n\023ColorLedCmdResponse\022-\n\003led\030\001 \001"
+    "(\0132 .mavsdk.rpc.lumos_server.LedInfo\"I\n\007"
+    "LedInfo\022\r\n\005color\030\001 \001(\r\022\014\n\004mode\030\002 \001(\r\022\023\n\013"
+    "blink_count\030\003 \001(\r\022\014\n\004prio\030\004 \001(\r2\244\n\n\022Lumo"
+    "sServerService\022q\n\014SetDroneInfo\022,.mavsdk."
+    "rpc.lumos_server.SetDroneInfoRequest\032-.m"
+    "avsdk.rpc.lumos_server.SetDroneInfoRespo"
+    "nse\"\004\200\265\030\001\022\203\001\n\022SetCompanionStatus\0222.mavsd"
+    "k.rpc.lumos_server.SetCompanionStatusReq"
+    "uest\0323.mavsdk.rpc.lumos_server.SetCompan"
+    "ionStatusResponse\"\004\200\265\030\001\022l\n\016SubscribeDanc"
+    "e\022..mavsdk.rpc.lumos_server.SubscribeDan"
+    "ceRequest\032&.mavsdk.rpc.lumos_server.Danc"
+    "eResponse\"\0000\001\022o\n\017SubscribeParams\022/.mavsd"
+    "k.rpc.lumos_server.SubscribeParamsReques"
+    "t\032\'.mavsdk.rpc.lumos_server.ParamsRespon"
+    "se\"\0000\001\022l\n\016SubscribeStart\022..mavsdk.rpc.lu"
+    "mos_server.SubscribeStartRequest\032&.mavsd"
+    "k.rpc.lumos_server.StartResponse\"\0000\001\022u\n\021"
+    "SubscribeLocalPos\0221.mavsdk.rpc.lumos_ser"
+    "ver.SubscribeLocalPosRequest\032).mavsdk.rp"
+    "c.lumos_server.LocalPosResponse\"\0000\001\022x\n\022S"
+    "ubscribeGlobalPos\0222.mavsdk.rpc.lumos_ser"
+    "ver.SubscribeGlobalPosRequest\032*.mavsdk.r"
+    "pc.lumos_server.GlobalPosResponse\"\0000\001\022r\n"
+    "\020SubscribeLandCmd\0220.mavsdk.rpc.lumos_ser"
+    "ver.SubscribeLandCmdRequest\032(.mavsdk.rpc"
+    ".lumos_server.LandCmdResponse\"\0000\001\022o\n\017Sub"
+    "scribeRtlCmd\022/.mavsdk.rpc.lumos_server.S"
+    "ubscribeRtlCmdRequest\032\'.mavsdk.rpc.lumos"
+    "_server.RtlCmdResponse\"\0000\001\022r\n\020SubscribeK"
+    "illCmd\0220.mavsdk.rpc.lumos_server.Subscri"
+    "beKillCmdRequest\032(.mavsdk.rpc.lumos_serv"
+    "er.KillCmdResponse\"\0000\001\022~\n\024SubscribeColor"
+    "LedCmd\0224.mavsdk.rpc.lumos_server.Subscri"
+    "beColorLedCmdRequest\032,.mavsdk.rpc.lumos_"
+    "server.ColorLedCmdResponse\"\0000\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps[1] =
     {
@@ -924,13 +1020,13 @@ static ::absl::once_flag descriptor_table_lumos_5fserver_2flumos_5fserver_2eprot
 const ::_pbi::DescriptorTable descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto = {
     false,
     false,
-    2734,
+    3038,
     descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto,
     "lumos_server/lumos_server.proto",
     &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
     descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps,
     1,
-    28,
+    31,
     schemas,
     file_default_instances,
     TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets,
@@ -5332,6 +5428,496 @@ void KillCmdResponse::InternalSwap(KillCmdResponse* PROTOBUF_RESTRICT other) {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
       file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[27]);
+}
+// ===================================================================
+
+class SubscribeColorLedCmdRequest::_Internal {
+ public:
+};
+
+SubscribeColorLedCmdRequest::SubscribeColorLedCmdRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.SubscribeColorLedCmdRequest)
+}
+SubscribeColorLedCmdRequest::SubscribeColorLedCmdRequest(
+    ::google::protobuf::Arena* arena,
+    const SubscribeColorLedCmdRequest& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  SubscribeColorLedCmdRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.SubscribeColorLedCmdRequest)
+}
+
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SubscribeColorLedCmdRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[28]);
+}
+// ===================================================================
+
+class ColorLedCmdResponse::_Internal {
+ public:
+  using HasBits = decltype(std::declval<ColorLedCmdResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ColorLedCmdResponse, _impl_._has_bits_);
+  static const ::mavsdk::rpc::lumos_server::LedInfo& led(const ColorLedCmdResponse* msg);
+  static void set_has_led(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::mavsdk::rpc::lumos_server::LedInfo& ColorLedCmdResponse::_Internal::led(const ColorLedCmdResponse* msg) {
+  return *msg->_impl_.led_;
+}
+ColorLedCmdResponse::ColorLedCmdResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.ColorLedCmdResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE ColorLedCmdResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+ColorLedCmdResponse::ColorLedCmdResponse(
+    ::google::protobuf::Arena* arena,
+    const ColorLedCmdResponse& from)
+    : ::google::protobuf::Message(arena) {
+  ColorLedCmdResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.led_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::mavsdk::rpc::lumos_server::LedInfo>(arena, *from._impl_.led_)
+                : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.lumos_server.ColorLedCmdResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE ColorLedCmdResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void ColorLedCmdResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.led_ = {};
+}
+ColorLedCmdResponse::~ColorLedCmdResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.ColorLedCmdResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void ColorLedCmdResponse::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.led_;
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void ColorLedCmdResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.ColorLedCmdResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.led_ != nullptr);
+    _impl_.led_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* ColorLedCmdResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ColorLedCmdResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ColorLedCmdResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ColorLedCmdResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .mavsdk.rpc.lumos_server.LedInfo led = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ColorLedCmdResponse, _impl_.led_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.lumos_server.LedInfo led = 1;
+    {PROTOBUF_FIELD_OFFSET(ColorLedCmdResponse, _impl_.led_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::lumos_server::LedInfo>()},
+  }}, {{
+  }},
+};
+
+::uint8_t* ColorLedCmdResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.ColorLedCmdResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .mavsdk.rpc.lumos_server.LedInfo led = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::led(this),
+        _Internal::led(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.ColorLedCmdResponse)
+  return target;
+}
+
+::size_t ColorLedCmdResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.ColorLedCmdResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .mavsdk.rpc.lumos_server.LedInfo led = 1;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.led_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData ColorLedCmdResponse::_class_data_ = {
+    ColorLedCmdResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* ColorLedCmdResponse::GetClassData() const {
+  return &_class_data_;
+}
+
+void ColorLedCmdResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ColorLedCmdResponse*>(&to_msg);
+  auto& from = static_cast<const ColorLedCmdResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.ColorLedCmdResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_led()->::mavsdk::rpc::lumos_server::LedInfo::MergeFrom(
+        from._internal_led());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ColorLedCmdResponse::CopyFrom(const ColorLedCmdResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.ColorLedCmdResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool ColorLedCmdResponse::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* ColorLedCmdResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ColorLedCmdResponse::InternalSwap(ColorLedCmdResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.led_, other->_impl_.led_);
+}
+
+::google::protobuf::Metadata ColorLedCmdResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[29]);
+}
+// ===================================================================
+
+class LedInfo::_Internal {
+ public:
+};
+
+LedInfo::LedInfo(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.lumos_server.LedInfo)
+}
+LedInfo::LedInfo(
+    ::google::protobuf::Arena* arena, const LedInfo& from)
+    : LedInfo(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE LedInfo::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void LedInfo::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, color_),
+           0,
+           offsetof(Impl_, prio_) -
+               offsetof(Impl_, color_) +
+               sizeof(Impl_::prio_));
+}
+LedInfo::~LedInfo() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.LedInfo)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void LedInfo::SharedDtor() {
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
+}
+
+PROTOBUF_NOINLINE void LedInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.lumos_server.LedInfo)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.color_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.prio_) -
+      reinterpret_cast<char*>(&_impl_.color_)) + sizeof(_impl_.prio_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* LedInfo::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 0, 2> LedInfo::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_LedInfo_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // uint32 prio = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LedInfo, _impl_.prio_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(LedInfo, _impl_.prio_)}},
+    // uint32 color = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LedInfo, _impl_.color_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(LedInfo, _impl_.color_)}},
+    // uint32 mode = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LedInfo, _impl_.mode_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(LedInfo, _impl_.mode_)}},
+    // uint32 blink_count = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LedInfo, _impl_.blink_count_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(LedInfo, _impl_.blink_count_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 color = 1;
+    {PROTOBUF_FIELD_OFFSET(LedInfo, _impl_.color_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 mode = 2;
+    {PROTOBUF_FIELD_OFFSET(LedInfo, _impl_.mode_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 blink_count = 3;
+    {PROTOBUF_FIELD_OFFSET(LedInfo, _impl_.blink_count_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 prio = 4;
+    {PROTOBUF_FIELD_OFFSET(LedInfo, _impl_.prio_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+::uint8_t* LedInfo::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.lumos_server.LedInfo)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // uint32 color = 1;
+  if (this->_internal_color() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+        1, this->_internal_color(), target);
+  }
+
+  // uint32 mode = 2;
+  if (this->_internal_mode() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+        2, this->_internal_mode(), target);
+  }
+
+  // uint32 blink_count = 3;
+  if (this->_internal_blink_count() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+        3, this->_internal_blink_count(), target);
+  }
+
+  // uint32 prio = 4;
+  if (this->_internal_prio() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+        4, this->_internal_prio(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.lumos_server.LedInfo)
+  return target;
+}
+
+::size_t LedInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.lumos_server.LedInfo)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint32 color = 1;
+  if (this->_internal_color() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+        this->_internal_color());
+  }
+
+  // uint32 mode = 2;
+  if (this->_internal_mode() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+        this->_internal_mode());
+  }
+
+  // uint32 blink_count = 3;
+  if (this->_internal_blink_count() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+        this->_internal_blink_count());
+  }
+
+  // uint32 prio = 4;
+  if (this->_internal_prio() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+        this->_internal_prio());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData LedInfo::_class_data_ = {
+    LedInfo::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
+};
+const ::google::protobuf::Message::ClassData* LedInfo::GetClassData() const {
+  return &_class_data_;
+}
+
+void LedInfo::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<LedInfo*>(&to_msg);
+  auto& from = static_cast<const LedInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.lumos_server.LedInfo)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_color() != 0) {
+    _this->_internal_set_color(from._internal_color());
+  }
+  if (from._internal_mode() != 0) {
+    _this->_internal_set_mode(from._internal_mode());
+  }
+  if (from._internal_blink_count() != 0) {
+    _this->_internal_set_blink_count(from._internal_blink_count());
+  }
+  if (from._internal_prio() != 0) {
+    _this->_internal_set_prio(from._internal_prio());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void LedInfo::CopyFrom(const LedInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.lumos_server.LedInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool LedInfo::IsInitialized() const {
+  return true;
+}
+
+::_pbi::CachedSize* LedInfo::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void LedInfo::InternalSwap(LedInfo* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(LedInfo, _impl_.prio_)
+      + sizeof(LedInfo::_impl_.prio_)
+      - PROTOBUF_FIELD_OFFSET(LedInfo, _impl_.color_)>(
+          reinterpret_cast<char*>(&_impl_.color_),
+          reinterpret_cast<char*>(&other->_impl_.color_));
+}
+
+::google::protobuf::Metadata LedInfo::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_getter, &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
+      file_level_metadata_lumos_5fserver_2flumos_5fserver_2eproto[30]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace lumos_server

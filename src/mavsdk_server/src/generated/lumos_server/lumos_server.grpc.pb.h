@@ -123,6 +123,15 @@ class LumosServerService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::KillCmdResponse>> PrepareAsyncSubscribeKillCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::KillCmdResponse>>(PrepareAsyncSubscribeKillCmdRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>> SubscribeColorLedCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>>(SubscribeColorLedCmdRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>> AsyncSubscribeColorLedCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>>(AsyncSubscribeColorLedCmdRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>> PrepareAsyncSubscribeColorLedCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>>(PrepareAsyncSubscribeColorLedCmdRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -138,6 +147,7 @@ class LumosServerService final {
       virtual void SubscribeLandCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::LandCmdResponse>* reactor) = 0;
       virtual void SubscribeRtlCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::RtlCmdResponse>* reactor) = 0;
       virtual void SubscribeKillCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::KillCmdResponse>* reactor) = 0;
+      virtual void SubscribeColorLedCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -171,6 +181,9 @@ class LumosServerService final {
     virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::lumos_server::KillCmdResponse>* SubscribeKillCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::KillCmdResponse>* AsyncSubscribeKillCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::KillCmdResponse>* PrepareAsyncSubscribeKillCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* SubscribeColorLedCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* AsyncSubscribeColorLedCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* PrepareAsyncSubscribeColorLedCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -261,6 +274,15 @@ class LumosServerService final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::KillCmdResponse>> PrepareAsyncSubscribeKillCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::KillCmdResponse>>(PrepareAsyncSubscribeKillCmdRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>> SubscribeColorLedCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>>(SubscribeColorLedCmdRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>> AsyncSubscribeColorLedCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>>(AsyncSubscribeColorLedCmdRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>> PrepareAsyncSubscribeColorLedCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>>(PrepareAsyncSubscribeColorLedCmdRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -276,6 +298,7 @@ class LumosServerService final {
       void SubscribeLandCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::LandCmdResponse>* reactor) override;
       void SubscribeRtlCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::RtlCmdResponse>* reactor) override;
       void SubscribeKillCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::KillCmdResponse>* reactor) override;
+      void SubscribeColorLedCmd(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -315,6 +338,9 @@ class LumosServerService final {
     ::grpc::ClientReader< ::mavsdk::rpc::lumos_server::KillCmdResponse>* SubscribeKillCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::KillCmdResponse>* AsyncSubscribeKillCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::KillCmdResponse>* PrepareAsyncSubscribeKillCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* SubscribeColorLedCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* AsyncSubscribeColorLedCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* PrepareAsyncSubscribeColorLedCmdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SetDroneInfo_;
     const ::grpc::internal::RpcMethod rpcmethod_SetCompanionStatus_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeDance_;
@@ -325,6 +351,7 @@ class LumosServerService final {
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeLandCmd_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeRtlCmd_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeKillCmd_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubscribeColorLedCmd_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -342,6 +369,7 @@ class LumosServerService final {
     virtual ::grpc::Status SubscribeLandCmd(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::LandCmdResponse>* writer);
     virtual ::grpc::Status SubscribeRtlCmd(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::RtlCmdResponse>* writer);
     virtual ::grpc::Status SubscribeKillCmd(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::KillCmdResponse>* writer);
+    virtual ::grpc::Status SubscribeColorLedCmd(::grpc::ServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_SetDroneInfo : public BaseClass {
@@ -543,7 +571,27 @@ class LumosServerService final {
       ::grpc::Service::RequestAsyncServerStreaming(9, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SetDroneInfo<WithAsyncMethod_SetCompanionStatus<WithAsyncMethod_SubscribeDance<WithAsyncMethod_SubscribeParams<WithAsyncMethod_SubscribeStart<WithAsyncMethod_SubscribeLocalPos<WithAsyncMethod_SubscribeGlobalPos<WithAsyncMethod_SubscribeLandCmd<WithAsyncMethod_SubscribeRtlCmd<WithAsyncMethod_SubscribeKillCmd<Service > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_SubscribeColorLedCmd : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SubscribeColorLedCmd() {
+      ::grpc::Service::MarkMethodAsync(10);
+    }
+    ~WithAsyncMethod_SubscribeColorLedCmd() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeColorLedCmd(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeColorLedCmd(::grpc::ServerContext* context, ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* request, ::grpc::ServerAsyncWriter< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(10, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SetDroneInfo<WithAsyncMethod_SetCompanionStatus<WithAsyncMethod_SubscribeDance<WithAsyncMethod_SubscribeParams<WithAsyncMethod_SubscribeStart<WithAsyncMethod_SubscribeLocalPos<WithAsyncMethod_SubscribeGlobalPos<WithAsyncMethod_SubscribeLandCmd<WithAsyncMethod_SubscribeRtlCmd<WithAsyncMethod_SubscribeKillCmd<WithAsyncMethod_SubscribeColorLedCmd<Service > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SetDroneInfo : public BaseClass {
    private:
@@ -774,7 +822,29 @@ class LumosServerService final {
     virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::lumos_server::KillCmdResponse>* SubscribeKillCmd(
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest* /*request*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SetDroneInfo<WithCallbackMethod_SetCompanionStatus<WithCallbackMethod_SubscribeDance<WithCallbackMethod_SubscribeParams<WithCallbackMethod_SubscribeStart<WithCallbackMethod_SubscribeLocalPos<WithCallbackMethod_SubscribeGlobalPos<WithCallbackMethod_SubscribeLandCmd<WithCallbackMethod_SubscribeRtlCmd<WithCallbackMethod_SubscribeKillCmd<Service > > > > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SubscribeColorLedCmd : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SubscribeColorLedCmd() {
+      ::grpc::Service::MarkMethodCallback(10,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest, ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* request) { return this->SubscribeColorLedCmd(context, request); }));
+    }
+    ~WithCallbackMethod_SubscribeColorLedCmd() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeColorLedCmd(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* SubscribeColorLedCmd(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* /*request*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_SetDroneInfo<WithCallbackMethod_SetCompanionStatus<WithCallbackMethod_SubscribeDance<WithCallbackMethod_SubscribeParams<WithCallbackMethod_SubscribeStart<WithCallbackMethod_SubscribeLocalPos<WithCallbackMethod_SubscribeGlobalPos<WithCallbackMethod_SubscribeLandCmd<WithCallbackMethod_SubscribeRtlCmd<WithCallbackMethod_SubscribeKillCmd<WithCallbackMethod_SubscribeColorLedCmd<Service > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SetDroneInfo : public BaseClass {
@@ -942,6 +1012,23 @@ class LumosServerService final {
     }
     // disable synchronous version of this method
     ::grpc::Status SubscribeKillCmd(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::KillCmdResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubscribeColorLedCmd : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SubscribeColorLedCmd() {
+      ::grpc::Service::MarkMethodGeneric(10);
+    }
+    ~WithGenericMethod_SubscribeColorLedCmd() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeColorLedCmd(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1144,6 +1231,26 @@ class LumosServerService final {
     }
     void RequestSubscribeKillCmd(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncServerStreaming(9, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubscribeColorLedCmd : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SubscribeColorLedCmd() {
+      ::grpc::Service::MarkMethodRaw(10);
+    }
+    ~WithRawMethod_SubscribeColorLedCmd() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeColorLedCmd(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeColorLedCmd(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(10, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1364,6 +1471,28 @@ class LumosServerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeKillCmd(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SubscribeColorLedCmd : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SubscribeColorLedCmd() {
+      ::grpc::Service::MarkMethodRawCallback(10,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->SubscribeColorLedCmd(context, request); }));
+    }
+    ~WithRawCallbackMethod_SubscribeColorLedCmd() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeColorLedCmd(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeColorLedCmd(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -1637,8 +1766,35 @@ class LumosServerService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedSubscribeKillCmd(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest,::mavsdk::rpc::lumos_server::KillCmdResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_SubscribeDance<WithSplitStreamingMethod_SubscribeParams<WithSplitStreamingMethod_SubscribeStart<WithSplitStreamingMethod_SubscribeLocalPos<WithSplitStreamingMethod_SubscribeGlobalPos<WithSplitStreamingMethod_SubscribeLandCmd<WithSplitStreamingMethod_SubscribeRtlCmd<WithSplitStreamingMethod_SubscribeKillCmd<Service > > > > > > > > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SetDroneInfo<WithStreamedUnaryMethod_SetCompanionStatus<WithSplitStreamingMethod_SubscribeDance<WithSplitStreamingMethod_SubscribeParams<WithSplitStreamingMethod_SubscribeStart<WithSplitStreamingMethod_SubscribeLocalPos<WithSplitStreamingMethod_SubscribeGlobalPos<WithSplitStreamingMethod_SubscribeLandCmd<WithSplitStreamingMethod_SubscribeRtlCmd<WithSplitStreamingMethod_SubscribeKillCmd<Service > > > > > > > > > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_SubscribeColorLedCmd : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_SubscribeColorLedCmd() {
+      ::grpc::Service::MarkMethodStreamed(10,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest, ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest, ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* streamer) {
+                       return this->StreamedSubscribeColorLedCmd(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_SubscribeColorLedCmd() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubscribeColorLedCmd(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSubscribeColorLedCmd(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest,::mavsdk::rpc::lumos_server::ColorLedCmdResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_SubscribeDance<WithSplitStreamingMethod_SubscribeParams<WithSplitStreamingMethod_SubscribeStart<WithSplitStreamingMethod_SubscribeLocalPos<WithSplitStreamingMethod_SubscribeGlobalPos<WithSplitStreamingMethod_SubscribeLandCmd<WithSplitStreamingMethod_SubscribeRtlCmd<WithSplitStreamingMethod_SubscribeKillCmd<WithSplitStreamingMethod_SubscribeColorLedCmd<Service > > > > > > > > > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_SetDroneInfo<WithStreamedUnaryMethod_SetCompanionStatus<WithSplitStreamingMethod_SubscribeDance<WithSplitStreamingMethod_SubscribeParams<WithSplitStreamingMethod_SubscribeStart<WithSplitStreamingMethod_SubscribeLocalPos<WithSplitStreamingMethod_SubscribeGlobalPos<WithSplitStreamingMethod_SubscribeLandCmd<WithSplitStreamingMethod_SubscribeRtlCmd<WithSplitStreamingMethod_SubscribeKillCmd<WithSplitStreamingMethod_SubscribeColorLedCmd<Service > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace lumos_server

@@ -17,6 +17,7 @@ using Params = LumosServer::Params;
 
 using DroneInfo = LumosServer::DroneInfo;
 using CompanionStatus = LumosServer::CompanionStatus;
+using LedInfo = LumosServer::LedInfo;
 
 LumosServer::LumosServer(std::shared_ptr<ServerComponent> server_component) :
     ServerPluginBase(),
@@ -153,6 +154,22 @@ void LumosServer::unsubscribe_kill_cmd(KillCmdHandle handle)
 int32_t LumosServer::kill_cmd() const
 {
     return _impl->kill_cmd();
+}
+
+LumosServer::ColorLedCmdHandle
+LumosServer::subscribe_color_led_cmd(const ColorLedCmdCallback& callback)
+{
+    return _impl->subscribe_color_led_cmd(callback);
+}
+
+void LumosServer::unsubscribe_color_led_cmd(ColorLedCmdHandle handle)
+{
+    _impl->unsubscribe_color_led_cmd(handle);
+}
+
+LumosServer::LedInfo LumosServer::color_led_cmd() const
+{
+    return _impl->color_led_cmd();
 }
 
 bool operator==(const LumosServer::Dance& lhs, const LumosServer::Dance& rhs)
@@ -297,6 +314,24 @@ std::ostream& operator<<(std::ostream& str, LumosServer::CompanionStatus const& 
     str << "    dance_status: " << companion_status.dance_status << '\n';
     str << "    rssi_wifi: " << companion_status.rssi_wifi << '\n';
     str << "    rssi_xbee: " << companion_status.rssi_xbee << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const LumosServer::LedInfo& lhs, const LumosServer::LedInfo& rhs)
+{
+    return (rhs.color == lhs.color) && (rhs.mode == lhs.mode) &&
+           (rhs.blink_count == lhs.blink_count) && (rhs.prio == lhs.prio);
+}
+
+std::ostream& operator<<(std::ostream& str, LumosServer::LedInfo const& led_info)
+{
+    str << std::setprecision(15);
+    str << "led_info:" << '\n' << "{\n";
+    str << "    color: " << led_info.color << '\n';
+    str << "    mode: " << led_info.mode << '\n';
+    str << "    blink_count: " << led_info.blink_count << '\n';
+    str << "    prio: " << led_info.prio << '\n';
     str << '}';
     return str;
 }

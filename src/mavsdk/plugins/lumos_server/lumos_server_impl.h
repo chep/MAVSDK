@@ -46,6 +46,10 @@ public:
     LumosServer::LandCmdHandle subscribe_kill_cmd(const LumosServer::KillCmdCallback& callback);
     void unsubscribe_kill_cmd(LumosServer::KillCmdHandle handle);
     int32_t kill_cmd();
+    LumosServer::ColorLedCmdHandle
+    subscribe_color_led_cmd(const LumosServer::ColorLedCmdCallback& callback);
+    void unsubscribe_color_led_cmd(LumosServer::ColorLedCmdHandle handle);
+    LumosServer::LedInfo color_led_cmd();
 
 private:
     struct PX4Status {
@@ -76,6 +80,8 @@ private:
     nav_land_handler(const MavlinkCommandReceiver::CommandLong& command);
     std::optional<mavlink_command_ack_t>
     rtl_handler(const MavlinkCommandReceiver::CommandLong& command);
+    std::optional<mavlink_command_ack_t>
+    color_led_handler(const MavlinkCommandReceiver::CommandLong& command);
     void kill_handler(const mavlink_message_t& msg);
 
     LumosServer::DroneInfo _drone_info;
@@ -95,6 +101,8 @@ private:
 
     mavlink_local_position_ned_t _local_pos_ned{};
 
+    LumosServer::LedInfo _last_led_info;
+
     std::mutex _subscription_mutex{};
     CallbackList<LumosServer::Dance> _dance_callbacks;
     CallbackList<LumosServer::Params> _params_callbacks;
@@ -103,6 +111,7 @@ private:
     CallbackList<LumosServer::GlobalPosition> _global_pos_callbacks;
     CallbackList<int32_t> _land_cmd_callbacks;
     CallbackList<int32_t> _rtl_cmd_callbacks;
+    CallbackList<LumosServer::LedInfo> _color_led_cmd_callbacks;
     CallbackList<int32_t> _kill_cmd_callbacks;
 };
 

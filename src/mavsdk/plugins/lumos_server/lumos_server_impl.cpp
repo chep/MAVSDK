@@ -72,6 +72,10 @@ void LumosServerImpl::init()
         MAV_CMD_NAV_RETURN_TO_LAUNCH,
         std::bind(&LumosServerImpl::rtl_handler, this, std::placeholders::_1),
         nullptr);
+    _server_component_impl->register_mavlink_command_handler(
+        MAV_CMD_COLOR_LED,
+        std::bind(&LumosServerImpl::color_led_handler, this, std::placeholders::_1),
+        nullptr);
 
     // GCS messages
     _server_component_impl->register_mavlink_message_handler(
@@ -445,6 +449,41 @@ LumosServerImpl::rtl_handler(const MavlinkCommandReceiver::CommandLong& command)
         command, MAV_RESULT::MAV_RESULT_ACCEPTED);
 }
 
+LumosServer::ColorLedCmdHandle
+LumosServerImpl::subscribe_color_led_cmd(const LumosServer::ColorLedCmdCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    return _color_led_cmd_callbacks.subscribe(callback);
+}
+
+void LumosServerImpl::unsubscribe_color_led_cmd(LumosServer::ColorLedCmdHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _color_led_cmd_callbacks.unsubscribe(handle);
+}
+
+LumosServer::LedInfo LumosServerImpl::color_led_cmd()
+{
+    return _last_led_info;
+}
+
+std::optional<mavlink_command_ack_t>
+LumosServerImpl::color_led_handler(const MavlinkCommandReceiver::CommandLong& command)
+{
+    _last_led_info.color = command.params.param1;
+    _last_led_info.mode = command.params.param2;
+    _last_led_info.blink_count = command.params.param3;
+    _last_led_info.prio = command.params.param4;
+
+    std::lock_guard<std::mutex> lock(_subscription_mutex);
+    _color_led_cmd_callbacks.queue(_last_led_info, [this](const auto& func) {
+        _server_component_impl->call_user_callback(func);
+    });
+
+    return _server_component_impl->make_command_ack_message(
+        command, MAV_RESULT::MAV_RESULT_ACCEPTED);
+}
+
 LumosServer::KillCmdHandle
 LumosServerImpl::subscribe_kill_cmd(const LumosServer::KillCmdCallback& callback)
 {
@@ -463,7 +502,7 @@ int32_t LumosServerImpl::kill_cmd()
     return 0;
 }
 
-void LumosServerImpl::kill_handler(const mavlink_message_t& msg)
+void LumosServerImpl::kill_handler([[maybe_unused]] const mavlink_message_t& msg)
 {
     std::lock_guard<std::mutex> lock(_subscription_mutex);
     _kill_cmd_callbacks.queue(

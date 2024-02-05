@@ -15,6 +15,7 @@ service LumosServerService {
     rpc SubscribeLandCmd(SubscribeLandCmdRequest) returns(stream LandCmdResponse) {}
     rpc SubscribeRtlCmd(SubscribeRtlCmdRequest) returns(stream RtlCmdResponse) {}
     rpc SubscribeKillCmd(SubscribeKillCmdRequest) returns(stream KillCmdResponse) {}
+    rpc SubscribeColorLedCmd(SubscribeColorLedCmdRequest) returns(stream ColorLedCmdResponse) {}
 }
 
 message SetDroneInfoRequest {
@@ -124,4 +125,18 @@ message RtlCmdResponse {
 message SubscribeKillCmdRequest {}
 message KillCmdResponse {
 	int32 unused = 1;
+}
+
+message SubscribeColorLedCmdRequest {
+}
+
+message ColorLedCmdResponse {
+	LedInfo led = 1;
+}
+
+message LedInfo {
+	uint32 color = 1;
+	uint32 mode = 2;
+	uint32 blink_count = 3;
+	uint32 prio = 4;
 }

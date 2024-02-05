@@ -110,6 +110,7 @@ message CompanionStatus {
 	uint32 dance_status = 1;
 	uint32 rssi_wifi = 2;
 	uint32 rssi_xbee = 3;
+	float battery_status = 4;
 }
 
 message SubscribeLandCmdRequest {}

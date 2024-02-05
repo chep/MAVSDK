@@ -3957,6 +3957,7 @@ class CompanionStatus final :
     kDanceStatusFieldNumber = 1,
     kRssiWifiFieldNumber = 2,
     kRssiXbeeFieldNumber = 3,
+    kBatteryStatusFieldNumber = 4,
   };
   // uint32 dance_status = 1;
   void clear_dance_status() ;
@@ -3988,13 +3989,23 @@ class CompanionStatus final :
   void _internal_set_rssi_xbee(::uint32_t value);
 
   public:
+  // float battery_status = 4;
+  void clear_battery_status() ;
+  float battery_status() const;
+  void set_battery_status(float value);
+
+  private:
+  float _internal_battery_status() const;
+  void _internal_set_battery_status(float value);
+
+  public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.CompanionStatus)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 0,
+      2, 4, 0,
       0, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
@@ -4014,6 +4025,7 @@ class CompanionStatus final :
     ::uint32_t dance_status_;
     ::uint32_t rssi_wifi_;
     ::uint32_t rssi_xbee_;
+    float battery_status_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -6911,6 +6923,29 @@ inline void CompanionStatus::_internal_set_rssi_xbee(::uint32_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.rssi_xbee_ = value;
+}
+
+// float battery_status = 4;
+inline void CompanionStatus::clear_battery_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.battery_status_ = 0;
+}
+inline float CompanionStatus::battery_status() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.CompanionStatus.battery_status)
+  return _internal_battery_status();
+}
+inline void CompanionStatus::set_battery_status(float value) {
+  _internal_set_battery_status(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.CompanionStatus.battery_status)
+}
+inline float CompanionStatus::_internal_battery_status() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.battery_status_;
+}
+inline void CompanionStatus::_internal_set_battery_status(float value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.battery_status_ = value;
 }
 
 // -------------------------------------------------------------------

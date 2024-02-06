@@ -151,7 +151,7 @@ void LumosServerImpl::global_position_handler(const mavlink_message_t& msg)
     _PX4_status.lat = pos.lat;
     _PX4_status.lon = pos.lon;
     _PX4_status.alt = pos.alt;
-    _PX4_status.hdg = pos.hdg;
+    _PX4_status.hdg = pos.hdg / 100;
 
     std::lock_guard<std::mutex> lock(_subscription_mutex);
     _global_pos_callbacks.queue(global_pos(), [this](const auto& func) {

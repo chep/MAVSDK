@@ -209,6 +209,7 @@ public:
         uint32_t dance_status{}; /**< @brief */
         uint32_t rssi_wifi{}; /**< @brief */
         uint32_t rssi_xbee{}; /**< @brief */
+        float battery_status{}; /**< @brief */
     };
 
     /**

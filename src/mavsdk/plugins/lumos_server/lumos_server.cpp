@@ -304,7 +304,9 @@ std::ostream& operator<<(std::ostream& str, LumosServer::DroneInfo const& drone_
 bool operator==(const LumosServer::CompanionStatus& lhs, const LumosServer::CompanionStatus& rhs)
 {
     return (rhs.dance_status == lhs.dance_status) && (rhs.rssi_wifi == lhs.rssi_wifi) &&
-           (rhs.rssi_xbee == lhs.rssi_xbee);
+           (rhs.rssi_xbee == lhs.rssi_xbee) &&
+           ((std::isnan(rhs.battery_status) && std::isnan(lhs.battery_status)) ||
+            rhs.battery_status == lhs.battery_status);
 }
 
 std::ostream& operator<<(std::ostream& str, LumosServer::CompanionStatus const& companion_status)
@@ -314,6 +316,7 @@ std::ostream& operator<<(std::ostream& str, LumosServer::CompanionStatus const& 
     str << "    dance_status: " << companion_status.dance_status << '\n';
     str << "    rssi_wifi: " << companion_status.rssi_wifi << '\n';
     str << "    rssi_xbee: " << companion_status.rssi_xbee << '\n';
+    str << "    battery_status: " << companion_status.battery_status << '\n';
     str << '}';
     return str;
 }

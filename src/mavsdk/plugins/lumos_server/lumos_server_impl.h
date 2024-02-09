@@ -53,7 +53,6 @@ public:
 
 private:
     struct PX4Status {
-        float battery_status;
         int32_t lat;
         int32_t lon;
         int32_t alt;
@@ -66,7 +65,6 @@ private:
 
     void drone_status_thread();
 
-    void battery_status_handler(const mavlink_message_t& msg);
     void global_position_handler(const mavlink_message_t& msg);
     void gps_status_handler(const mavlink_message_t& msg);
     void gps_raw_handler(const mavlink_message_t& msg);

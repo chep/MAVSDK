@@ -388,6 +388,7 @@ inline constexpr CompanionStatus::Impl_::Impl_(
       : dance_status_{0u},
         rssi_wifi_{0u},
         rssi_xbee_{0u},
+        battery_status_{0},
         _cached_size_{0} {}
 
 template <typename>
@@ -783,6 +784,7 @@ const ::uint32_t TableStruct_lumos_5fserver_2flumos_5fserver_2eproto::offsets[] 
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _impl_.dance_status_),
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _impl_.rssi_wifi_),
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _impl_.rssi_xbee_),
+    PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::CompanionStatus, _impl_.battery_status_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -890,15 +892,15 @@ static const ::_pbi::MigrationSchema
         {181, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LumosResult)},
         {191, -1, -1, sizeof(::mavsdk::rpc::lumos_server::DroneInfo)},
         {203, -1, -1, sizeof(::mavsdk::rpc::lumos_server::CompanionStatus)},
-        {214, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest)},
-        {222, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LandCmdResponse)},
-        {231, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest)},
-        {239, -1, -1, sizeof(::mavsdk::rpc::lumos_server::RtlCmdResponse)},
-        {248, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest)},
-        {256, -1, -1, sizeof(::mavsdk::rpc::lumos_server::KillCmdResponse)},
-        {265, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest)},
-        {273, 282, -1, sizeof(::mavsdk::rpc::lumos_server::ColorLedCmdResponse)},
-        {283, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LedInfo)},
+        {215, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeLandCmdRequest)},
+        {223, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LandCmdResponse)},
+        {232, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeRtlCmdRequest)},
+        {240, -1, -1, sizeof(::mavsdk::rpc::lumos_server::RtlCmdResponse)},
+        {249, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeKillCmdRequest)},
+        {257, -1, -1, sizeof(::mavsdk::rpc::lumos_server::KillCmdResponse)},
+        {266, -1, -1, sizeof(::mavsdk::rpc::lumos_server::SubscribeColorLedCmdRequest)},
+        {274, 283, -1, sizeof(::mavsdk::rpc::lumos_server::ColorLedCmdResponse)},
+        {284, -1, -1, sizeof(::mavsdk::rpc::lumos_server::LedInfo)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -966,51 +968,52 @@ const char descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto[] P
     "ult\022\022\n\nresult_str\030\002 \001(\t\".\n\006Result\022\022\n\016RES"
     "ULT_SUCCESS\020\000\022\020\n\014RESULT_ERROR\020\001\"O\n\tDrone"
     "Info\022\014\n\004uuid\030\007 \001(\t\022\020\n\010fw_major\030\010 \001(\r\022\020\n\010"
-    "fw_minor\030\t \001(\r\022\020\n\010fw_patch\030\n \001(\r\"M\n\017Comp"
+    "fw_minor\030\t \001(\r\022\020\n\010fw_patch\030\n \001(\r\"e\n\017Comp"
     "anionStatus\022\024\n\014dance_status\030\001 \001(\r\022\021\n\trss"
-    "i_wifi\030\002 \001(\r\022\021\n\trssi_xbee\030\003 \001(\r\"\031\n\027Subsc"
-    "ribeLandCmdRequest\"!\n\017LandCmdResponse\022\016\n"
-    "\006unused\030\001 \001(\005\"\030\n\026SubscribeRtlCmdRequest\""
-    " \n\016RtlCmdResponse\022\016\n\006unused\030\001 \001(\005\"\031\n\027Sub"
-    "scribeKillCmdRequest\"!\n\017KillCmdResponse\022"
-    "\016\n\006unused\030\001 \001(\005\"\035\n\033SubscribeColorLedCmdR"
-    "equest\"D\n\023ColorLedCmdResponse\022-\n\003led\030\001 \001"
-    "(\0132 .mavsdk.rpc.lumos_server.LedInfo\"I\n\007"
-    "LedInfo\022\r\n\005color\030\001 \001(\r\022\014\n\004mode\030\002 \001(\r\022\023\n\013"
-    "blink_count\030\003 \001(\r\022\014\n\004prio\030\004 \001(\r2\244\n\n\022Lumo"
-    "sServerService\022q\n\014SetDroneInfo\022,.mavsdk."
-    "rpc.lumos_server.SetDroneInfoRequest\032-.m"
-    "avsdk.rpc.lumos_server.SetDroneInfoRespo"
-    "nse\"\004\200\265\030\001\022\203\001\n\022SetCompanionStatus\0222.mavsd"
-    "k.rpc.lumos_server.SetCompanionStatusReq"
-    "uest\0323.mavsdk.rpc.lumos_server.SetCompan"
-    "ionStatusResponse\"\004\200\265\030\001\022l\n\016SubscribeDanc"
-    "e\022..mavsdk.rpc.lumos_server.SubscribeDan"
-    "ceRequest\032&.mavsdk.rpc.lumos_server.Danc"
-    "eResponse\"\0000\001\022o\n\017SubscribeParams\022/.mavsd"
-    "k.rpc.lumos_server.SubscribeParamsReques"
-    "t\032\'.mavsdk.rpc.lumos_server.ParamsRespon"
-    "se\"\0000\001\022l\n\016SubscribeStart\022..mavsdk.rpc.lu"
-    "mos_server.SubscribeStartRequest\032&.mavsd"
-    "k.rpc.lumos_server.StartResponse\"\0000\001\022u\n\021"
-    "SubscribeLocalPos\0221.mavsdk.rpc.lumos_ser"
-    "ver.SubscribeLocalPosRequest\032).mavsdk.rp"
-    "c.lumos_server.LocalPosResponse\"\0000\001\022x\n\022S"
-    "ubscribeGlobalPos\0222.mavsdk.rpc.lumos_ser"
-    "ver.SubscribeGlobalPosRequest\032*.mavsdk.r"
-    "pc.lumos_server.GlobalPosResponse\"\0000\001\022r\n"
-    "\020SubscribeLandCmd\0220.mavsdk.rpc.lumos_ser"
-    "ver.SubscribeLandCmdRequest\032(.mavsdk.rpc"
-    ".lumos_server.LandCmdResponse\"\0000\001\022o\n\017Sub"
-    "scribeRtlCmd\022/.mavsdk.rpc.lumos_server.S"
-    "ubscribeRtlCmdRequest\032\'.mavsdk.rpc.lumos"
-    "_server.RtlCmdResponse\"\0000\001\022r\n\020SubscribeK"
-    "illCmd\0220.mavsdk.rpc.lumos_server.Subscri"
-    "beKillCmdRequest\032(.mavsdk.rpc.lumos_serv"
-    "er.KillCmdResponse\"\0000\001\022~\n\024SubscribeColor"
-    "LedCmd\0224.mavsdk.rpc.lumos_server.Subscri"
-    "beColorLedCmdRequest\032,.mavsdk.rpc.lumos_"
-    "server.ColorLedCmdResponse\"\0000\001b\006proto3"
+    "i_wifi\030\002 \001(\r\022\021\n\trssi_xbee\030\003 \001(\r\022\026\n\016batte"
+    "ry_status\030\004 \001(\002\"\031\n\027SubscribeLandCmdReque"
+    "st\"!\n\017LandCmdResponse\022\016\n\006unused\030\001 \001(\005\"\030\n"
+    "\026SubscribeRtlCmdRequest\" \n\016RtlCmdRespons"
+    "e\022\016\n\006unused\030\001 \001(\005\"\031\n\027SubscribeKillCmdReq"
+    "uest\"!\n\017KillCmdResponse\022\016\n\006unused\030\001 \001(\005\""
+    "\035\n\033SubscribeColorLedCmdRequest\"D\n\023ColorL"
+    "edCmdResponse\022-\n\003led\030\001 \001(\0132 .mavsdk.rpc."
+    "lumos_server.LedInfo\"I\n\007LedInfo\022\r\n\005color"
+    "\030\001 \001(\r\022\014\n\004mode\030\002 \001(\r\022\023\n\013blink_count\030\003 \001("
+    "\r\022\014\n\004prio\030\004 \001(\r2\244\n\n\022LumosServerService\022q"
+    "\n\014SetDroneInfo\022,.mavsdk.rpc.lumos_server"
+    ".SetDroneInfoRequest\032-.mavsdk.rpc.lumos_"
+    "server.SetDroneInfoResponse\"\004\200\265\030\001\022\203\001\n\022Se"
+    "tCompanionStatus\0222.mavsdk.rpc.lumos_serv"
+    "er.SetCompanionStatusRequest\0323.mavsdk.rp"
+    "c.lumos_server.SetCompanionStatusRespons"
+    "e\"\004\200\265\030\001\022l\n\016SubscribeDance\022..mavsdk.rpc.l"
+    "umos_server.SubscribeDanceRequest\032&.mavs"
+    "dk.rpc.lumos_server.DanceResponse\"\0000\001\022o\n"
+    "\017SubscribeParams\022/.mavsdk.rpc.lumos_serv"
+    "er.SubscribeParamsRequest\032\'.mavsdk.rpc.l"
+    "umos_server.ParamsResponse\"\0000\001\022l\n\016Subscr"
+    "ibeStart\022..mavsdk.rpc.lumos_server.Subsc"
+    "ribeStartRequest\032&.mavsdk.rpc.lumos_serv"
+    "er.StartResponse\"\0000\001\022u\n\021SubscribeLocalPo"
+    "s\0221.mavsdk.rpc.lumos_server.SubscribeLoc"
+    "alPosRequest\032).mavsdk.rpc.lumos_server.L"
+    "ocalPosResponse\"\0000\001\022x\n\022SubscribeGlobalPo"
+    "s\0222.mavsdk.rpc.lumos_server.SubscribeGlo"
+    "balPosRequest\032*.mavsdk.rpc.lumos_server."
+    "GlobalPosResponse\"\0000\001\022r\n\020SubscribeLandCm"
+    "d\0220.mavsdk.rpc.lumos_server.SubscribeLan"
+    "dCmdRequest\032(.mavsdk.rpc.lumos_server.La"
+    "ndCmdResponse\"\0000\001\022o\n\017SubscribeRtlCmd\022/.m"
+    "avsdk.rpc.lumos_server.SubscribeRtlCmdRe"
+    "quest\032\'.mavsdk.rpc.lumos_server.RtlCmdRe"
+    "sponse\"\0000\001\022r\n\020SubscribeKillCmd\0220.mavsdk."
+    "rpc.lumos_server.SubscribeKillCmdRequest"
+    "\032(.mavsdk.rpc.lumos_server.KillCmdRespon"
+    "se\"\0000\001\022~\n\024SubscribeColorLedCmd\0224.mavsdk."
+    "rpc.lumos_server.SubscribeColorLedCmdReq"
+    "uest\032,.mavsdk.rpc.lumos_server.ColorLedC"
+    "mdResponse\"\0000\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_deps[1] =
     {
@@ -1020,7 +1023,7 @@ static ::absl::once_flag descriptor_table_lumos_5fserver_2flumos_5fserver_2eprot
 const ::_pbi::DescriptorTable descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto = {
     false,
     false,
-    3038,
+    3062,
     descriptor_table_protodef_lumos_5fserver_2flumos_5fserver_2eproto,
     "lumos_server/lumos_server.proto",
     &descriptor_table_lumos_5fserver_2flumos_5fserver_2eproto_once,
@@ -4613,9 +4616,9 @@ inline void CompanionStatus::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, dance_status_),
            0,
-           offsetof(Impl_, rssi_xbee_) -
+           offsetof(Impl_, battery_status_) -
                offsetof(Impl_, dance_status_) +
-               sizeof(Impl_::rssi_xbee_));
+               sizeof(Impl_::battery_status_));
 }
 CompanionStatus::~CompanionStatus() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.lumos_server.CompanionStatus)
@@ -4635,8 +4638,8 @@ PROTOBUF_NOINLINE void CompanionStatus::Clear() {
   (void) cached_has_bits;
 
   ::memset(&_impl_.dance_status_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.rssi_xbee_) -
-      reinterpret_cast<char*>(&_impl_.dance_status_)) + sizeof(_impl_.rssi_xbee_));
+      reinterpret_cast<char*>(&_impl_.battery_status_) -
+      reinterpret_cast<char*>(&_impl_.dance_status_)) + sizeof(_impl_.battery_status_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -4648,21 +4651,23 @@ const char* CompanionStatus::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 0, 2> CompanionStatus::_table_ = {
+const ::_pbi::TcParseTable<2, 4, 0, 0, 2> CompanionStatus::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    4, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294967280,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
+    4,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_CompanionStatus_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
+    // float battery_status = 4;
+    {::_pbi::TcParser::FastF32S1,
+     {37, 63, 0, PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.battery_status_)}},
     // uint32 dance_status = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(CompanionStatus, _impl_.dance_status_), 63>(),
      {8, 63, 0, PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.dance_status_)}},
@@ -4684,6 +4689,9 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> CompanionStatus::_table_ = {
     // uint32 rssi_xbee = 3;
     {PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.rssi_xbee_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // float battery_status = 4;
+    {PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.battery_status_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
   }},
   // no aux_entries
   {{
@@ -4716,6 +4724,18 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> CompanionStatus::_table_ = {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
         3, this->_internal_rssi_xbee(), target);
+  }
+
+  // float battery_status = 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_battery_status = this->_internal_battery_status();
+  ::uint32_t raw_battery_status;
+  memcpy(&raw_battery_status, &tmp_battery_status, sizeof(tmp_battery_status));
+  if (raw_battery_status != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        4, this->_internal_battery_status(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -4753,6 +4773,16 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> CompanionStatus::_table_ = {
         this->_internal_rssi_xbee());
   }
 
+  // float battery_status = 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_battery_status = this->_internal_battery_status();
+  ::uint32_t raw_battery_status;
+  memcpy(&raw_battery_status, &tmp_battery_status, sizeof(tmp_battery_status));
+  if (raw_battery_status != 0) {
+    total_size += 5;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -4781,6 +4811,14 @@ void CompanionStatus::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
   if (from._internal_rssi_xbee() != 0) {
     _this->_internal_set_rssi_xbee(from._internal_rssi_xbee());
   }
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_battery_status = from._internal_battery_status();
+  ::uint32_t raw_battery_status;
+  memcpy(&raw_battery_status, &tmp_battery_status, sizeof(tmp_battery_status));
+  if (raw_battery_status != 0) {
+    _this->_internal_set_battery_status(from._internal_battery_status());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -4802,8 +4840,8 @@ void CompanionStatus::InternalSwap(CompanionStatus* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.rssi_xbee_)
-      + sizeof(CompanionStatus::_impl_.rssi_xbee_)
+      PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.battery_status_)
+      + sizeof(CompanionStatus::_impl_.battery_status_)
       - PROTOBUF_FIELD_OFFSET(CompanionStatus, _impl_.dance_status_)>(
           reinterpret_cast<char*>(&_impl_.dance_status_),
           reinterpret_cast<char*>(&other->_impl_.dance_status_));

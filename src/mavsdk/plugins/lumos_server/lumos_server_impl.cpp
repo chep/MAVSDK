@@ -25,10 +25,6 @@ void LumosServerImpl::init()
 
     // PX4 messages handlers
     _server_component_impl->register_mavlink_message_handler(
-        MAVLINK_MSG_ID_BATTERY_STATUS,
-        std::bind(&LumosServerImpl::battery_status_handler, this, std::placeholders::_1),
-        nullptr);
-    _server_component_impl->register_mavlink_message_handler(
         MAVLINK_MSG_ID_GLOBAL_POSITION_INT,
         std::bind(&LumosServerImpl::global_position_handler, this, std::placeholders::_1),
         nullptr);
@@ -116,7 +112,7 @@ void LumosServerImpl::drone_status_thread()
                             time.time_since_epoch() - _boot_time.time_since_epoch())
                             .count(),
                         _companion_status.dance_status,
-                        _PX4_status.battery_status,
+                        _companion_status.battery_status,
                         _PX4_status.lat,
                         _PX4_status.lon,
                         _PX4_status.alt,
@@ -146,13 +142,6 @@ void LumosServerImpl::set_companion_status(LumosServer::CompanionStatus companio
 {
     std::lock_guard<std::mutex> lock(_status_mutex);
     _companion_status = companion_status;
-}
-
-void LumosServerImpl::battery_status_handler(const mavlink_message_t& msg)
-{
-    mavlink_battery_status_t status;
-    mavlink_msg_battery_status_decode(&msg, &status);
-    _PX4_status.battery_status = status.battery_remaining / 100.;
 }
 
 void LumosServerImpl::global_position_handler(const mavlink_message_t& msg)

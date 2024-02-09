@@ -266,6 +266,8 @@ public:
 
         rpc_obj->set_rssi_xbee(companion_status.rssi_xbee);
 
+        rpc_obj->set_battery_status(companion_status.battery_status);
+
         return rpc_obj;
     }
 
@@ -279,6 +281,8 @@ public:
         obj.rssi_wifi = companion_status.rssi_wifi();
 
         obj.rssi_xbee = companion_status.rssi_xbee();
+
+        obj.battery_status = companion_status.battery_status();
 
         return obj;
     }

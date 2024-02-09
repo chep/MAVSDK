@@ -228,6 +228,30 @@ public:
     operator<<(std::ostream& str, LumosServer::CompanionStatus const& companion_status);
 
     /**
+     * @brief
+     */
+    struct LedInfo {
+        uint32_t color{}; /**< @brief */
+        uint32_t mode{}; /**< @brief */
+        uint32_t blink_count{}; /**< @brief */
+        uint32_t prio{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `LumosServer::LedInfo` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const LumosServer::LedInfo& lhs, const LumosServer::LedInfo& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `LumosServer::LedInfo`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, LumosServer::LedInfo const& led_info);
+
+    /**
      * @brief Callback type for asynchronous LumosServer calls.
      */
     using ResultCallback = std::function<void(Result)>;
@@ -465,6 +489,33 @@ public:
      * @return One int32_t update.
      */
     int32_t kill_cmd() const;
+
+    /**
+     * @brief Callback type for subscribe_color_led_cmd.
+     */
+    using ColorLedCmdCallback = std::function<void(LedInfo)>;
+
+    /**
+     * @brief Handle type for subscribe_color_led_cmd.
+     */
+    using ColorLedCmdHandle = Handle<LedInfo>;
+
+    /**
+     * @brief
+     */
+    ColorLedCmdHandle subscribe_color_led_cmd(const ColorLedCmdCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_color_led_cmd
+     */
+    void unsubscribe_color_led_cmd(ColorLedCmdHandle handle);
+
+    /**
+     * @brief Poll for 'LedInfo' (blocking).
+     *
+     * @return One LedInfo update.
+     */
+    LedInfo color_led_cmd() const;
 
     /**
      * @brief Copy constructor.

@@ -61,6 +61,9 @@ extern const ::google::protobuf::internal::DescriptorTable
 namespace mavsdk {
 namespace rpc {
 namespace lumos_server {
+class ColorLedCmdResponse;
+struct ColorLedCmdResponseDefaultTypeInternal;
+extern ColorLedCmdResponseDefaultTypeInternal _ColorLedCmdResponse_default_instance_;
 class CompanionStatus;
 struct CompanionStatusDefaultTypeInternal;
 extern CompanionStatusDefaultTypeInternal _CompanionStatus_default_instance_;
@@ -88,6 +91,9 @@ extern KillCmdResponseDefaultTypeInternal _KillCmdResponse_default_instance_;
 class LandCmdResponse;
 struct LandCmdResponseDefaultTypeInternal;
 extern LandCmdResponseDefaultTypeInternal _LandCmdResponse_default_instance_;
+class LedInfo;
+struct LedInfoDefaultTypeInternal;
+extern LedInfoDefaultTypeInternal _LedInfo_default_instance_;
 class LocalPosResponse;
 struct LocalPosResponseDefaultTypeInternal;
 extern LocalPosResponseDefaultTypeInternal _LocalPosResponse_default_instance_;
@@ -121,6 +127,9 @@ extern SetDroneInfoResponseDefaultTypeInternal _SetDroneInfoResponse_default_ins
 class StartResponse;
 struct StartResponseDefaultTypeInternal;
 extern StartResponseDefaultTypeInternal _StartResponse_default_instance_;
+class SubscribeColorLedCmdRequest;
+struct SubscribeColorLedCmdRequestDefaultTypeInternal;
+extern SubscribeColorLedCmdRequestDefaultTypeInternal _SubscribeColorLedCmdRequest_default_instance_;
 class SubscribeDanceRequest;
 struct SubscribeDanceRequestDefaultTypeInternal;
 extern SubscribeDanceRequestDefaultTypeInternal _SubscribeDanceRequest_default_instance_;
@@ -1283,6 +1292,142 @@ class SubscribeDanceRequest final :
   friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
 };// -------------------------------------------------------------------
 
+class SubscribeColorLedCmdRequest final :
+    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.SubscribeColorLedCmdRequest) */ {
+ public:
+  inline SubscribeColorLedCmdRequest() : SubscribeColorLedCmdRequest(nullptr) {}
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR SubscribeColorLedCmdRequest(::google::protobuf::internal::ConstantInitialized);
+
+  inline SubscribeColorLedCmdRequest(const SubscribeColorLedCmdRequest& from)
+      : SubscribeColorLedCmdRequest(nullptr, from) {}
+  SubscribeColorLedCmdRequest(SubscribeColorLedCmdRequest&& from) noexcept
+    : SubscribeColorLedCmdRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SubscribeColorLedCmdRequest& operator=(const SubscribeColorLedCmdRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubscribeColorLedCmdRequest& operator=(SubscribeColorLedCmdRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubscribeColorLedCmdRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubscribeColorLedCmdRequest* internal_default_instance() {
+    return reinterpret_cast<const SubscribeColorLedCmdRequest*>(
+               &_SubscribeColorLedCmdRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    28;
+
+  friend void swap(SubscribeColorLedCmdRequest& a, SubscribeColorLedCmdRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SubscribeColorLedCmdRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubscribeColorLedCmdRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SubscribeColorLedCmdRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SubscribeColorLedCmdRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SubscribeColorLedCmdRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SubscribeColorLedCmdRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.SubscribeColorLedCmdRequest";
+  }
+  protected:
+  explicit SubscribeColorLedCmdRequest(::google::protobuf::Arena* arena);
+  SubscribeColorLedCmdRequest(::google::protobuf::Arena* arena, const SubscribeColorLedCmdRequest& from);
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.SubscribeColorLedCmdRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
 class StartResponse final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.StartResponse) */ {
  public:
@@ -2310,6 +2455,217 @@ class LumosResult final :
                               ::google::protobuf::Arena* arena, const Impl_& from);
     ::google::protobuf::internal::ArenaStringPtr result_str_;
     int result_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
+class LedInfo final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.LedInfo) */ {
+ public:
+  inline LedInfo() : LedInfo(nullptr) {}
+  ~LedInfo() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR LedInfo(::google::protobuf::internal::ConstantInitialized);
+
+  inline LedInfo(const LedInfo& from)
+      : LedInfo(nullptr, from) {}
+  LedInfo(LedInfo&& from) noexcept
+    : LedInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline LedInfo& operator=(const LedInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline LedInfo& operator=(LedInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const LedInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const LedInfo* internal_default_instance() {
+    return reinterpret_cast<const LedInfo*>(
+               &_LedInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    30;
+
+  friend void swap(LedInfo& a, LedInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(LedInfo* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(LedInfo* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  LedInfo* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LedInfo>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const LedInfo& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const LedInfo& from) {
+    LedInfo::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(LedInfo* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.LedInfo";
+  }
+  protected:
+  explicit LedInfo(::google::protobuf::Arena* arena);
+  LedInfo(::google::protobuf::Arena* arena, const LedInfo& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kColorFieldNumber = 1,
+    kModeFieldNumber = 2,
+    kBlinkCountFieldNumber = 3,
+    kPrioFieldNumber = 4,
+  };
+  // uint32 color = 1;
+  void clear_color() ;
+  ::uint32_t color() const;
+  void set_color(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_color() const;
+  void _internal_set_color(::uint32_t value);
+
+  public:
+  // uint32 mode = 2;
+  void clear_mode() ;
+  ::uint32_t mode() const;
+  void set_mode(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_mode() const;
+  void _internal_set_mode(::uint32_t value);
+
+  public:
+  // uint32 blink_count = 3;
+  void clear_blink_count() ;
+  ::uint32_t blink_count() const;
+  void set_blink_count(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_blink_count() const;
+  void _internal_set_blink_count(::uint32_t value);
+
+  public:
+  // uint32 prio = 4;
+  void clear_prio() ;
+  ::uint32_t prio() const;
+  void set_prio(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_prio() const;
+  void _internal_set_prio(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.LedInfo)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 4, 0,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::uint32_t color_;
+    ::uint32_t mode_;
+    ::uint32_t blink_count_;
+    ::uint32_t prio_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -4813,6 +5169,187 @@ class DanceResponse final :
   friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
 };// -------------------------------------------------------------------
 
+class ColorLedCmdResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.ColorLedCmdResponse) */ {
+ public:
+  inline ColorLedCmdResponse() : ColorLedCmdResponse(nullptr) {}
+  ~ColorLedCmdResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR ColorLedCmdResponse(::google::protobuf::internal::ConstantInitialized);
+
+  inline ColorLedCmdResponse(const ColorLedCmdResponse& from)
+      : ColorLedCmdResponse(nullptr, from) {}
+  ColorLedCmdResponse(ColorLedCmdResponse&& from) noexcept
+    : ColorLedCmdResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ColorLedCmdResponse& operator=(const ColorLedCmdResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ColorLedCmdResponse& operator=(ColorLedCmdResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ColorLedCmdResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ColorLedCmdResponse* internal_default_instance() {
+    return reinterpret_cast<const ColorLedCmdResponse*>(
+               &_ColorLedCmdResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    29;
+
+  friend void swap(ColorLedCmdResponse& a, ColorLedCmdResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ColorLedCmdResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ColorLedCmdResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ColorLedCmdResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ColorLedCmdResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ColorLedCmdResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const ColorLedCmdResponse& from) {
+    ColorLedCmdResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(ColorLedCmdResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "mavsdk.rpc.lumos_server.ColorLedCmdResponse";
+  }
+  protected:
+  explicit ColorLedCmdResponse(::google::protobuf::Arena* arena);
+  ColorLedCmdResponse(::google::protobuf::Arena* arena, const ColorLedCmdResponse& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kLedFieldNumber = 1,
+  };
+  // .mavsdk.rpc.lumos_server.LedInfo led = 1;
+  bool has_led() const;
+  void clear_led() ;
+  const ::mavsdk::rpc::lumos_server::LedInfo& led() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::lumos_server::LedInfo* release_led();
+  ::mavsdk::rpc::lumos_server::LedInfo* mutable_led();
+  void set_allocated_led(::mavsdk::rpc::lumos_server::LedInfo* value);
+  void unsafe_arena_set_allocated_led(::mavsdk::rpc::lumos_server::LedInfo* value);
+  ::mavsdk::rpc::lumos_server::LedInfo* unsafe_arena_release_led();
+
+  private:
+  const ::mavsdk::rpc::lumos_server::LedInfo& _internal_led() const;
+  ::mavsdk::rpc::lumos_server::LedInfo* _internal_mutable_led();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.lumos_server.ColorLedCmdResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::lumos_server::LedInfo* led_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lumos_5fserver_2flumos_5fserver_2eproto;
+};// -------------------------------------------------------------------
+
 class ParamsResponse final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.lumos_server.ParamsResponse) */ {
  public:
@@ -6467,6 +7004,206 @@ inline void KillCmdResponse::_internal_set_unused(::int32_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.unused_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SubscribeColorLedCmdRequest
+
+// -------------------------------------------------------------------
+
+// ColorLedCmdResponse
+
+// .mavsdk.rpc.lumos_server.LedInfo led = 1;
+inline bool ColorLedCmdResponse::has_led() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.led_ != nullptr);
+  return value;
+}
+inline void ColorLedCmdResponse::clear_led() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.led_ != nullptr) _impl_.led_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::lumos_server::LedInfo& ColorLedCmdResponse::_internal_led() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::mavsdk::rpc::lumos_server::LedInfo* p = _impl_.led_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::lumos_server::LedInfo&>(::mavsdk::rpc::lumos_server::_LedInfo_default_instance_);
+}
+inline const ::mavsdk::rpc::lumos_server::LedInfo& ColorLedCmdResponse::led() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.ColorLedCmdResponse.led)
+  return _internal_led();
+}
+inline void ColorLedCmdResponse::unsafe_arena_set_allocated_led(::mavsdk::rpc::lumos_server::LedInfo* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.led_);
+  }
+  _impl_.led_ = reinterpret_cast<::mavsdk::rpc::lumos_server::LedInfo*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.lumos_server.ColorLedCmdResponse.led)
+}
+inline ::mavsdk::rpc::lumos_server::LedInfo* ColorLedCmdResponse::release_led() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::lumos_server::LedInfo* released = _impl_.led_;
+  _impl_.led_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::mavsdk::rpc::lumos_server::LedInfo* ColorLedCmdResponse::unsafe_arena_release_led() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.lumos_server.ColorLedCmdResponse.led)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::lumos_server::LedInfo* temp = _impl_.led_;
+  _impl_.led_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::lumos_server::LedInfo* ColorLedCmdResponse::_internal_mutable_led() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.led_ == nullptr) {
+    auto* p = CreateMaybeMessage<::mavsdk::rpc::lumos_server::LedInfo>(GetArena());
+    _impl_.led_ = reinterpret_cast<::mavsdk::rpc::lumos_server::LedInfo*>(p);
+  }
+  return _impl_.led_;
+}
+inline ::mavsdk::rpc::lumos_server::LedInfo* ColorLedCmdResponse::mutable_led() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::mavsdk::rpc::lumos_server::LedInfo* _msg = _internal_mutable_led();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.lumos_server.ColorLedCmdResponse.led)
+  return _msg;
+}
+inline void ColorLedCmdResponse::set_allocated_led(::mavsdk::rpc::lumos_server::LedInfo* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::mavsdk::rpc::lumos_server::LedInfo*>(_impl_.led_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::mavsdk::rpc::lumos_server::LedInfo*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.led_ = reinterpret_cast<::mavsdk::rpc::lumos_server::LedInfo*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.lumos_server.ColorLedCmdResponse.led)
+}
+
+// -------------------------------------------------------------------
+
+// LedInfo
+
+// uint32 color = 1;
+inline void LedInfo::clear_color() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.color_ = 0u;
+}
+inline ::uint32_t LedInfo::color() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.LedInfo.color)
+  return _internal_color();
+}
+inline void LedInfo::set_color(::uint32_t value) {
+  _internal_set_color(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.LedInfo.color)
+}
+inline ::uint32_t LedInfo::_internal_color() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.color_;
+}
+inline void LedInfo::_internal_set_color(::uint32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.color_ = value;
+}
+
+// uint32 mode = 2;
+inline void LedInfo::clear_mode() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.mode_ = 0u;
+}
+inline ::uint32_t LedInfo::mode() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.LedInfo.mode)
+  return _internal_mode();
+}
+inline void LedInfo::set_mode(::uint32_t value) {
+  _internal_set_mode(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.LedInfo.mode)
+}
+inline ::uint32_t LedInfo::_internal_mode() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.mode_;
+}
+inline void LedInfo::_internal_set_mode(::uint32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.mode_ = value;
+}
+
+// uint32 blink_count = 3;
+inline void LedInfo::clear_blink_count() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.blink_count_ = 0u;
+}
+inline ::uint32_t LedInfo::blink_count() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.LedInfo.blink_count)
+  return _internal_blink_count();
+}
+inline void LedInfo::set_blink_count(::uint32_t value) {
+  _internal_set_blink_count(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.LedInfo.blink_count)
+}
+inline ::uint32_t LedInfo::_internal_blink_count() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.blink_count_;
+}
+inline void LedInfo::_internal_set_blink_count(::uint32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.blink_count_ = value;
+}
+
+// uint32 prio = 4;
+inline void LedInfo::clear_prio() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.prio_ = 0u;
+}
+inline ::uint32_t LedInfo::prio() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.lumos_server.LedInfo.prio)
+  return _internal_prio();
+}
+inline void LedInfo::set_prio(::uint32_t value) {
+  _internal_set_prio(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.lumos_server.LedInfo.prio)
+}
+inline ::uint32_t LedInfo::_internal_prio() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.prio_;
+}
+inline void LedInfo::_internal_set_prio(::uint32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.prio_ = value;
 }
 
 #ifdef __GNUC__

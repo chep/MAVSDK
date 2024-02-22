@@ -119,6 +119,15 @@ void MavlinkFtpClient::process_mavlink_ftp_message(const mavlink_message_t& msg)
 
     PayloadHeader* payload = reinterpret_cast<PayloadHeader*>(&ftp_req.payload[0]);
 
+    if (_debugging) {
+        // print all payload fields:
+        LogDebug() << "FTP: Received payload: " << (int)payload->seq_number << ", "
+                   << (int)payload->session << ", " << (int)payload->opcode << ", "
+                   << (int)payload->size << ", " << (int)payload->req_opcode << ", "
+                   << (int)payload->burst_complete << ", " << (int)payload->padding << ", "
+                   << (int)payload->offset;
+    }
+
     if (payload->size > max_data_length) {
         LogWarn() << "Received FTP payload with invalid size";
         return;
@@ -148,6 +157,13 @@ void MavlinkFtpClient::process_mavlink_ftp_message(const mavlink_message_t& msg)
         // We have already seen this ack/nak.
         LogWarn() << "Already seen";
         return;
+    }
+
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        if (payload->seq_number == _next_seq_number) {
+            _next_seq_number++;
+        }
     }
 
     std::visit(
@@ -372,7 +388,10 @@ bool MavlinkFtpClient::download_start(Work& work, DownloadItem& item)
 
     work.last_opcode = CMD_OPEN_FILE_RO;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = 0;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = 0;
@@ -423,7 +442,10 @@ bool MavlinkFtpClient::download_continue(Work& work, DownloadItem& item, Payload
     if (item.bytes_transferred < item.file_size) {
         work.last_opcode = CMD_READ_FILE;
         work.payload = {};
-        work.payload.seq_number = work.last_sent_seq_number++;
+        {
+            std::lock_guard<std::mutex> lock(_seq_number_mutex);
+            work.payload.seq_number = _next_seq_number++;
+        }
         work.payload.session = _session;
         work.payload.opcode = work.last_opcode;
         work.payload.offset = item.bytes_transferred;
@@ -449,7 +471,10 @@ bool MavlinkFtpClient::download_continue(Work& work, DownloadItem& item, Payload
         work.last_opcode = CMD_TERMINATE_SESSION;
 
         work.payload = {};
-        work.payload.seq_number = work.last_sent_seq_number++;
+        {
+            std::lock_guard<std::mutex> lock(_seq_number_mutex);
+            work.payload.seq_number = _next_seq_number++;
+        }
         work.payload.session = _session;
 
         work.payload.opcode = work.last_opcode;
@@ -480,7 +505,10 @@ bool MavlinkFtpClient::download_burst_start(Work& work, DownloadBurstItem& item)
 
     work.last_opcode = CMD_OPEN_FILE_RO;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = 0;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = 0;
@@ -658,7 +686,10 @@ void MavlinkFtpClient::download_burst_end(Work& work)
     work.last_opcode = CMD_TERMINATE_SESSION;
 
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = _session;
 
     work.payload.opcode = work.last_opcode;
@@ -675,7 +706,10 @@ void MavlinkFtpClient::request_burst(Work& work, DownloadBurstItem& item)
 
     work.last_opcode = CMD_BURST_READ_FILE;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = _session;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = item.current_offset;
@@ -698,7 +732,10 @@ void MavlinkFtpClient::request_next_rest(Work& work, DownloadBurstItem& item)
 
     work.last_opcode = CMD_READ_FILE;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = _session;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = missing.offset;
@@ -751,7 +788,10 @@ bool MavlinkFtpClient::upload_start(Work& work, UploadItem& item)
 
     work.last_opcode = CMD_CREATE_FILE;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = 0;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = 0;
@@ -773,7 +813,10 @@ bool MavlinkFtpClient::upload_continue(Work& work, UploadItem& item)
         work.last_opcode = CMD_WRITE_FILE;
 
         work.payload = {};
-        work.payload.seq_number = work.last_sent_seq_number++;
+        {
+            std::lock_guard<std::mutex> lock(_seq_number_mutex);
+            work.payload.seq_number = _next_seq_number++;
+        }
         work.payload.session = _session;
 
         work.payload.opcode = work.last_opcode;
@@ -803,7 +846,10 @@ bool MavlinkFtpClient::upload_continue(Work& work, UploadItem& item)
         work.last_opcode = CMD_TERMINATE_SESSION;
 
         work.payload = {};
-        work.payload.seq_number = work.last_sent_seq_number++;
+        {
+            std::lock_guard<std::mutex> lock(_seq_number_mutex);
+            work.payload.seq_number = _next_seq_number++;
+        }
         work.payload.session = _session;
 
         work.payload.opcode = work.last_opcode;
@@ -831,7 +877,10 @@ bool MavlinkFtpClient::remove_start(Work& work, RemoveItem& item)
 
     work.last_opcode = CMD_REMOVE_FILE;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = 0;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = 0;
@@ -853,7 +902,10 @@ bool MavlinkFtpClient::rename_start(Work& work, RenameItem& item)
 
     work.last_opcode = CMD_RENAME;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = 0;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = 0;
@@ -881,7 +933,10 @@ bool MavlinkFtpClient::create_dir_start(Work& work, CreateDirItem& item)
 
     work.last_opcode = CMD_CREATE_DIRECTORY;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = 0;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = 0;
@@ -903,7 +958,10 @@ bool MavlinkFtpClient::remove_dir_start(Work& work, RemoveDirItem& item)
 
     work.last_opcode = CMD_REMOVE_DIRECTORY;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = 0;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = 0;
@@ -931,7 +989,10 @@ bool MavlinkFtpClient::compare_files_start(Work& work, CompareFilesItem& item)
 
     work.last_opcode = CMD_CALC_FILE_CRC32;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = 0;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = 0;
@@ -954,7 +1015,10 @@ bool MavlinkFtpClient::list_dir_start(Work& work, ListDirItem& item)
 
     work.last_opcode = CMD_LIST_DIRECTORY;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = 0;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = 0;
@@ -1003,7 +1067,10 @@ bool MavlinkFtpClient::list_dir_continue(Work& work, ListDirItem& item, PayloadH
 
     work.last_opcode = CMD_LIST_DIRECTORY;
     work.payload = {};
-    work.payload.seq_number = work.last_sent_seq_number++;
+    {
+        std::lock_guard<std::mutex> lock(_seq_number_mutex);
+        work.payload.seq_number = _next_seq_number++;
+    }
     work.payload.session = 0;
     work.payload.opcode = work.last_opcode;
     work.payload.offset = item.offset;
@@ -1155,6 +1222,14 @@ void MavlinkFtpClient::are_files_identical_async(
 
 void MavlinkFtpClient::send_mavlink_ftp_message(const PayloadHeader& payload)
 {
+    if (_debugging) {
+        LogDebug() << "FTP: Sent payload: " << (int)payload.seq_number << ", "
+                   << (int)payload.session << ", " << (int)payload.opcode << ", "
+                   << (int)payload.size << ", " << (int)payload.req_opcode << ", "
+                   << (int)payload.burst_complete << ", " << (int)payload.padding << ", "
+                   << (int)payload.offset;
+    }
+
     _system_impl.queue_message([&](MavlinkAddress mavlink_address, uint8_t channel) {
         mavlink_message_t message;
         mavlink_msg_file_transfer_protocol_pack_chan(

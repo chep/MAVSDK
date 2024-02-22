@@ -224,7 +224,6 @@ private:
         bool started{false};
         Opcode last_opcode{};
         uint16_t last_received_seq_number{0};
-        uint16_t last_sent_seq_number{0};
         Work(Item new_item) : item(std::move(new_item)) {}
     };
 
@@ -318,6 +317,9 @@ private:
     LockedQueue<Work> _work_queue{};
 
     bool _debugging{false};
+
+    uint16_t _next_seq_number{0};
+    std::mutex _seq_number_mutex;
 };
 
 } // namespace mavsdk

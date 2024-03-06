@@ -9,7 +9,7 @@ list(APPEND CMAKE_ARGS
     "-DMAVLINK_DIALECT=${MAVLINK_DIALECT}"
     )
 
-set(MAVLINK_GIT_HASH 9840105a275db1f48f9711d0fb861e8bf77a2245)
+set(MAVLINK_GIT_HASH 0eb411d830cb2ea1e07604b477c281b4763476cf)
 
 if(IOS)
     ExternalProject_add(
@@ -25,7 +25,7 @@ if(IOS)
 else()
     ExternalProject_add(
         mavlink
-        GIT_REPOSITORY git@gitlab.com:drotk/drone-show-ecosystem/lumos/mavlink.git
+        GIT_REPOSITORY git@github.com:Drotek-team/mavlink.git
         GIT_TAG ${MAVLINK_GIT_HASH}
         PREFIX mavlink
         PATCH_COMMAND git checkout . && git apply ${PROJECT_SOURCE_DIR}/mavlink.patch

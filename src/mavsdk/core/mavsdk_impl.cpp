@@ -331,11 +331,13 @@ void MavsdkImpl::receive_message(mavlink_message_t& message, Connection* connect
      *  we check that it is not the one which received the current message.
      *
      * Conditions:
-     * 1. At least 2 connections.
-     * 2. At least 1 forwarding connection.
-     * 3. At least 2 forwarding connections or current connection is not forwarding.
+     * 1. connection is not null.
+     * 2. At least 2 connections.
+     * 3. At least 1 forwarding connection.
+     * 4. At least 2 forwarding connections or current connection is not forwarding.
      */
-    if (_connections.size() > 1 && mavsdk::Connection::forwarding_connections_count() > 0 &&
+    if (connection && _connections.size() > 1 &&
+        mavsdk::Connection::forwarding_connections_count() > 0 &&
         (mavsdk::Connection::forwarding_connections_count() > 1 ||
          !connection->should_forward_messages())) {
         if (_message_logging_on) {

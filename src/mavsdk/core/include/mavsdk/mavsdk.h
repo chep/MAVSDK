@@ -435,6 +435,16 @@ public:
      */
     void intercept_outgoing_messages_async(std::function<bool(mavlink_message_t&)> callback);
 
+    /**
+     * @brief Inject message as if it was received from a connection
+     *
+     * This can be useful if an application has its own way of receiving MAVLink
+     * and need the messages to be processed by MAVSDK.
+     *
+     * @param message The message to process
+     */
+    void inject_messages(const mavlink_message_t& message);
+
 private:
     /* @private. */
     std::shared_ptr<MavsdkImpl> _impl{};

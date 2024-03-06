@@ -223,4 +223,12 @@ void Mavsdk::intercept_outgoing_messages_async(std::function<bool(mavlink_messag
     _impl->intercept_outgoing_messages_async(callback);
 }
 
+void Mavsdk::inject_messages(const mavlink_message_t& message)
+{
+    std::thread([=]() {
+        mavlink_message_t m = message;
+        _impl->receive_message(m, nullptr);
+    }).detach();
+}
+
 } // namespace mavsdk
